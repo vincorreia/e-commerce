@@ -1,0 +1,26 @@
+// Variables //
+$main-color: white;
+
+///////////////////////////////////
+
+.nav {
+    height: 5rem;
+    position: relative;
+    div{
+        align-self: center;
+
+        a{
+            color: $main-color;
+            text-decoration: none;
+            border: 0;
+            &:hover{
+                color: darken($main-color, 2.5%);
+            }
+        }
+        
+        .brand{
+            font-size: 45px;
+            font-weight: 600;
+        }
+    }
+}

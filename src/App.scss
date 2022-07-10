@@ -1,0 +1,58 @@
+$from: white;
+$to: black;
+
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Work Sans', sans-serif;
+}
+
+main{
+    position: relative;
+    background: $from;
+    background: radial-gradient(circle, darken($from, 75%) 0%, $to 100%);
+    &::before{
+        content: "";
+        background-image: url("https://i.imgur.com/sDeA7yG.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 120rem;
+        position: absolute;
+        top:0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.75;
+    }
+}
+
+.sectionContainer{
+    height: 50rem;
+}
+@mixin flexRow{
+    display: flex;
+    flex-direction: row;
+}
+
+.center {
+    @include flexRow;
+    justify-content: center;
+}
+
+.space-even {
+    @include flexRow;
+    justify-content: space-evenly;
+}
+
+.space-between {
+    @include flexRow;
+    justify-content: space-between;
+}
+
+.space-around {
+    @include flexRow;
+    justify-content: space-around;
+}
+
+@import "./components/Nav";
