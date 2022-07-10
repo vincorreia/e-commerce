@@ -8,7 +8,7 @@ body {
   font-family: 'Work Sans', sans-serif;
 }
 
-main{
+.home{
     position: relative;
     background: $from;
     background: radial-gradient(circle, darken($from, 90%) 0%, $to 100%);
@@ -23,12 +23,16 @@ main{
         right: 0px;
         bottom: 0px;
         left: 0px;
-        opacity: 0.5;
+        opacity: 0.35;
     }
 }
 
+.products {
+    background-color: black;
+}
+
 .sectionContainer{
-    height: 50rem;
+    height: 100vh;
     position: relative;
 }
 

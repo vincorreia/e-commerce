@@ -1,9 +1,9 @@
-
 .mainText{
     color: white;
     align-self: center;
     align-items: center;
     h1{
+        text-align: center;
         font-weight: 500;
         font-size: 50px;
         margin: 0;
@@ -22,6 +22,9 @@
             width: 14rem;
             border: darken(white, 75%) solid 1px;
             border-radius: 2.5px;
+            &:hover{
+                cursor: pointer;
+            }
         }
         .primary{
             background-color: darken(rgb(0, 162, 255), 15%);

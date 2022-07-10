@@ -4,12 +4,12 @@ body {
   font-family: "Work Sans", sans-serif;
 }
 
-main {
+.home {
   position: relative;
   background: white;
   background: radial-gradient(circle, #1a1a1a 0%, black 100%);
 }
-main::before {
+.home::before {
   content: "";
   background-image: url("https://i.imgur.com/sDeA7yG.jpg");
   background-repeat: no-repeat;
@@ -20,11 +20,15 @@ main::before {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  opacity: 0.5;
+  opacity: 0.35;
+}
+
+.products {
+  background-color: black;
 }
 
 .sectionContainer {
-  height: 50rem;
+  height: 100vh;
   position: relative;
 }
 
@@ -102,6 +106,7 @@ main::before {
   align-items: center;
 }
 .mainText h1 {
+  text-align: center;
   font-weight: 500;
   font-size: 50px;
   margin: 0;
@@ -119,6 +124,9 @@ main::before {
   width: 14rem;
   border: #404040 solid 1px;
   border-radius: 2.5px;
+}
+.mainText .row-center button:hover {
+  cursor: pointer;
 }
 .mainText .row-center .primary {
   background-color: #0071b3;
