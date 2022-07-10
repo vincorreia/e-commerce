@@ -7,7 +7,7 @@ body {
 main {
   position: relative;
   background: white;
-  background: radial-gradient(circle, #404040 0%, black 100%);
+  background: radial-gradient(circle, #1a1a1a 0%, black 100%);
 }
 main::before {
   content: "";
@@ -20,35 +20,60 @@ main::before {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  opacity: 0.75;
+  opacity: 0.5;
 }
 
 .sectionContainer {
   height: 50rem;
+  position: relative;
 }
 
-.center {
+.row-center {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.space-even {
+.row-space-even {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-.space-between {
+.row-space-between {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.space-around {
+.row-space-around {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.col-space-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.col-space-around {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.col-space-even {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .nav {
@@ -69,4 +94,42 @@ main::before {
 .nav div .brand {
   font-size: 45px;
   font-weight: 600;
+}
+
+.mainText {
+  color: white;
+  align-self: center;
+  align-items: center;
+}
+.mainText h1 {
+  font-weight: 500;
+  font-size: 50px;
+  margin: 0;
+}
+.mainText p {
+  width: 28rem;
+  text-align: center;
+  font-weight: 200;
+  font-size: 17px;
+}
+.mainText .row-center button {
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 4rem 0.6rem 4rem;
+  width: 14rem;
+  border: #404040 solid 1px;
+  border-radius: 2.5px;
+}
+.mainText .row-center .primary {
+  background-color: #0071b3;
+}
+.mainText .row-center .primary:hover {
+  background-color: #005180;
+}
+.mainText .row-center .dark {
+  background-color: black;
+  margin-left: 5px;
+}
+.mainText .row-center .dark:hover {
+  background-color: #262626;
 }/*# sourceMappingURL=App.css.map */

@@ -11,7 +11,7 @@ body {
 main{
     position: relative;
     background: $from;
-    background: radial-gradient(circle, darken($from, 75%) 0%, $to 100%);
+    background: radial-gradient(circle, darken($from, 90%) 0%, $to 100%);
     &::before{
         content: "";
         background-image: url("https://i.imgur.com/sDeA7yG.jpg");
@@ -23,36 +23,65 @@ main{
         right: 0px;
         bottom: 0px;
         left: 0px;
-        opacity: 0.75;
+        opacity: 0.5;
     }
 }
 
 .sectionContainer{
     height: 50rem;
+    position: relative;
 }
+
 @mixin flexRow{
     display: flex;
     flex-direction: row;
 }
 
-.center {
+@mixin flexColumn{
+    display: flex;
+    flex-direction: column;
+}
+
+.row-center {
     @include flexRow;
     justify-content: center;
 }
 
-.space-even {
+.row-space-even {
     @include flexRow;
     justify-content: space-evenly;
 }
 
-.space-between {
+.row-space-between {
     @include flexRow;
     justify-content: space-between;
 }
 
-.space-around {
+.row-space-around {
     @include flexRow;
     justify-content: space-around;
 }
 
+.col-center{
+    @include flexColumn;
+    justify-content: center;
+}
+
+.col-space-between{
+    @include flexColumn;
+    justify-content: space-between
+}
+
+.col-space-around{
+    @include flexColumn;
+    justify-content: space-around;
+}
+
+.col-space-even{
+    @include flexColumn;
+    justify-content: space-evenly;
+}
+
+
 @import "./components/Nav";
+@import "./components/Home"

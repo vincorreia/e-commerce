@@ -1,0 +1,41 @@
+
+.mainText{
+    color: white;
+    align-self: center;
+    align-items: center;
+    h1{
+        font-weight: 500;
+        font-size: 50px;
+        margin: 0;
+    }
+    p{
+        width: 28rem;
+        text-align: center;
+        font-weight: 200;
+        font-size: 17px;
+    }
+    .row-center{
+        button{
+            color: white;
+            font-weight: 600;
+            padding: 0.6rem 4rem 0.6rem 4rem;
+            width: 14rem;
+            border: darken(white, 75%) solid 1px;
+            border-radius: 2.5px;
+        }
+        .primary{
+            background-color: darken(rgb(0, 162, 255), 15%);
+            &:hover{
+                background-color: darken(rgb(0, 162, 255), 25%);
+            }
+        }
+
+        .dark{
+            background-color: black;
+            margin-left: 5px;
+            &:hover{
+                background-color: lighten(black, 15%);
+            }
+        }
+    }
+}
