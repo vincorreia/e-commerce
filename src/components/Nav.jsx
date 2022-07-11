@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 export default function Nav(){
     return (
-    <nav className="row-space-around nav">
-            <div className="row-center">
+    <nav className="flex-row space-around nav">
+            <div className="flex-row center">
                 <Link className="brand" to="/">Watches</Link>
             </div>
             <div className="profile-section">

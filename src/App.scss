@@ -1,5 +1,9 @@
 $from: white;
 $to: black;
+$primary: darken(rgb(0, 162, 255), 15%);
+$dark: black;
+$round-border: 0.25rem;
+$border: darken(white, 75%) solid 1px;
 
 
 body {
@@ -8,84 +12,102 @@ body {
   font-family: 'Work Sans', sans-serif;
 }
 
-.home{
-    position: relative;
-    background: $from;
-    background: radial-gradient(circle, darken($from, 90%) 0%, $to 100%);
-    &::before{
-        content: "";
-        background-image: url("https://i.imgur.com/sDeA7yG.jpg");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 120rem;
-        position: absolute;
-        top:0px;
-        right: 0px;
-        bottom: 0px;
-        left: 0px;
-        opacity: 0.35;
+button {
+    color: white;
+    border: $border;
+    font-weight: 600;
+
+    &.primary{
+        background-color: $primary;
+        &:hover{
+            background-color: darken($primary, 5%);
+        }
+    }
+
+    &.dark{
+        background-color: $dark;
+        margin-left: 5px;
+        &:hover{
+            background-color: lighten($dark, 15%);
+        }
+    }
+
+    &:hover{
+        cursor: pointer;
     }
 }
 
-.products {
+.main {
     background-color: black;
+
+    &.home{
+        position: relative;
+        background: $from;
+        background: radial-gradient(circle, darken($from, 90%) 0%, $to 100%);
+        &::before{
+            content: "";
+            background-image: url("https://i.imgur.com/sDeA7yG.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 120rem;
+            position: absolute;
+            top:0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            opacity: 0.35;
+        }
+    }
 }
 
-.sectionContainer{
+.sectionContainer {
     height: 100vh;
     position: relative;
 }
 
-@mixin flexRow{
+.flex-row {
     display: flex;
     flex-direction: row;
+
+    &.center{
+        justify-content: center;
+    }
+
+    &.space-even{
+        justify-content: space-evenly;
+    }
+
+    &.space-between {
+        justify-content: space-between;
+    }
+
+    &.space-around {
+        justify-content: space-around;
+    }
 }
 
-@mixin flexColumn{
+.flex-col {
     display: flex;
     flex-direction: column;
-}
+    &.center {
+        justify-content: center;
+    }
 
-.row-center {
-    @include flexRow;
-    justify-content: center;
-}
+    &.space-between {
+        justify-content: space-between;
+    }
 
-.row-space-even {
-    @include flexRow;
-    justify-content: space-evenly;
-}
+    &.space-around {
+        justify-content: space-around;
+    }
 
-.row-space-between {
-    @include flexRow;
-    justify-content: space-between;
-}
-
-.row-space-around {
-    @include flexRow;
-    justify-content: space-around;
-}
-
-.col-center{
-    @include flexColumn;
-    justify-content: center;
-}
-
-.col-space-between{
-    @include flexColumn;
-    justify-content: space-between
-}
-
-.col-space-around{
-    @include flexColumn;
-    justify-content: space-around;
-}
-
-.col-space-even{
-    @include flexColumn;
-    justify-content: space-evenly;
+    &.space-even {
+        justify-content: space-evenly;
+    }
 }
 
 
 @import "./components/Nav";
-@import "./components/Home"
+@import "./components/Home";
+@import "./components/Products";
+@import "./components/SearchBar"
