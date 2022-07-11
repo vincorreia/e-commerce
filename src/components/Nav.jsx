@@ -6,7 +6,7 @@ export default function Nav(){
             <div className="flex-row center">
                 <Link className="brand" to="/">Watches</Link>
             </div>
-            <div className="profile-section">
+            <div className="profile-section flex-row">
                 <Link to="/products">STORE</Link>
                 <Link to="/profile">PROFILE</Link>
                 <Link to="/cart">CART</Link>

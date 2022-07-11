@@ -20,11 +20,11 @@ div{
 input {
     &.searchbar {
         font-family: 'Work Sans', sans-serif;
-        height: 1.5rem;
+        height: 1.85rem;
         align-self: center;
         padding: 0.5rem 0.75rem 0.5rem 0.75rem;
         width: 14rem;
-        border: 0;
+        border: 1px solid white;
         &:focus{
             outline: none;
             border: 1px solid lighten($primary, 25%);
@@ -42,13 +42,13 @@ input {
         -moz-appearance: none;
         appearance: none;
         font-family: 'Work Sans', sans-serif;
-        height: 2.5rem;
+        height: 3rem;
         width: 5rem;
         padding-left: 0.2rem;
-        border: 1px $primary solid;
+        border: 1px $dark solid;
         outline: none;
         color:white;
-        background-color: $primary;
+        background-color: $dark;
         &::-ms-expand {
             display: none;
        }

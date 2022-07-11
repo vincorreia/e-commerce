@@ -18,7 +18,7 @@ export default function ProductCard(props){
                 </div>
                 <span className="price">{product.price}</span>
                 <div className="buttons-wrapper flex-row space-around">
-                    <button className="primary">More Details</button>
+                    <button className="dark">More Details</button>
                     <button className="allow">Add to Cart</button>
                 </div>
             </div>

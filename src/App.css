@@ -127,6 +127,9 @@ button:hover {
   font-size: 45px;
   font-weight: 600;
 }
+.nav .profile-section {
+  gap: 0.5rem;
+}
 
 .mainText {
   color: white;
@@ -174,11 +177,11 @@ div.searchbar .link:hover {
 
 input.searchbar {
   font-family: "Work Sans", sans-serif;
-  height: 1.5rem;
+  height: 1.85rem;
   align-self: center;
   padding: 0.5rem 0.75rem 0.5rem 0.75rem;
   width: 14rem;
-  border: 0;
+  border: 1px solid white;
 }
 input.searchbar:focus {
   outline: none;
@@ -196,13 +199,13 @@ input.searchbar:focus {
   -moz-appearance: none;
   appearance: none;
   font-family: "Work Sans", sans-serif;
-  height: 2.5rem;
+  height: 3rem;
   width: 5rem;
   padding-left: 0.2rem;
-  border: 1px #0071b3 solid;
+  border: 1px black solid;
   outline: none;
   color: white;
-  background-color: #0071b3;
+  background-color: black;
 }
 .select-box select::-ms-expand {
   display: none;
@@ -247,24 +250,15 @@ input.searchbar:focus {
 }
 .card .card-details .tag-wrapper .tag {
   padding: 5px 15px;
-  border-radius: 7px;
+  color: black;
+  border: 1px solid black;
+  width: 5.5rem;
+  border-radius: 2px;
   font-weight: 300;
   font-size: 1rem;
 }
 .card .card-details .tag-wrapper .tag:hover {
   cursor: context-menu;
-}
-.card .card-details .tag-wrapper .tag.tech {
-  background-color: #0071b3;
-}
-.card .card-details .tag-wrapper .tag.high-end {
-  background-color: rgb(212, 174, 69);
-}
-.card .card-details .tag-wrapper .tag.low-end {
-  background-color: black;
-}
-.card .card-details .tag-wrapper .tag.old-fashion {
-  background-color: rgb(95, 52, 17);
 }
 .card .card-details .price {
   font-size: 1.5rem;

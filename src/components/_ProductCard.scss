@@ -15,25 +15,15 @@
             gap: 1rem;
             color: white;
             .tag{
-
                 padding: 5px 15px;
-                border-radius: 7px;
+                color: black;
+                border: 1px solid black;
+                width: 5.5rem;
+                border-radius: 2px;
                 font-weight: 300;
                 font-size: 1rem;
                 &:hover{
                     cursor: context-menu;
-                }
-                &.tech{
-                    background-color: $primary;
-                }
-                &.high-end{
-                    background-color: rgb(212, 174, 69);
-                }
-                &.low-end {
-                    background-color: black;
-                }
-                &.old-fashion {
-                    background-color: rgb(95, 52, 17);
                 }
             }
         }
