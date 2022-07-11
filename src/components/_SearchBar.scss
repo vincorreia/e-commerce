@@ -4,6 +4,16 @@ div{
         height: 3rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
+
+        .link {
+            align-self: center;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            &:hover{
+               color: darken(white, 5%); 
+            }
+        }
     }
 }
 

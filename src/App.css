@@ -22,6 +22,12 @@ button.dark {
 button.dark:hover {
   background-color: #262626;
 }
+button.allow {
+  background-color: rgb(58, 179, 21);
+}
+button.allow:hover {
+  background-color: #59e62e;
+}
 button:hover {
   cursor: pointer;
 }
@@ -47,10 +53,13 @@ button:hover {
   left: 0px;
   opacity: 0.35;
 }
+.main.home .sectionContainer {
+  height: 100vh;
+}
 
 .sectionContainer {
-  height: 100vh;
   position: relative;
+  padding-bottom: 5rem;
 }
 
 .flex-row {
@@ -69,6 +78,12 @@ button:hover {
 .flex-row.space-around {
   justify-content: space-around;
 }
+.flex-row.wrap {
+  flex-wrap: wrap;
+}
+.flex-row.no-wrap {
+  flex-wrap: nowrap;
+}
 
 .flex-col {
   display: flex;
@@ -86,6 +101,12 @@ button:hover {
 .flex-col.space-even {
   justify-content: space-evenly;
 }
+.flex-col.wrap {
+  flex-wrap: wrap;
+}
+.flex-col.no-wrap {
+  flex-wrap: nowrap;
+}
 
 .nav {
   height: 5rem;
@@ -100,7 +121,7 @@ button:hover {
   border: 0;
 }
 .nav div a:hover {
-  color: #f9f9f9;
+  color: #d9d9d9;
 }
 .nav div .brand {
   font-size: 45px;
@@ -130,11 +151,25 @@ button:hover {
   border-radius: 0.25rem;
 }
 
+.cards-wrapper {
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
 div.searchbar {
   background-color: #bfbfbf;
   height: 3rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+div.searchbar .link {
+  align-self: center;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+div.searchbar .link:hover {
+  color: #f2f2f2;
 }
 
 input.searchbar {
@@ -189,4 +224,72 @@ input.searchbar:focus {
 }
 .select-box::after:hover {
   cursor: pointer;
+}
+
+.card {
+  background-color: white;
+  width: 25rem;
+}
+.card .card-details {
+  margin: 1rem 1rem 1rem 1rem;
+  text-align: center;
+}
+.card .card-details.flex-col {
+  gap: 2rem;
+}
+.card .card-details h2 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+.card .card-details .tag-wrapper {
+  gap: 1rem;
+  color: white;
+}
+.card .card-details .tag-wrapper .tag {
+  padding: 5px 15px;
+  border-radius: 7px;
+  font-weight: 300;
+  font-size: 1rem;
+}
+.card .card-details .tag-wrapper .tag:hover {
+  cursor: context-menu;
+}
+.card .card-details .tag-wrapper .tag.tech {
+  background-color: #0071b3;
+}
+.card .card-details .tag-wrapper .tag.high-end {
+  background-color: rgb(212, 174, 69);
+}
+.card .card-details .tag-wrapper .tag.low-end {
+  background-color: black;
+}
+.card .card-details .tag-wrapper .tag.old-fashion {
+  background-color: rgb(95, 52, 17);
+}
+.card .card-details .price {
+  font-size: 1.5rem;
+}
+.card .card-details .buttons-wrapper.flex-row {
+  gap: 0.2rem;
+}
+.card .card-details .buttons-wrapper button {
+  width: 12.5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 4px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+}
+.card .product-image {
+  width: 20rem;
+  height: 25rem;
+}
+
+.not-found {
+  height: 71.65vh;
+  text-align: center;
+}
+.not-found h1 {
+  color: #0071b3;
 }/*# sourceMappingURL=App.css.map */

@@ -1,6 +1,7 @@
 $from: white;
 $to: black;
 $primary: darken(rgb(0, 162, 255), 15%);
+$allow: rgb(58, 179, 21);
 $dark: black;
 $round-border: 0.25rem;
 $border: darken(white, 75%) solid 1px;
@@ -32,6 +33,12 @@ button {
         }
     }
 
+    &.allow{
+        background-color: $allow;
+        &:hover{
+            background-color: lighten($allow, 15%);
+        }
+    }
     &:hover{
         cursor: pointer;
     }
@@ -57,12 +64,16 @@ button {
             left: 0px;
             opacity: 0.35;
         }
+
+        .sectionContainer {
+            height: 100vh;
+        }
     }
 }
 
 .sectionContainer {
-    height: 100vh;
     position: relative;
+    padding-bottom: 5rem;
 }
 
 .flex-row {
@@ -84,6 +95,14 @@ button {
     &.space-around {
         justify-content: space-around;
     }
+
+    &.wrap {
+        flex-wrap: wrap;
+    }
+
+    &.no-wrap {
+        flex-wrap: nowrap;
+    }
 }
 
 .flex-col {
@@ -104,10 +123,20 @@ button {
     &.space-even {
         justify-content: space-evenly;
     }
+
+    &.wrap {
+        flex-wrap: wrap;
+    }
+
+    &.no-wrap {
+        flex-wrap: nowrap;
+    }
 }
 
 
 @import "./components/Nav";
 @import "./components/Home";
-@import "./components/Products";
-@import "./components/SearchBar"
+@import "./components/ProductCards";
+@import "./components/SearchBar";
+@import "./components/ProductCard";
+@import "./components/NotFound";

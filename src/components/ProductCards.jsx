@@ -1,34 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { products } from "../data/Products"
+import ProductCard from "./ProductCard";
+import NotFound from "./NotFound";
 
 export default function ProductCards(props){
-    let filteredResults = products;
+    const [filteredResults, setFilteredResults] = useState(products);
     const query = props.query
     
     useEffect(() =>{
-        if(query.by === "product" && query.searchbar){
-            filteredResults = filterByProduct(query.searchbar)
-        } else if (query.by === "tag" && query.searchbar && query.searchbar.length > 0){
-            filteredResults = filterByTag(query.searchbar)
+        if(!query.searchbar || query.searchbar.trim().length === 0){
+            setFilteredResults(products);
+        } else {
+            if(query.by === "product"){
+                setFilteredResults(filterByProduct(query.searchbar))
+            } else if (query.by === "tag"){
+                setFilteredResults(filterByTag(query.searchbar))
+            }
         }
-
-        console.log(filteredResults)
     },[query])
 
-    function filterByProduct(searchBarQuery){
+
+    function filterByProduct(searchBarQuery){ // This function will return a filtered array from query.searchbar
 
         let filteredArray = products.filter(item => {
-            return item.product.toLowerCase().includes(searchBarQuery.toLowerCase())
+            return item.name.toLowerCase().includes(searchBarQuery.toLowerCase())
         })
 
         return filteredArray;
     }
 
-    function filterByTag(searchBarQuery){
+
+    function filterByTag(searchBarQuery){ // This function returns a filtered array from query.searchbar
         let filteredArray = products.filter(item => {
             let count = 0;
 
-            item.tag.forEach(tag => {
+            item.tags.forEach(tag => {
                 if(tag.toLowerCase().includes(searchBarQuery.toLowerCase())){
                     count ++;
                 }
@@ -36,12 +42,19 @@ export default function ProductCards(props){
 
             return count > 0;
         })
-
+        
         return filteredArray;
     }
-    return (
-    <div className="cards-wrapper">
 
+    return (
+    <div className="flex-row center">
+        <div className="cards-wrapper flex-row space-even wrap">
+            {filteredResults.length !== 0 ? filteredResults.map((product, i) => {
+                return <ProductCard product={product} key={i}/>
+                })
+                : <NotFound />
+            }
+        </div>
     </div>
     )
 }

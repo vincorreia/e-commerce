@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function SearchBar(props){
 
@@ -16,18 +17,25 @@ export default function SearchBar(props){
         setQuery({...query, [targetId]: newValue})
     }
     return (
-        <div className="searchbar flex-row center">
-            <input id="searchbar" type="text" placeholder="SEARCH..." className="searchbar" onChange={(event) => {
-                handleChange(event)
-            }} value={searchText} />
-            <div className="select-box">
-                <select ref={select} name="by" id="by" onChange={event => {
-                    handleChange(event);
-                }}>
-                    <option value="product">Product</option>
-                    <option value="tag">Tag</option>
-                </select>
+        <div className="searchbar flex-row space-around">
+            <Link to="/" className="link">HOME</Link>
+            <div className="flex-row center">
+
+                <input id="searchbar" type="text" placeholder="SEARCH..." className="searchbar" onChange={(event) => {
+                    handleChange(event)
+                }} value={searchText} />
+
+                <div className="select-box">
+                    <select ref={select} name="by" id="by" onChange={event => {
+                        handleChange(event);
+                    }}>
+                        <option value="product">Product</option>
+                        <option value="tag">Tag</option>
+                    </select>
+                </div>
+
             </div>
+            
         </div>
     )
 }
