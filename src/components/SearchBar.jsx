@@ -1,5 +1,4 @@
-import { queryAllByAltText } from "@testing-library/react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 export default function SearchBar(props){
 
@@ -14,7 +13,7 @@ export default function SearchBar(props){
         if(targetId === "searchbar"){
             setSearchText(newValue)
         }
-        setQuery({...query, targetId: newValue})
+        setQuery({...query, [targetId]: newValue})
     }
     return (
         <div className="searchbar flex-row center">
