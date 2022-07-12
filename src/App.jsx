@@ -1,8 +1,9 @@
 import './App.css';
 import Nav from "./components/Nav"
 import Home from './components/Home';
-import Products from "./components/Products"
+import Store from "./components/Store"
 import Cart from "./components/Cart"
+import CartProvider from './context/CartContext';
 import {Routes, Route, useLocation} from "react-router-dom"
 
 function App() {
@@ -14,16 +15,18 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <main className={'main ' + location}>
-        <Nav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products/>} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
-      </main>
-    </div>
+    <CartProvider>
+      <div className="App">
+        <main className={'main ' + location}>
+          <Nav />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products" element={<Store/>} />
+              <Route path="/cart" element={<Cart />} />
+            </Routes>
+        </main>
+      </div>
+    </CartProvider>
   );
 }
 

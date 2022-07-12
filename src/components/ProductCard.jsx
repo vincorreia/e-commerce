@@ -1,7 +1,9 @@
 import React from "react";
+import { useUpdateCart } from "../context/CartContext";
 
 export default function ProductCard(props){
     const product = props.product;
+    const updateCart = useUpdateCart();
 
     return(
         <div className="flex-col center card">
@@ -19,7 +21,9 @@ export default function ProductCard(props){
                 <span className="price">{product.price}</span>
                 <div className="buttons-wrapper flex-row space-around">
                     <button className="dark">More Details</button>
-                    <button className="allow">Add to Cart</button>
+                    <button className="allow" onClick={() => {
+                        updateCart("inc", product)
+                    }}>Add to Cart</button>
                 </div>
             </div>
             

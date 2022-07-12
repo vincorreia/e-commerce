@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import ProductCards from "./ProductCards";
 
-export default function Products(){
+export default function Store(){
     const [query, setQuery] = useState({by: "product"})
     return (
         <div className="sectionContainer">

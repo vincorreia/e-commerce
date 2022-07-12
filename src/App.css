@@ -130,6 +130,21 @@ button:hover {
 .nav .profile-section {
   gap: 0.5rem;
 }
+.nav .profile-section .amount {
+  font-size: 0.8rem;
+  text-align: center;
+  align-items: center;
+  height: 16px;
+  width: 16px;
+  background-color: rgb(58, 179, 21);
+  border-radius: 50%;
+  display: inline-block;
+  transform: translate(-5px, -12px);
+}
+.nav .profile-section .amount.hidden {
+  background-color: transparent;
+  color: transparent;
+}
 
 .mainText {
   color: white;
