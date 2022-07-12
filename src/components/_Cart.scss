@@ -1,0 +1,18 @@
+.cart-wrapper{
+    align-items: center;
+    width: 75rem;
+    .cart-products{
+        min-width: 95%;
+        background-color: white;
+        border: 1px solid white;
+        border-radius: 4px;
+        .cart-item {
+            margin: 0;
+            padding: 3.5rem 2.5rem;
+            border-bottom: 1px solid darken(white, 25%);
+            &:last-child{
+                border: none;
+            }
+        }
+    }
+}

@@ -2,6 +2,9 @@
     height: 71.65vh;
     text-align: center;
 
+    &.cart{
+        height: 81.1vh;
+    }
     h1{
         color: $primary;
     }

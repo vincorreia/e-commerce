@@ -54,7 +54,7 @@ button:hover {
   opacity: 0.35;
 }
 .main.home .sectionContainer {
-  height: 100vh;
+  height: 81.7vh;
 }
 
 .sectionContainer {
@@ -111,6 +111,7 @@ button:hover {
 .nav {
   height: 5rem;
   position: relative;
+  margin-bottom: 1rem;
 }
 .nav div {
   align-self: center;
@@ -177,7 +178,6 @@ button:hover {
 div.searchbar {
   background-color: #bfbfbf;
   height: 3rem;
-  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 div.searchbar .link {
@@ -299,6 +299,28 @@ input.searchbar:focus {
   height: 71.65vh;
   text-align: center;
 }
+.not-found.cart {
+  height: 81.1vh;
+}
 .not-found h1 {
   color: #0071b3;
+}
+
+.cart-wrapper {
+  align-items: center;
+  width: 75rem;
+}
+.cart-wrapper .cart-products {
+  min-width: 95%;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+.cart-wrapper .cart-products .cart-item {
+  margin: 0;
+  padding: 3.5rem 2.5rem;
+  border-bottom: 1px solid #bfbfbf;
+}
+.cart-wrapper .cart-products .cart-item:last-child {
+  border: none;
 }/*# sourceMappingURL=App.css.map */
