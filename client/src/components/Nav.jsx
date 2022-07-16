@@ -1,10 +1,10 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 export default function Nav(){
 
-    const cart = useCart()
+    const cart = useCart() || {}
     const [amount, setAmount] = useState(0)
 
     useEffect(() => {

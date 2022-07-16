@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function Home(){
     let navigate = useNavigate()
+    
     return (
         <div className="sectionContainer flex-row center">
             <div className="mainText flex-col center">

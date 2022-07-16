@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react"
+import React, {useState, useContext, useEffect} from "react"
 
 const CartContext = React.createContext()
 const CartUpdateContext = React.createContext()
@@ -16,8 +16,22 @@ export function useUpdateCart(){
 export default function CartProvider({children}) {
     const [cart, setCart] = useState({})
 
-    function updateCart(increaseOrDecrease, product) { /* increaseOrDecrease will receive "inc" or "dec", inc will increase the amount in cart by one, dec will decrease by one */
-                                                        
+    useEffect(() => {
+        let cartCookie
+        try {
+            cartCookie = JSON.parse(localStorage.cart)
+        }
+        catch {
+            cartCookie = {}
+        }
+        finally{
+        setCart(cartCookie)
+        }
+    }, [])
+    
+
+    
+    function updateCart(increaseOrDecrease, product) { /* increaseOrDecrease will receive "inc" or "dec", inc will increase the amount in cart by one, dec will decrease by one */                                     
         let newCart = {...cart, [product.name]: product}
 
         if(checkIfInCart(product.name)){
@@ -40,7 +54,7 @@ export default function CartProvider({children}) {
         else{
             product.amount = 1
         }
-
+        localStorage.setItem("cart", JSON.stringify(newCart));
         setCart(newCart);
     }
 
