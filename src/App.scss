@@ -1,3 +1,50 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*/////////////////////////////// CSS RESET END ///////////////////////////////*/
+
+
 $from: white;
 $to: black;
 $primary: darken(rgb(0, 162, 255), 15%);
@@ -8,8 +55,6 @@ $border: darken(white, 75%) solid 1px;
 
 
 body {
-  margin: 0px;
-  padding: 0px;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -21,13 +66,12 @@ button {
     &.primary{
         background-color: $primary;
         &:hover{
-            background-color: darken($primary, 5%);
+            background-color: lighten($primary, 15%);
         }
     }
 
     &.dark{
         background-color: $dark;
-        margin-left: 5px;
         &:hover{
             background-color: lighten($dark, 15%);
         }
@@ -39,24 +83,40 @@ button {
             background-color: lighten($allow, 15%);
         }
     }
+
+    &.simple {
+        color: #007185;
+        background-color: transparent;
+        font-weight: 300;
+        font-size: 0.75rem;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+
     &:hover{
         cursor: pointer;
     }
 }
 
-.main {
+.App {
     background-color: black;
-
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+    min-height: 100vh;
     &.home{
         position: relative;
         background: $from;
         background: radial-gradient(circle, darken($from, 90%) 0%, $to 100%);
         &::before{
             content: "";
+            background-size: cover;
             background-image: url("https://i.imgur.com/sDeA7yG.jpg");
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 120rem;
             position: absolute;
             top:0px;
             right: 0px;
@@ -64,16 +124,18 @@ button {
             left: 0px;
             opacity: 0.35;
         }
-
-        .sectionContainer {
-            height: 81.7vh;
-        }
+    
+    .main{
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
     }
 }
 
 .sectionContainer {
     position: relative;
-    padding-bottom: 5rem;
 }
 
 .flex-row {
@@ -141,3 +203,5 @@ button {
 @import "./components/ProductCard";
 @import "./components/NotFound";
 @import "./components/Cart";
+@import "./components/CartItem";
+@import "./components/Form";

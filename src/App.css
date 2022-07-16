@@ -1,6 +1,55 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
 body {
-  margin: 0px;
-  padding: 0px;
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*/////////////////////////////// CSS RESET END ///////////////////////////////*/
+body {
   font-family: "Work Sans", sans-serif;
 }
 
@@ -13,11 +62,10 @@ button.primary {
   background-color: #0071b3;
 }
 button.primary:hover {
-  background-color: #006199;
+  background-color: #00a2ff;
 }
 button.dark {
   background-color: black;
-  margin-left: 5px;
 }
 button.dark:hover {
   background-color: #262626;
@@ -28,24 +76,36 @@ button.allow {
 button.allow:hover {
   background-color: #59e62e;
 }
+button.simple {
+  color: #007185;
+  background-color: transparent;
+  font-weight: 300;
+  font-size: 0.75rem;
+}
+button.simple:hover {
+  text-decoration: underline;
+}
 button:hover {
   cursor: pointer;
 }
 
-.main {
+.App {
   background-color: black;
+  background-size: cover;
+  overflow: hidden;
+  min-height: 100vh;
 }
-.main.home {
+.App.home {
   position: relative;
   background: white;
   background: radial-gradient(circle, #1a1a1a 0%, black 100%);
 }
-.main.home::before {
+.App.home::before {
   content: "";
+  background-size: cover;
   background-image: url("https://i.imgur.com/sDeA7yG.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 120rem;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -53,13 +113,15 @@ button:hover {
   left: 0px;
   opacity: 0.35;
 }
-.main.home .sectionContainer {
-  height: 81.7vh;
+.App.home .main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .sectionContainer {
   position: relative;
-  padding-bottom: 5rem;
 }
 
 .flex-row {
@@ -110,6 +172,7 @@ button:hover {
 
 .nav {
   height: 5rem;
+  width: 100%;
   position: relative;
   margin-bottom: 1rem;
 }
@@ -135,6 +198,7 @@ button:hover {
   font-size: 0.8rem;
   text-align: center;
   align-items: center;
+  line-height: 1.25;
   height: 16px;
   width: 16px;
   background-color: rgb(58, 179, 21);
@@ -149,8 +213,9 @@ button:hover {
 
 .mainText {
   color: white;
-  align-self: center;
+  align-self: flex-start;
   align-items: center;
+  gap: 0.5rem;
 }
 .mainText h1 {
   text-align: center;
@@ -163,6 +228,9 @@ button:hover {
   text-align: center;
   font-weight: 200;
   font-size: 17px;
+}
+.mainText .flex-row.center {
+  gap: 2%;
 }
 .mainText .flex-row.center button {
   padding: 0.6rem 4rem 0.6rem 4rem;
@@ -296,31 +364,151 @@ input.searchbar:focus {
 }
 
 .not-found {
-  height: 71.65vh;
   text-align: center;
 }
 .not-found.cart {
-  height: 81.1vh;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 .not-found h1 {
+  font-size: 3rem;
   color: #0071b3;
 }
 
 .cart-wrapper {
   align-items: center;
-  width: 75rem;
-}
-.cart-wrapper .cart-products {
-  min-width: 95%;
   background-color: white;
+  width: 50%;
+  min-width: 27.5rem;
   border: 1px solid white;
   border-radius: 4px;
+  gap: 1rem;
 }
-.cart-wrapper .cart-products .cart-item {
+.cart-wrapper .cart-products {
+  width: 95%;
+}
+.cart-wrapper .checkout-details {
+  padding: 0.75rem 2.5rem;
+  min-width: 95%;
+  align-items: center;
+}
+.cart-wrapper .checkout-details button {
+  position: relative;
+  align-self: center;
+  font-size: 1rem;
+  padding: 0 2rem;
+  border: 0;
+  border-radius: 4px;
+  height: 2rem;
+}
+
+.cart-item {
   margin: 0;
-  padding: 3.5rem 2.5rem;
+  padding: 0.75rem 0rem;
   border-bottom: 1px solid #bfbfbf;
+  align-items: center;
 }
-.cart-wrapper .cart-products .cart-item:last-child {
-  border: none;
+.cart-item p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+.cart-item p.price {
+  font-weight: 700;
+  font-size: 1rem;
+}
+.cart-item p.unit-price {
+  align-self: flex-end;
+  color: #B12704;
+}
+.cart-item .item-image {
+  width: 7.5rem;
+  height: 10rem;
+}
+.cart-item .item-details {
+  gap: 0.5rem;
+}
+.cart-item .item-details .item-name {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0;
+}
+.cart-item .item-details .buttons-wrapper {
+  gap: 0.5rem;
+}
+.cart-item .item-details .buttons-wrapper button {
+  border: 0;
+}
+.cart-item .item-details .buttons-wrapper button.allow {
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+}
+
+.form {
+  align-items: center;
+}
+.form .form-card {
+  background-color: white;
+  overflow: hidden;
+  width: 25rem;
+  gap: 1rem;
+  align-items: center;
+  padding: 4rem 1rem;
+  line-height: 1.5;
+  border-radius: 3px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.form .form-card h1 {
+  color: black;
+  font-size: 1.25rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+.form .form-card .form-control.password {
+  padding-bottom: 1.5rem;
+}
+.form .form-card .form-control label {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.form .form-card .form-control input {
+  padding: 0.5rem 0 0.5rem 2rem;
+  line-height: 1.5;
+  width: 16rem;
+  border-radius: 3px;
+  border: 1px solid #b3b3b3;
+  outline: none;
+}
+.form .form-card .form-control input:focus {
+  box-shadow: inset 0 1px 2px rgba(203, 203, 210, 0.2), 0 0 4px rgba(0, 113, 179, 0.3);
+  border-color: #0071b3;
+}
+.form .form-card button {
+  width: 100%;
+  line-height: 1.5;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.5rem;
+  border-radius: 3px;
+  border: 0;
+}
+.form .gray {
+  background-color: #f3f3f3;
+  align-items: center;
+  width: 25rem;
+  padding: 1.5rem 1rem;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.form-icon {
+  position: relative;
+  top: 49px;
+  left: 5px;
+  border-right: 1px solid #f3f3f3;
+}
+.form-icon.repeat {
+  left: -96px;
+  top: 37px;
 }/*# sourceMappingURL=App.css.map */

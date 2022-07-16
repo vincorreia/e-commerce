@@ -1,11 +1,11 @@
 .not-found{
-    height: 71.65vh;
     text-align: center;
-
-    &.cart{
-        height: 81.1vh;
+    &.cart {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
     }
     h1{
+        font-size: 3rem;
         color: $primary;
     }
 }

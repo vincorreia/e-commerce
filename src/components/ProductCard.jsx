@@ -7,7 +7,7 @@ export default function ProductCard(props){
 
     return(
         <div className="flex-col center card">
-            <figure>
+            <figure className="flex-row center">
                 <img src={product.image} alt={product.name} className="product-image"/>
             </figure>
 
@@ -18,7 +18,7 @@ export default function ProductCard(props){
                         return <span key={i} className={"tag " + tag}>{tag}</span>
                     })}
                 </div>
-                <span className="price">{product.price}</span>
+                <span className="price">${Intl.NumberFormat('en-IN').format(product.price)}.00</span>
                 <div className="buttons-wrapper flex-row space-around">
                     <button className="dark">More Details</button>
                     <button className="allow" onClick={() => {
