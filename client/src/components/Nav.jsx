@@ -4,7 +4,7 @@ import { useCart } from "../context/CartContext";
 
 export default function Nav(){
 
-    const cart = useCart() || {}
+    const cart = useCart()
     const [amount, setAmount] = useState(0)
 
     useEffect(() => {
