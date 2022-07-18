@@ -13,7 +13,7 @@ export default function Cart(){
         <div className="flex-col cart-wrapper">
             <div className="cart-products flex-col">
                 {cartItems.length > 0 ? 
-                    cartItems.map(item => {return <CartItem item={item[1]} />}) 
+                    cartItems.map((item, i) => {return <CartItem key={i} item={item[1]} />}) 
                     : <NotFound page="cart" />}
             </div>
             <div className="checkout-details flex-row space-between">

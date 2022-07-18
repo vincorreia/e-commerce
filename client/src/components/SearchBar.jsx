@@ -1,13 +1,12 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useUserContext } from "../context/AuthContext";
 export default function SearchBar(props){
 
     const setQuery = props.setQuery;
     const query = props.query;
     const select = useRef(null);
     const [searchText, setSearchText] = useState("")
-
     function handleChange(event) {
         const targetId = event.target.id;
         const newValue = event.target.value;
@@ -18,7 +17,9 @@ export default function SearchBar(props){
     }
     return (
         <div className="searchbar flex-row space-around">
-            <Link to="/" className="link">HOME</Link>
+            <div className="flex-row">
+                <Link to="/" className="link">HOME</Link>
+            </div>
             <div className="flex-row center">
 
                 <input id="searchbar" type="text" placeholder="SEARCH..." className="searchbar" onChange={(event) => {

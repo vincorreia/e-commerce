@@ -249,6 +249,7 @@ div.searchbar {
   margin-bottom: 1rem;
 }
 div.searchbar .link {
+  margin-right: 0.5rem;
   align-self: center;
   text-decoration: none;
   color: white;
@@ -516,4 +517,23 @@ input.searchbar:focus {
 .error {
   color: red;
   font-size: 0.7rem;
+}
+
+.product-creator .new-product-name {
+  font-size: 2rem;
+  text-align: center;
+}
+.product-creator .new-tags {
+  font-size: 1rem;
+  text-align: center;
+}
+.product-creator .new-price {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.product-creator .product-image:hover {
+  cursor: pointer;
+}
+.product-creator .hidden {
+  display: none;
 }/*# sourceMappingURL=App.css.map */

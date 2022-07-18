@@ -68,7 +68,8 @@ async (req, res) => {
 
     res.json({
         accessToken,
-        refreshToken
+        refreshToken,
+        isStaff: user.isStaff
     })
     }
 });

@@ -13,6 +13,7 @@ app.use(cors());
 
 app.use("/auth", require("./routes/auth"));
 app.use("/user", require("./routes/user"));
+app.use("/products", require("./routes/product"));
 
 app.listen(4000, () => {
     console.log("Listening on port 4000");

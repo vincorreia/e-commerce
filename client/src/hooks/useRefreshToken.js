@@ -15,7 +15,8 @@ function useRefreshToken(){
             .then(response => {
                 user = {
                     accessToken: response.data.accessToken,
-                    refreshToken: user.refreshToken
+                    refreshToken: user.refreshToken,
+                    isStaff: user.isStaff
                 }
                 localStorage.setItem("user", JSON.stringify(user))
                 setUserContext(user)

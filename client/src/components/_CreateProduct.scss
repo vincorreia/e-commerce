@@ -1,0 +1,24 @@
+.product-creator{
+    .new-product-name{
+        font-size: 2rem;
+        text-align: center;
+    }
+    .new-tags{
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .new-price {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .product-image{
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    .hidden{
+        display: none;
+    }
+}

@@ -8,6 +8,11 @@ const User = db.define('user', {
         type: Sequelize.INTEGER,
         autoIncrement: true
     },
+    isStaff: {
+        allowNull: false,
+        defaultValue:false,
+        type: Sequelize.BOOLEAN
+    },
     email: {
         allowNull: false,
         type: Sequelize.STRING

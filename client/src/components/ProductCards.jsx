@@ -1,24 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { products } from "../data/Products"
+import productService from "../services/product.service";
+import { useUserContext } from "../context/AuthContext";
 import ProductCard from "./ProductCard";
 import NotFound from "./NotFound";
+import CreateProduct from "./CreateProduct";
+import axios from "axios";
 
 export default function ProductCards(props){
+    const [products, setProducts] = useState(null)
     const [filteredResults, setFilteredResults] = useState(products);
     const query = props.query
-    
+    const admin = useUserContext()?.isStaff || false
     useEffect(() =>{
-        if(!query.searchbar || query.searchbar.trim().length === 0){
-            setFilteredResults(products);
-        } else {
-            if(query.by === "product"){
-                setFilteredResults(filterByProduct(query.searchbar))
-            } else if (query.by === "tag"){
-                setFilteredResults(filterByTag(query.searchbar))
+        if(products){
+            if(!query.searchbar || query.searchbar.trim().length === 0){
+                setFilteredResults(products);
+            } else {
+                if(query.by === "product"){
+                    setFilteredResults(filterByProduct(query.searchbar))
+                } else if (query.by === "tag"){
+                    setFilteredResults(filterByTag(query.searchbar))
+                }
             }
         }
-    },[query])
+    },[query, products])
 
+    useEffect(() => {
+        productService.getProducts()
+        .then(response => setProducts(response.data))
+    }, [])
 
     function filterByProduct(searchBarQuery){ // This function will return a filtered array from query.searchbar
 
@@ -49,11 +59,12 @@ export default function ProductCards(props){
     return (
     <div className="flex-row center">
         <div className="cards-wrapper flex-row space-even wrap">
-            {filteredResults.length !== 0 ? filteredResults.map((product, i) => {
+            {filteredResults && filteredResults.length !== 0 ? filteredResults.map((product, i) => {
                 return <ProductCard product={product} key={i}/>
                 })
                 : <NotFound />
             }
+            {admin && <CreateProduct />}
         </div>
     </div>
     )
