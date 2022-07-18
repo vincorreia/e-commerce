@@ -2,11 +2,12 @@ const router = require("express").Router();
 const {body, validationResult} = require("express-validator")
 const bcrypt = require("bcrypt")
 const JWT = require("jsonwebtoken")
+const { User } = require("../database/indexDB")
 
 require("dotenv").config();
 
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN_SECRET || "secret"
-const REFRESH_SECRET = process.env.REFRES_TOKEN_SECRET || "secret"
+const REFRESH_SECRET = process.env.REFRESH_TOKEN_SECRET || "secret"
 
 let refreshTokens = [];
 
@@ -15,11 +16,17 @@ async (req, res) => {
     
     const {email, password} = req.body;
 
-    let user = users.find(user => {
-        return user.email === email;
+    let user = await User.sync({ alter: true })
+    .then(()=> {
+        return User.findOne(
+            {
+                where: { email: email}
+            }
+        )
     })
 
     if(!user){
+        console.log("user not found!")
         return res.status(400).json({
             errors: [
                 {
@@ -78,9 +85,14 @@ async (req, res) => {
         return res.status(400).json({ errors: errors.array() })
     }
 
-    let user = users.find((user) => {
-        return user.email === email;
-    });
+    let user = await User.sync({ alter: true })
+    .then(()=> {
+        return User.findOne(
+            {
+                where: { email: email}
+            }
+        )
+    })
 
     if(user) {
         return res.status(200).json({
@@ -96,10 +108,12 @@ async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
 
-    users.push({
-        email,
+    await User.create({
+        email: email,
         password: hash
-    });
+    })
+
+    console.log("User created!")
 
     const accessToken = await JWT.sign(
         {email},

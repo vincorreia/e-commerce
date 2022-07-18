@@ -511,4 +511,9 @@ input.searchbar:focus {
 .form-icon.repeat {
   left: -96px;
   top: 37px;
+}
+
+.error {
+  color: red;
+  font-size: 0.7rem;
 }/*# sourceMappingURL=App.css.map */
