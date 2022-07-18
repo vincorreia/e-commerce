@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import authService from "../services/auth.service"
+import { useUserContext } from "../context/AuthContext";
 
 function Form() {
-    let location = useLocation().pathname
-    let type = location.slice(1);
-    const [error, setError] = useState("")
+    const isAuthenticated = useUserContext()
+    let location = useLocation()
+    const from = location.state?.from?.pathname || "/";
+    const sentErr = location.state?.err || "";
+    let type = location.pathname.slice(1);
+    const [error, setError] = useState(sentErr)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [rePassword, setRePassword] = useState("")
@@ -41,34 +45,34 @@ function Form() {
                 setError("Passwords do not match")
                 return
             }
-            else if(password.length < 6){
-                setError("Password must be at least 6 digits long.")
-                return
-            }
         }
         try {
             await pageVars.func(email, password).then(
                 (user) => {
                     console.log(user)
-                    navigate("/");
+                    console.log(localStorage)
+                    navigate(from, { replace: true });
                     window.location.reload();
                 },
                 (error) => {
-                    console.log(error)
+                    setError(error.response.data.errors[0].msg)
                 }
             )
         }
         catch (err) {
-            console.log(err)
+            setError(error.response.data.errors[0].msg)
         }
     }
     
     useEffect(() => {
-        setError("")
+        setError(sentErr)
     }, [location]);
 
-    return ( 
-        <div className="sectionContainer flex-col center form">
+    if(isAuthenticated){
+        return navigate("/profile")
+    }
+    
+    return ( <div className="sectionContainer flex-col center form">
             <div className="form-card flex-col">
                 <h1>{pageVars.header}</h1>
                 <form onSubmit={handleSubmit}>

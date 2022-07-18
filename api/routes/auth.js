@@ -7,7 +7,7 @@ const { User } = require("../database/indexDB")
 require("dotenv").config();
 
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN_SECRET || "secret"
-const REFRESH_SECRET = process.env.REFRESH_TOKEN_SECRET || "secret"
+const REFRESH_SECRET = process.env.REFRESH_TOKEN_SECRET || "secret1"
 
 let refreshTokens = [];
 
@@ -25,8 +25,10 @@ async (req, res) => {
         )
     })
 
+
+    let match = await bcrypt.compare(password, user.password);
+
     if(!user){
-        console.log("user not found!")
         return res.status(400).json({
             errors: [
                 {
@@ -36,9 +38,7 @@ async (req, res) => {
         })
     }
 
-    let match = await bcrypt.compare(password, user.password);
-
-    if(!match) {
+    else if(!match) {
         return res.status(401).json({
             errors: [
                 {
@@ -47,9 +47,9 @@ async (req, res) => {
             ]
         })
     }
-
+    else {
     const accessToken = await JWT.sign(
-        {email},
+        {email: email, id: user.id},
         ACCESS_TOKEN,
         {
             expiresIn: 60
@@ -57,10 +57,10 @@ async (req, res) => {
     )
 
     const refreshToken = await JWT.sign(
-        {email},
+        {email: email, id: user.id},
         REFRESH_SECRET,
         {
-            expiresIn: 300
+            expiresIn: 10800
         }
     )
 
@@ -70,62 +70,71 @@ async (req, res) => {
         accessToken,
         refreshToken
     })
+    }
 });
 
 
 router.post("/signup",
-body("email").isEmail(), 
-body("password").isLength({min: 6}),
+body("email")
+.isEmail()
+.withMessage("Please provide a valid e-mail address"), 
+body("password").isLength({min: 6})
+.withMessage("Password must be at least 6 digits long")
+,
 async (req, res) => {
     const {email, password} = req.body
 
     const errors = validationResult(req);
 
+
     if(!errors.isEmpty()){
         return res.status(400).json({ errors: errors.array() })
     }
 
-    let user = await User.sync({ alter: true })
-    .then(()=> {
-        return User.findOne(
-            {
-                where: { email: email}
-            }
-        )
-    })
-
-    if(user) {
-        return res.status(200).json({
-            errors: [
+    else {
+        let user = await User.sync({ alter: true })
+        .then(()=> {
+            return User.findOne(
                 {
-                    email: user.email,
-                    msg: "The user already exists"
+                    where: { email: email}
                 }
-            ]
-        })
-    }
+                )
+            })
+            
+            if(user) {
+                return res.status(200).json({
+                    errors: [
+                        {
+                            email: user.email,
+                            msg: "The user already exists"
+                        }
+                    ]
+                })
+            }
 
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password, salt);
-
-    await User.create({
-        email: email,
-        password: hash
-    })
-
-    console.log("User created!")
-
-    const accessToken = await JWT.sign(
-        {email},
-        ACCESS_TOKEN,
-        {
-            expiresIn: 60,
+            else{
+            
+            const salt = await bcrypt.genSalt(10);
+            const hash = await bcrypt.hash(password, salt);
+        
+            let newUser = await User.create({
+                email: email,
+                password: hash
+            })
+        
+            const accessToken = await JWT.sign(
+                {email: email, id: newUser.id},
+                ACCESS_TOKEN,
+                {
+                    expiresIn: 60,
+                }
+            );
+        
+            res.json({
+                accessToken
+            });
         }
-    );
-
-    res.json({
-        accessToken
-    });
+    }
 }
 )
 
@@ -133,7 +142,7 @@ async (req, res) => {
 router.post("/token",
     async (req, res) => {
         const refreshToken = req.header("x-auth-token");
-
+        
         if(!refreshToken){
             res.status(401).json({
                 errors: [
@@ -144,7 +153,7 @@ router.post("/token",
             })
         }
 
-        if(!refreshToken.includes(refreshToken)){
+        else if(!refreshTokens.includes(refreshToken)){
             res.status(403).json({
                 errors: [
                     {
@@ -154,31 +163,34 @@ router.post("/token",
             })
         }
 
-        try {
-            const user = await JWT.verify(
-                refreshToken,
-                REFRESH_SECRET
-            );
+        else {
 
-            const {email} = user;
-            const accessToken = await JWT.sign(
-                {email},
-                ACCESS_TOKEN,
-                {
-                    expiresIn: 60
-                }
+            try {
+                const user = await JWT.verify(
+                    refreshToken,
+                    REFRESH_SECRET
                 );
-            
-            res.json({ accessToken })
-        }
-        catch (error) {
-            res.status(403).json({
-                errors: [
+
+                const {email, id} = user;
+                const accessToken = await JWT.sign(
+                    {email, id},
+                    ACCESS_TOKEN,
                     {
-                        msg: "Invalid token"
+                        expiresIn: 60
                     }
-                ]
-            })
+                    );
+                
+                res.json({ accessToken })
+            }
+            catch (error) {
+                res.status(403).json({
+                    errors: [
+                        {
+                            msg: "Invalid token"
+                        }
+                    ]
+                })
+            }
         }
     }
 )

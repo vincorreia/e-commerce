@@ -1,10 +1,12 @@
-import axios from "axios";
+/* import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "/reviews"
+const API_URL = "/user/reviews"
 
-function getReviews(){
-    return axios.get(API_URL + "/reviews", { headers: authHeader() });
+
+
+function createReview(){
+    return axios.post(API_URL, { headers: authHeader()})
 }
 
-export default getReviews
+export default {} */

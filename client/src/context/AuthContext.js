@@ -21,6 +21,7 @@ function AuthProvider({ children }) {
 
     const logOut = () => {
     AuthService.logout();
+    setCurrentUser(undefined)
     };
     return ( 
         <userContext.Provider value={currentUser}>

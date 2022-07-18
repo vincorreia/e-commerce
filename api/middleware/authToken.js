@@ -4,7 +4,6 @@ require("dotenv").config();
 const authToken = async (req, res, next) => {
 
   const token = req.header("x-auth-token");
-
   if (!token) {
     res.status(401).json({
       errors: [
@@ -17,7 +16,7 @@ const authToken = async (req, res, next) => {
 
   try {
     const user = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    req.user = user.email;
+    req.user = {email: user.email, id: user.id}
     next();
   } catch (error) {
     res.status(403).json({
