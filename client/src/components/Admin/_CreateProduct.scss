@@ -1,4 +1,9 @@
 .product-creator{
+    textArea{
+        border: 0;
+        outline: none;
+        border-left: 1px solid gray;
+    }
     .new-product-name{
         font-size: 2rem;
         text-align: center;

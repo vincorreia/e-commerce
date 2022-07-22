@@ -154,6 +154,9 @@ button:hover {
 .flex-col.center {
   justify-content: center;
 }
+.flex-col.align-center {
+  align-items: center;
+}
 .flex-col.space-between {
   justify-content: space-between;
 }
@@ -519,6 +522,11 @@ input.searchbar:focus {
   font-size: 0.7rem;
 }
 
+.product-creator textArea {
+  border: 0;
+  outline: none;
+  border-left: 1px solid gray;
+}
 .product-creator .new-product-name {
   font-size: 2rem;
   text-align: center;
@@ -536,4 +544,79 @@ input.searchbar:focus {
 }
 .product-creator .hidden {
   display: none;
+}
+
+.sectionContainer .profile {
+  align-items: center;
+  padding: 4rem 3rem;
+  width: 60%;
+  min-width: 27.5rem;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  gap: 1rem;
+}
+.product-page {
+  width: 60%;
+  min-width: 25rem;
+  padding-top: 4rem;
+  padding-bottom: 8rem;
+  background-color: white;
+  border-radius: 4px;
+}
+.product-page .product-figure {
+  width: 40%;
+  min-width: 10rem;
+}
+.product-page .product-figure .product-image {
+  width: 100%;
+  height: auto;
+}
+.product-page .product-details {
+  width: 30%;
+  min-width: 25rem;
+  gap: 1rem;
+}
+.product-page .product-details .product-name {
+  font-size: 2rem;
+}
+.product-page .product-details .tag-wrapper {
+  gap: 1rem;
+  color: white;
+}
+.product-page .product-details .tag-wrapper .tag {
+  text-align: center;
+  padding: 5px 0;
+  color: black;
+  border: 1px solid black;
+  width: 5.5rem;
+  border-radius: 2px;
+  font-weight: 300;
+  font-size: 1rem;
+}
+.product-page .product-details .tag-wrapper .tag:hover {
+  cursor: context-menu;
+}
+.product-page .product-details .separator {
+  width: 100%;
+}
+.product-page .product-details .price {
+  font-size: 1.75rem;
+}
+.product-page .product-details .price .cents {
+  position: relative;
+  top: -0.75em;
+  font-size: 0.75rem;
+}
+.product-page .product-details .price .sign {
+  font-size: 0.75rem;
+  position: relative;
+  top: -0.75em;
+}
+
+.rating input[type=radio] {
+  display: none;
+}
+.rating .star:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=App.css.map */

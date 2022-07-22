@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
-import { useUserContext } from "../context/AuthContext";
-import { useCart } from "../context/CartContext";
+import { useUserContext } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
 
 export default function Nav(){
 

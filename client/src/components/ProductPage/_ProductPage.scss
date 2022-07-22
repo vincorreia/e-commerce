@@ -1,0 +1,66 @@
+.product-page{
+
+    width: 60%;
+    min-width: 25rem;
+    padding-top: 4rem;
+    padding-bottom: 8rem;
+    background-color: white;
+    border-radius: 4px;
+    .product-figure{
+        width: 40%;
+        min-width: 10rem;
+        .product-image {
+            width: 100%;
+            height: auto;
+        }
+        
+    }
+
+    .product-details{
+        width: 30%;
+        min-width: 25rem;
+        gap: 1rem;
+        .product-name{
+            font-size: 2rem;
+        }
+    
+        .tag-wrapper{
+            gap: 1rem;
+            color: white;
+            .tag{
+                text-align: center;
+                padding: 5px 0;
+                color: black;
+                border: 1px solid black;
+                width: 5.5rem;
+                border-radius: 2px;
+                font-weight: 300;
+                font-size: 1rem;
+                &:hover{
+                    cursor: context-menu;
+                }
+            }
+        }
+
+        .separator{
+            width: 100%;
+        }
+
+        .price{
+            font-size: 1.75rem;
+
+            .cents{
+                position: relative;
+                top: -0.75em;
+                font-size: 0.75rem;
+            }
+            .sign{
+                font-size: 0.75rem;
+                position: relative;
+                top: -0.75em;
+            }
+        }
+        
+    }
+
+}

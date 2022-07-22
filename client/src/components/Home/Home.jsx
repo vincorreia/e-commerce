@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"
-import { useUserContext, useLogout } from "../context/AuthContext";
+import { useUserContext, useLogout } from "../../context/AuthContext";
 export default function Home(){
     let navigate = useNavigate()
     const userToken = useUserContext() 

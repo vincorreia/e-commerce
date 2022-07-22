@@ -10,8 +10,13 @@ const Review = db.define("review", {
     },
     content: {
         type: Sequelize.STRING,
+        allowNull: true
+    },
+    rating: {
+        type: Sequelize.INTEGER,
         allowNull: false
     }
+
 })
 
 module.exports = Review

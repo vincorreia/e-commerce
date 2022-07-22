@@ -1,6 +1,6 @@
 import React from "react";
-import { useCart } from "../context/CartContext";
-import NotFound from "./NotFound";
+import { useCart } from "../../context/CartContext";
+import NotFound from "../NotFound";
 import CartItem from "./CartItem";
 
 export default function Cart(){

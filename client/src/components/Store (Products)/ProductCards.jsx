@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import productService from "../services/product.service";
-import { useUserContext } from "../context/AuthContext";
+import productService from "../../services/product.service";
+import { useUserContext } from "../../context/AuthContext";
+import useRefreshToken from "../../hooks/useRefreshToken";
 import ProductCard from "./ProductCard";
-import NotFound from "./NotFound";
-import CreateProduct from "./CreateProduct";
-import axios from "axios";
+import NotFound from "../NotFound";
+import CreateProduct from "../Admin/CreateProduct";
 
 export default function ProductCards(props){
     const [products, setProducts] = useState(null)
     const [filteredResults, setFilteredResults] = useState(products);
+    const [loading, setIsLoading] = useState(true)
     const query = props.query
     const admin = useUserContext()?.isStaff || false
+    const refreshToken = useRefreshToken();
+
     useEffect(() =>{
         if(products){
             if(!query.searchbar || query.searchbar.trim().length === 0){
@@ -27,7 +30,14 @@ export default function ProductCards(props){
 
     useEffect(() => {
         productService.getProducts()
-        .then(response => setProducts(response.data))
+        .then(response => {
+            setProducts(response.data)
+            setIsLoading(false)
+        })
+
+        if(admin){
+            refreshToken()
+        }
     }, [])
 
     function filterByProduct(searchBarQuery){ // This function will return a filtered array from query.searchbar
@@ -59,12 +69,15 @@ export default function ProductCards(props){
     return (
     <div className="flex-row center">
         <div className="cards-wrapper flex-row space-even wrap">
-            {filteredResults && filteredResults.length !== 0 ? filteredResults.map((product, i) => {
-                return <ProductCard product={product} key={i}/>
-                })
-                : <NotFound />
+            {filteredResults && filteredResults.length !== 0 ? 
+            <>
+                {filteredResults.map((product, i) => {
+                    return <ProductCard product={product} key={i}/>
+                    })}
+                {admin && <CreateProduct />}
+            </>
+                : loading ? <h1 style={{color: "white"}}>Loading...</h1> : <NotFound />
             }
-            {admin && <CreateProduct />}
         </div>
     </div>
     )

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SearchBar from "./SearchBar";
+import SearchBar from "../SearchBar";
 import ProductCards from "./ProductCards";
 
 export default function Store(){

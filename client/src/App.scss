@@ -174,6 +174,10 @@ button {
         justify-content: center;
     }
 
+    &.align-center{
+        align-items: center;
+    }
+    
     &.space-between {
         justify-content: space-between;
     }
@@ -196,13 +200,16 @@ button {
 }
 
 
-@import "./components/Nav";
-@import "./components/Home";
-@import "./components/ProductCards";
+@import "./components//Nav/Nav";
+@import "./components/Home/Home";
+@import "./components/Store\ \(Products\)/ProductCards";
 @import "./components/SearchBar";
-@import "./components/ProductCard";
+@import "./components/Store\ \(Products\)/ProductCard";
 @import "./components/NotFound";
-@import "./components/Cart";
-@import "./components/CartItem";
+@import "./components/Cart/Cart";
+@import "./components/Cart/CartItem";
 @import "./components/Form";
-@import "./components/CreateProduct"
+@import "./components/Admin/CreateProduct";
+@import "./components/Profile/Profile";
+@import "./components/ProductPage/ProductPage";
+@import "./components/Rating";
