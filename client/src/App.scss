@@ -146,6 +146,14 @@ button {
         justify-content: center;
     }
 
+    &.align-center{
+        align-items: center;
+    }
+
+    &.align-end{
+        align-items: flex-end;
+    }
+    
     &.space-even{
         justify-content: space-evenly;
     }
@@ -214,3 +222,4 @@ button {
 @import "./components/ProductPage/ProductPage";
 @import "./components/Rating";
 @import "./components/CreateReviews";
+@import "./components/Reviews";

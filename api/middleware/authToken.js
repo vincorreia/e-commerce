@@ -16,7 +16,7 @@ const authToken = async (req, res, next) => {
 
   try {
     const user = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    req.user = {email: user.email, id: user.id, isStaff: user.isStaff}
+    req.user = {email: user.email, id: user.id, isStaff: user.isStaff, name: user.name}
     next();
   } catch (error) {
     res.status(403).json({

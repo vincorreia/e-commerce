@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Product, Review } = require("../database/indexDB")
+const { Product, Review, User } = require("../database/indexDB")
 const authToken = require("../middleware/authToken")
 
 router.get("/", async (req, res) => {
@@ -60,13 +60,15 @@ router.put("/:id/update", authToken, async (req, res) => {
 router.post("/create/:id/review", authToken, async(req, res) => {
     const productId = Number(req.params.id);
     const userId = req.user.id;
+    const userName = req.user.name
     const reviewReq = req.body
 
     let review = await Review.create({
         content: reviewReq.content,
         userId: userId,
         productId: productId,
-        rating: reviewReq.rating
+        rating: reviewReq.rating,
+        userName: userName
     })
 
     res.send("Review created.")

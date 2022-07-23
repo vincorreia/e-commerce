@@ -5,7 +5,7 @@ import formatPrice from "../../function/formatPrice";
 import Rating from "../Rating";
 import { useUserContext } from "../../context/AuthContext";
 import CreateReview from "../CreateReview";
-import useRefreshToken from "../../hooks/useRefreshToken";
+import Reviews from "../Reviews";
 
 function ProductPage() {
     const user = useUserContext() || null
@@ -15,7 +15,6 @@ function ProductPage() {
         rating: 5,
         reviews: []
     })
-    const refreshToken = useRefreshToken()
 
     useEffect(() => {
         if(params){
@@ -34,10 +33,6 @@ function ProductPage() {
             })
             
         }
-
-        if(user){
-            refreshToken()
-        }
     }, [])
 
     return (
@@ -50,18 +45,29 @@ function ProductPage() {
                     </figure>
                     <div className="product-details flex-col">
                         <h1 className="product-name">{product.name}</h1>
+                        
                         <div className="tag-wrapper flex-row">
                             {product.tags.map((tag, index) => <span key={index} className="tag">{tag}</span>)}
                         </div>
                         <hr className="separator" />
                         <h2 className="price"><span className="sign">US$</span>{formatPrice(product.price)}<span className="cents">00</span></h2>
-                        <p className="description">{product.description}</p>
-                        <hr className="separator" />
-                        <div className="ratingnreviews">
-                                <Rating preset={reviews}/>
+                        <div className="flex-row align-end">
+                            <Rating preset={reviews.rating}/>
+                            <p className="rating-p">{reviews.rating}/5</p>
                         </div>
-                        <hr  className="separator"/>
-                        {user && <CreateReview productId={params}/>}
+                        <p className="description">{product.description}</p>
+                        {reviews.reviews.length > 0 && 
+                        <>
+                            <hr className="separator" />
+                            <Reviews reviews={reviews.reviews}/>
+                        </>
+                        }
+                        {user &&
+                        <>
+                            <hr  className="separator"/>
+                            <CreateReview productId={params}/>
+                        </>
+                        }
                     </div>
                 </>
                 :

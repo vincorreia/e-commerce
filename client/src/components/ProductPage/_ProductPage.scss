@@ -2,8 +2,8 @@
 
     width: 60%;
     min-width: 25rem;
-    padding-top: 4rem;
-    padding-bottom: 8rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     background-color: white;
     border-radius: 4px;
     .product-figure{
@@ -20,6 +20,11 @@
         width: 30%;
         min-width: 19rem;
         gap: 1rem;
+
+        p{
+            font-size: 0.8rem;
+        }
+        
         .product-name{
             font-size: 2rem;
         }
@@ -59,8 +64,7 @@
                 position: relative;
                 top: -0.75em;
             }
-        }
-        
+        }       
     }
 
 }

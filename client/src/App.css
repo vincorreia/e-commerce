@@ -131,6 +131,12 @@ button:hover {
 .flex-row.center {
   justify-content: center;
 }
+.flex-row.align-center {
+  align-items: center;
+}
+.flex-row.align-end {
+  align-items: flex-end;
+}
 .flex-row.space-even {
   justify-content: space-evenly;
 }
@@ -559,8 +565,8 @@ input.searchbar:focus {
 .product-page {
   width: 60%;
   min-width: 25rem;
-  padding-top: 4rem;
-  padding-bottom: 8rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   background-color: white;
   border-radius: 4px;
 }
@@ -576,6 +582,9 @@ input.searchbar:focus {
   width: 30%;
   min-width: 19rem;
   gap: 1rem;
+}
+.product-page .product-details p {
+  font-size: 0.8rem;
 }
 .product-page .product-details .product-name {
   font-size: 2rem;
@@ -621,8 +630,14 @@ input.searchbar:focus {
   cursor: pointer;
 }
 
+.create-review {
+  width: 90%;
+  align-self: center;
+}
 .create-review textArea {
   resize: none;
+  padding-top: 0.5rem;
+  padding-left: 0.3rem;
   border: 1px solid #D3D3D3;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -636,4 +651,72 @@ input.searchbar:focus {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border: 0;
+}
+.create-review p {
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  color: red;
+}
+
+.reviews {
+  border: solid 1.5px #bababa;
+  position: relative;
+  align-self: center;
+  width: 90%;
+  height: 10rem;
+  border-radius: 4px;
+}
+.reviews .review {
+  position: relative;
+  top: 0;
+}
+.reviews .review.active {
+  transition: 0.75s ease;
+}
+.reviews .review.active.left {
+  transform: translate(-50%, 0);
+}
+.reviews .review.active.right {
+  transform: translate(50%, 0);
+}
+.reviews .right-arrow {
+  position: absolute;
+  left: 101%;
+  top: 40%;
+}
+.reviews .right-arrow:hover {
+  cursor: pointer;
+}
+.reviews .left-arrow {
+  position: absolute;
+  right: 101.5%;
+  top: 40%;
+}
+.reviews .left-arrow:hover {
+  cursor: pointer;
+}
+.reviews .review {
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0.5rem 0 1rem 0.5rem;
+}
+.reviews .review .rating-info {
+  gap: 0.2rem;
+}
+.reviews .review .rating-info p.date {
+  color: #bababa;
+  font-size: 0.6rem;
+}
+.reviews .review .rating-info .rating {
+  padding: 0;
+  width: 4rem;
+}
+.reviews .review h3 {
+  /*             text-align: center; */
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }/*# sourceMappingURL=App.css.map */

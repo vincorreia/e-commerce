@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import productService from "../../services/product.service";
 import { useUserContext } from "../../context/AuthContext";
-import useRefreshToken from "../../hooks/useRefreshToken";
 import ProductCard from "./ProductCard";
 import NotFound from "../NotFound";
 import CreateProduct from "../Admin/CreateProduct";
@@ -12,7 +11,6 @@ export default function ProductCards(props){
     const [loading, setIsLoading] = useState(true)
     const query = props.query
     const admin = useUserContext()?.isStaff || false
-    const refreshToken = useRefreshToken();
 
     useEffect(() =>{
         if(products){
@@ -34,10 +32,6 @@ export default function ProductCards(props){
             setProducts(response.data)
             setIsLoading(false)
         })
-
-        if(admin){
-            refreshToken()
-        }
     }, [])
 
     function filterByProduct(searchBarQuery){ // This function will return a filtered array from query.searchbar

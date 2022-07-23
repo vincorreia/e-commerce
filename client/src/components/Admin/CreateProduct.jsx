@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import useRefreshToken from "../../hooks/useRefreshToken";
 import productService from "../../services/product.service";
 
 const plusSign = "https://i.imgur.com/pJYS4Df.png"
@@ -13,6 +14,7 @@ function CreateProduct({product = {
     description: ""
 }}) {
 
+    const refreshToken = useRefreshToken()
     const [name, setName] = useState(product.name)
     const [description, setDescription] = useState(product.description)
     const [price, setPrice] = useState(product.price)
@@ -34,14 +36,19 @@ function CreateProduct({product = {
                 id: product.isCreated ? product.id : undefined
         }
     
-    if(product.isCreated){
-        productService.updateProduct(newProduct)
-    } 
-    else {
-        productService.createProduct(newProduct)
-    }
-
-    window.location.reload()
+        refreshToken()
+        .then(
+            () => {
+                if(product.isCreated){
+                    productService.updateProduct(newProduct)
+                } 
+                else {
+                    productService.createProduct(newProduct)
+                }
+            
+                window.location.reload()
+            }
+        )
     }
 
     useEffect(() => {

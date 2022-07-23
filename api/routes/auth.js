@@ -49,7 +49,7 @@ async (req, res) => {
     }
     else {
     const accessToken = await JWT.sign(
-        {email: email, id: user.id, isStaff: user.isStaff},
+        {email: email, id: user.id, isStaff: user.isStaff, name: user.name},
         ACCESS_TOKEN,
         {
             expiresIn: 60
@@ -57,7 +57,7 @@ async (req, res) => {
     )
 
     const refreshToken = await JWT.sign(
-        {email: email, id: user.id, isStaff: user.isStaff},
+        {email: email, id: user.id, isStaff: user.isStaff, name: user.name},
         REFRESH_SECRET,
         {
             expiresIn: 10800
@@ -124,7 +124,7 @@ async (req, res) => {
             })
         
             const accessToken = await JWT.sign(
-                {email: email, id: newUser.id, isStaff: newUser.isStaff},
+                {email: email, id: newUser.id, isStaff: newUser.isStaff, name: user.name},
                 ACCESS_TOKEN,
                 {
                     expiresIn: 60,
@@ -172,9 +172,9 @@ router.post("/token",
                     REFRESH_SECRET
                 );
 
-                const {email, id, isStaff} = user;
+                const {email, id, isStaff, name} = user;
                 const accessToken = await JWT.sign(
-                    {email, id, isStaff},
+                    {email, id, isStaff, name},
                     ACCESS_TOKEN,
                     {
                         expiresIn: 60

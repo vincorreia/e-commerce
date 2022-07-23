@@ -1,22 +1,37 @@
 import { useState } from "react";
 import Rating from "./Rating";
 import productService from "../services/product.service"
-
+import useRefreshToken from "../hooks/useRefreshToken"
 
 function CreateReview({productId}) {
 
     const [rating, setRating] = useState(0)
     const [content, setContent] = useState("")
+    const [error, setError] = useState(null)
+    const refreshToken = useRefreshToken()
 
     function handleSubmit(e){
         e.preventDefault()
-        
-        const newReview = {
-            rating: rating,
-            content: content
+
+        if(content.length > 200){
+            setError("Review content must contain a maximum of 200 characters!")
+            return
+        }
+        else if(rating === 0){
+            setError("Review must have a rating!")
+            return
         }
 
-        productService.createReview(newReview, productId);
+        refreshToken()
+        .then(() => {
+            const newReview = {
+                rating: rating,
+                content: content
+            }
+    
+            productService.createReview(newReview, productId);
+            window.location.reload()
+        });
     }
 
     return (  
@@ -30,6 +45,7 @@ function CreateReview({productId}) {
                 setContent(e.target.value);
             }} />
             <button className="primary" type="submit">Post Review</button>
+            <p>{error}</p>
         </form>
     );
 }

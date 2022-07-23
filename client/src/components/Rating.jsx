@@ -14,7 +14,7 @@ function Rating({preset, size=20, rating, setRating}) {
                 return (
                     <label key={i}>
                         <FaStar size={size}
-                            color={ratingValue <= preset.rating ? "#ffc107" : "#e4e5e9"}
+                            color={ratingValue <= preset ? "#ffc107" : "#e4e5e9"}
                         />
                     </label>
                 )
