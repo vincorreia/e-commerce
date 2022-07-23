@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa"
 
-function Rating({product}) {
-
-    const [rating, setRating] = useState(null);
+function Rating({preset, size=20, rating, setRating}) {
     const [hover, setHover]= useState(null)
-
 
     return (
         <div className="rating">
@@ -13,11 +10,11 @@ function Rating({product}) {
 
             const ratingValue = i + 1;
 
-            if(product){
+            if(preset){
                 return (
                     <label key={i}>
-                        <FaStar size={20}
-                            color={ratingValue <= product.rating ? "#ffc107" : "#e4e5e9"}
+                        <FaStar size={size}
+                            color={ratingValue <= preset.rating ? "#ffc107" : "#e4e5e9"}
                         />
                     </label>
                 )
@@ -26,11 +23,18 @@ function Rating({product}) {
             <input 
                 type="radio" 
                 name="rating" value={ratingValue} 
-                onClick={() => {setRating(ratingValue)}}
+                onClick={() => {
+                    if(rating === ratingValue){
+                        setRating(0)
+                    }
+                    else{
+                        setRating(ratingValue)
+                    }
+                    }}
             />
             <FaStar 
                 className="star" 
-                size={20} 
+                size={size} 
                 color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
                 onMouseOver={() => setHover(ratingValue)}
                 onMouseOut={() => setHover(null)}

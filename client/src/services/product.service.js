@@ -20,11 +20,18 @@ function updateProduct(product){
     return axios.put(API_URL + "/" + product.id + "/update", {}, {headers: authHeader(productJSON)})
 }
 
+function createReview(review, id){
+    return axios.post(API_URL + "/create/" + id + "/review", 
+    review, 
+    {headers: authHeader()})
+}
+
 const productService = {
     createProduct,
     getProducts,
     getProductById,
-    updateProduct
+    updateProduct,
+    createReview
 }
 
 export default productService;

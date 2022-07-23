@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useUserContext } from "../context/AuthContext";
 export default function SearchBar(props){
 
     const setQuery = props.setQuery;

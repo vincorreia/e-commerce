@@ -574,7 +574,7 @@ input.searchbar:focus {
 }
 .product-page .product-details {
   width: 30%;
-  min-width: 25rem;
+  min-width: 19rem;
   gap: 1rem;
 }
 .product-page .product-details .product-name {
@@ -619,4 +619,21 @@ input.searchbar:focus {
 }
 .rating .star:hover {
   cursor: pointer;
+}
+
+.create-review textArea {
+  resize: none;
+  border: 1px solid #D3D3D3;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 0;
+  outline: 0;
+}
+.create-review button {
+  padding: 0.4rem;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: 0;
 }/*# sourceMappingURL=App.css.map */

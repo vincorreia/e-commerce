@@ -56,6 +56,22 @@ router.put("/:id/update", authToken, async (req, res) => {
     }
 })
 
+
+router.post("/create/:id/review", authToken, async(req, res) => {
+    const productId = Number(req.params.id);
+    const userId = req.user.id;
+    const reviewReq = req.body
+
+    let review = await Review.create({
+        content: reviewReq.content,
+        userId: userId,
+        productId: productId,
+        rating: reviewReq.rating
+    })
+
+    res.send("Review created.")
+})
+
 router.post("/create", authToken, async (req, res) => {
     const newProduct = JSON.parse(req.header("product"))
     const isStaff = req.user.isStaff

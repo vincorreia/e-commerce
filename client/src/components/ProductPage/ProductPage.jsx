@@ -3,19 +3,40 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import formatPrice from "../../function/formatPrice";
 import Rating from "../Rating";
+import { useUserContext } from "../../context/AuthContext";
+import CreateReview from "../CreateReview";
+import useRefreshToken from "../../hooks/useRefreshToken";
+
 function ProductPage() {
+    const user = useUserContext() || null
     const params = Number(useParams().id) || false
     const [product, setProduct] = useState(null)
-    const [reviews, setReviews]= useState([])
+    const [reviews, setReviews]= useState({
+        rating: 5,
+        reviews: []
+    })
+    const refreshToken = useRefreshToken()
 
     useEffect(() => {
         if(params){
             productService.getProductById(params)
             .then(response => {
-                setReviews(response.data.reviews)
+                if(response.data.reviews.length > 0){
+                    let responseReviews = response.data.reviews;
+                    let rating = 0
+                    responseReviews.forEach(review => { // add all ratings to rating let to make a medium value out of them, ex: 5 + 4 + 3 / 3 (ratings length) = 4
+                        rating += review.rating  
+                    })
+                    rating = rating / responseReviews.length
+                    setReviews({rating: rating, reviews: responseReviews})
+                }
                 setProduct(response.data.product)
             })
             
+        }
+
+        if(user){
+            refreshToken()
         }
     }, [])
 
@@ -37,10 +58,11 @@ function ProductPage() {
                         <p className="description">{product.description}</p>
                         <hr className="separator" />
                         <div className="ratingnreviews">
-                                <Rating product={reviews.length > 0 ? reviews : {rating: 5}}/>
+                                <Rating preset={reviews}/>
                         </div>
+                        <hr  className="separator"/>
+                        {user && <CreateReview productId={params}/>}
                     </div>
-                    <div className=""></div>
                 </>
                 :
                 <h1>Loading...</h1>

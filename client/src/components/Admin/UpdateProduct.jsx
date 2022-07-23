@@ -13,17 +13,16 @@ function UpdateProduct() {
         productService.getProductById(productId)
         .then(response => {
             const newProduct = {
-                ...response.data,
+                ...response.data.product,
                 isCreated: true
             }
-
             setProduct(newProduct)
         })
     }, [])
 
     return (
         <div className="flex-row center">
-            {product && <CreateProduct product={product} updateFunc={productService.updateProduct}/>}
+            {product && <CreateProduct product={product}/>}
         </div>
     );
 }
