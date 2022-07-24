@@ -2,10 +2,11 @@ import productService from "../../services/product.service";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import formatPrice from "../../function/formatPrice";
-import Rating from "../Rating";
+import Rating from "../Reviews and Rating/Rating";
+import { useUpdateCart } from "../../context/CartContext";
 import { useUserContext } from "../../context/AuthContext";
-import CreateReview from "../CreateReview";
-import Reviews from "../Reviews";
+import CreateReview from "../Reviews and Rating/CreateReview";
+import Reviews from "../Reviews and Rating/Reviews";
 
 function ProductPage() {
     const user = useUserContext() || null
@@ -15,6 +16,7 @@ function ProductPage() {
         rating: 5,
         reviews: []
     })
+    const updateCart = useUpdateCart()
 
     useEffect(() => {
         if(params){
@@ -43,9 +45,8 @@ function ProductPage() {
                     <figure className="product-figure flex-row">
                         <img className="product-image" src={product.image} alt={product.name} />
                     </figure>
-                    <div className="product-details flex-col">
+                    <section className="product-details flex-col">
                         <h1 className="product-name">{product.name}</h1>
-                        
                         <div className="tag-wrapper flex-row">
                             {product.tags.map((tag, index) => <span key={index} className="tag">{tag}</span>)}
                         </div>
@@ -68,7 +69,37 @@ function ProductPage() {
                             <CreateReview productId={params}/>
                         </>
                         }
-                    </div>
+                    </section>
+                    <section className="purchase-box flex-col wrap">
+                        <span className="price">
+                            <span className="sign">US$</span>
+                            {formatPrice(product.price)}
+                            <span className="cents">00</span>
+                        </span>
+                        <span>Purchase now and receive <strong>in the next 24 hours!</strong></span>
+                        <span className={product.stock > 10 ? "allow" : "deny"}>{
+                        product.stock > 10 ? "In stock" : 
+                        product.stock === 0 ? "Sold out!" : 
+                        "Hurry up! Only " + product.stock + " left!"}</span>
+                        <div className="button-wrapper flex-col">
+                        { product.stock > 0 ? 
+                        <>
+                            <button className="primary" onClick={() => {
+                        updateCart("inc", product)
+                    }}>Add to Cart</button>
+                            <button className="allow">Buy now</button>
+                        </>
+                        :
+                            <button className="sold-out">Sold Out</button>
+                        }
+                        </div>
+                        <span>
+                            <strong>Refund policy:</strong><br/> 
+                            Products are non-refundable by default. <br />
+                            You may contact Watches user support at hello@watches.com<br/>
+                            if there is any incidence with the retrieval of the product.
+                        </span>
+                    </section>
                 </>
                 :
                 <h1>Loading...</h1>

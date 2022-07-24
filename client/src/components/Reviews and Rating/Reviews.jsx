@@ -23,7 +23,7 @@ function Reviews({reviews}) {
     }
 
     return ( 
-        <div className="reviews flex-row">
+        <section className="reviews flex-row">
             <FaArrowAltCircleLeft className="left-arrow" onClick={previousReview}/>
             <FaArrowAltCircleRight className="right-arrow" onClick={nextReview}/>
             {reviews.map((review, index) => {
@@ -36,9 +36,6 @@ function Reviews({reviews}) {
                         reviewRef.current.classList.add("active")
                         reviewRef.current.classList.add(position)
                     }, 1)
-
-                    const date = new Date(review.createdAt)
-                    const dateToDisplay = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()
 
                     return (
                     <div ref={reviewRef} className="flex-col review" style={position === "left" ? {left: "50%"} : {left: "-50%"}}>
@@ -54,7 +51,7 @@ function Reviews({reviews}) {
                     return null
                 }
             })}
-        </div>
+        </section>
      );
 }
 

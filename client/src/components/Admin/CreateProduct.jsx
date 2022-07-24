@@ -11,7 +11,8 @@ function CreateProduct({product = {
     tags: "",
     id: null,
     isCreated: false,
-    description: ""
+    description: "",
+    stock: 11
 }}) {
 
     const refreshToken = useRefreshToken()
@@ -20,6 +21,7 @@ function CreateProduct({product = {
     const [price, setPrice] = useState(product.price)
     const [img, setImg] = useState(product.image)
     const [tags, setTags] = useState(product.tags)
+    const [stock, setStock] = useState(product.stock)
     const [hidden, setHidden] = useState("")
     const imageInputRef = useRef()
     const imageRef = useRef()
@@ -33,7 +35,8 @@ function CreateProduct({product = {
                 image: img,
                 tags: product.isCreated ? tags : tags.split(","),
                 description: product.isCreated ? description : "",
-                id: product.isCreated ? product.id : undefined
+                id: product.isCreated ? product.id : undefined,
+                stock: stock
         }
     
         refreshToken()
@@ -106,6 +109,7 @@ function CreateProduct({product = {
         </div>
     </div>
     {product.isCreated &&
+    <div className="flex-col internal-update">
     <div>
         <textarea 
             name="description" 
@@ -116,6 +120,13 @@ function CreateProduct({product = {
             placeholder="new description goes here"
             onChange={(e) => {setDescription(e.target.value)}}
             >{description}</textarea>
+    </div>
+            <label htmlFor="stock">
+                <span>Stock:</span>
+                <input type="number" id="stock" value={stock} min={0} onChange={(e) => {
+                    setStock(e.target.value)
+                }}/>
+            </label>
     </div>
     }
 </form> );

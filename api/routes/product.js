@@ -30,11 +30,25 @@ router.get("/:id", async (req, res) => {
     res.json({product: product, reviews: reviews})
 })
 
+router.delete("/:id", authToken, async(req, res) => {
+    const productId = Number(req.params.id)
+    const isStaff = req.user.isStaff
+
+    if(isStaff){
+        const product = await Product.destroy({
+            where: {id: productId}
+        })
+        res.send("Product successfully deleted.")
+    }
+    else{
+        res.send("Something went wrong!")
+    }
+})
 router.put("/:id/update", authToken, async (req, res) => {
     const productId = Number(req.params.id)
     const modifiedProduct = JSON.parse(req.header("product"))
     const isStaff = req.user.isStaff
-
+    
     if(isStaff){
         let product = await Product.sync()
         .then(() => {
@@ -44,8 +58,6 @@ router.put("/:id/update", authToken, async (req, res) => {
         })
         
         product.set(modifiedProduct)
-
-        console.log(product)
 
         product = await product.save()
 

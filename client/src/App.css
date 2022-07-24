@@ -56,7 +56,7 @@ body {
 button {
   color: white;
   border: #404040 solid 1px;
-  font-weight: 600;
+  font-weight: 400;
 }
 button.primary {
   background-color: #0071b3;
@@ -68,13 +68,19 @@ button.dark {
   background-color: black;
 }
 button.dark:hover {
-  background-color: #262626;
+  background-color: #333333;
 }
 button.allow {
   background-color: rgb(58, 179, 21);
 }
 button.allow:hover {
   background-color: #59e62e;
+}
+button.deny {
+  background-color: #cc0000;
+}
+button.deny:hover {
+  background-color: #ff1a1a;
 }
 button.simple {
   color: #007185;
@@ -85,8 +91,19 @@ button.simple {
 button.simple:hover {
   text-decoration: underline;
 }
+button.sold-out {
+  background-color: gray;
+}
+button.sold-out:hover {
+  cursor: context-menu;
+}
 button:hover {
   cursor: pointer;
+}
+
+p.error {
+  color: #cc0000;
+  font-size: 0.7rem;
 }
 
 .App {
@@ -357,15 +374,14 @@ input.searchbar:focus {
   font-size: 1.5rem;
 }
 .card .card-details .buttons-wrapper.flex-row {
-  gap: 0.2rem;
+  gap: 0.5rem;
 }
 .card .card-details .buttons-wrapper button {
-  width: 12.5rem;
+  width: 48%;
   height: 2rem;
   border: none;
   border-radius: 4px;
   font-family: "Work Sans", sans-serif;
-  font-weight: 600;
   font-size: 15px;
 }
 .card .product-image {
@@ -373,6 +389,11 @@ input.searchbar:focus {
   height: 25rem;
 }
 
+@media screen and (max-width: 375px) {
+  .card .card-details .buttons-wrapper button {
+    width: 35%;
+  }
+}
 .not-found {
   text-align: center;
 }
@@ -528,10 +549,31 @@ input.searchbar:focus {
   font-size: 0.7rem;
 }
 
-.product-creator textArea {
+.product-creator .internal-update {
+  margin-left: 0.2rem;
+  gap: 0.2rem;
+}
+.product-creator .internal-update textArea {
   border: 0;
   outline: none;
   border-left: 1px solid gray;
+  resize: none;
+}
+.product-creator .internal-update label span {
+  background-color: white;
+  border: 1px solid gray;
+  border-right: 0;
+  font-size: 1rem;
+  padding: 0.1rem;
+  font-weight: 400;
+}
+.product-creator .internal-update label input {
+  padding: 0.125rem;
+  width: 2rem;
+  font-size: 1rem;
+  border: 1px solid gray;
+  border-left: 0;
+  outline: none;
 }
 .product-creator .new-product-name {
   font-size: 2rem;
@@ -563,16 +605,29 @@ input.searchbar:focus {
   gap: 1rem;
 }
 .product-page {
-  width: 60%;
+  width: 70%;
   min-width: 25rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   background-color: white;
   border-radius: 4px;
 }
+.product-page .price {
+  font-size: 1.75rem;
+}
+.product-page .price .cents {
+  position: relative;
+  top: -0.75em;
+  font-size: 0.75rem;
+}
+.product-page .price .sign {
+  font-size: 0.75rem;
+  position: relative;
+  top: -0.75em;
+}
 .product-page .product-figure {
   width: 40%;
-  min-width: 10rem;
+  min-width: 19rem;
 }
 .product-page .product-figure .product-image {
   width: 100%;
@@ -609,18 +664,42 @@ input.searchbar:focus {
 .product-page .product-details .separator {
   width: 100%;
 }
-.product-page .product-details .price {
+.product-page .purchase-box {
+  width: 15rem;
+  align-self: flex-start;
+  padding: 2rem 1rem;
+  border: 1px solid #bababa;
+  border-radius: 4px;
+  gap: 1.5rem;
+}
+.product-page .purchase-box span {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+.product-page .purchase-box span strong {
+  font-weight: bold;
+}
+.product-page .purchase-box span.price {
   font-size: 1.75rem;
 }
-.product-page .product-details .price .cents {
-  position: relative;
-  top: -0.75em;
-  font-size: 0.75rem;
+.product-page .purchase-box span.allow {
+  color: #2b8510;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
-.product-page .product-details .price .sign {
-  font-size: 0.75rem;
-  position: relative;
-  top: -0.75em;
+.product-page .purchase-box span.deny {
+  color: #cc0000;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.product-page .purchase-box .button-wrapper {
+  gap: 0.5rem;
+}
+.product-page .purchase-box .button-wrapper button {
+  font-weight: 400;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 1000px;
 }
 
 .rating input[type=radio] {
@@ -703,16 +782,17 @@ input.searchbar:focus {
 .reviews .review .rating-info {
   gap: 0.2rem;
 }
-.reviews .review .rating-info p.date {
-  color: #bababa;
-  font-size: 0.6rem;
+.reviews .review .rating-info p {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .reviews .review .rating-info .rating {
   padding: 0;
   width: 4rem;
 }
 .reviews .review h3 {
-  /*             text-align: center; */
   font-size: 1rem;
   margin-bottom: 1rem;
   -webkit-user-select: none;

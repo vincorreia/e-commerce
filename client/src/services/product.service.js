@@ -15,6 +15,20 @@ function getProducts(){
 function getProductById(id){
     return axios.get("/products/" + id);
 }
+
+function deleteProduct(id){
+    let confirmation = prompt("Are you sure you want to delete this product from the database?\nIf you are, please write DELETE")
+
+    return new Promise((resolve, reject) => {
+        if(confirmation === "DELETE"){
+            resolve(axios.delete(API_URL + "/" + id, {headers: authHeader()}))
+        }
+        else {
+            reject("Wrong confirmation input")
+        }
+    })
+}
+
 function updateProduct(product){
     const productJSON = {"product": JSON.stringify(product)}
     return axios.put(API_URL + "/" + product.id + "/update", {}, {headers: authHeader(productJSON)})
@@ -31,7 +45,8 @@ const productService = {
     getProducts,
     getProductById,
     updateProduct,
-    createReview
+    createReview,
+    deleteProduct
 }
 
 export default productService;

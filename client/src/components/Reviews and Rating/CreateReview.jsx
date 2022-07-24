@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Rating from "./Rating";
-import productService from "../services/product.service"
-import useRefreshToken from "../hooks/useRefreshToken"
+import productService from "../../services/product.service"
+import useRefreshToken from "../../hooks/useRefreshToken"
 
 function CreateReview({productId}) {
 
@@ -44,7 +44,7 @@ function CreateReview({productId}) {
             <textarea type="text"  rows="7" value={content} onChange={(e) => {
                 setContent(e.target.value);
             }} />
-            <button className="primary" type="submit">Post Review</button>
+            <button className="dark" type="submit">Post Review</button>
             <p>{error}</p>
         </form>
     );

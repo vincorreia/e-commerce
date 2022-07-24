@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useUpdateCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import formatPrice from "../../function/formatPrice";
 import { useUserContext } from "../../context/AuthContext";
+import useRefreshToken from "../../hooks/useRefreshToken";
+import productService from "../../services/product.service";
 
 export default function ProductCard(props){
     const product = props.product;
+    const refreshToken = useRefreshToken();
     const updateCart = useUpdateCart();
     const navigate = useNavigate();
     const admin = useUserContext()?.isStaff || false
+    const [err, setErr] = useState(null)
     return(
         <div className="flex-col center card">
             <figure className="flex-row center">
@@ -23,17 +27,37 @@ export default function ProductCard(props){
                     })}
                 </div>
                 <span className="price">${formatPrice(product.price)}.00</span>
-                <div className="buttons-wrapper flex-row space-around">
+                <div className="buttons-wrapper flex-row center wrap">
                     <button className="dark" onClick={() => {
                         navigate("/products/" + product.id)
                     }}>More Details</button>
+                    {product.stock > 0 ? 
                     <button className="allow" onClick={() => {
                         updateCart("inc", product)
                     }}>Add to Cart</button>
-                    {admin &&                     
-                    <button className="primary" onClick={() => {
-                        navigate("/products/" + product.id + "/update")
-                    }}>Update</button>
+                    :
+                    <button className="sold-out">Sold Out</button>
+                    }
+
+                    {admin &&
+                    <>                  
+                        <button className="primary" onClick={() => {
+                            navigate("/products/" + product.id + "/update")
+                        }}>Update</button>
+                        <button className="deny" onClick={() => {
+                            refreshToken()
+                            .then(() => {
+                                productService.deleteProduct(product.id)
+                                .then(() => {
+                                    window.location.reload()
+                                })
+                                .catch((err) => {
+                                    setErr(err)
+                                })
+                            })
+                        }}>Delete</button>
+                        <p className="error">{err}</p>
+                    </>
                     }
                 </div>
             </div>

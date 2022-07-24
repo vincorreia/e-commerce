@@ -50,6 +50,7 @@ $to: black;
 $primary: darken(rgb(0, 162, 255), 15%);
 $allow: rgb(58, 179, 21);
 $dark: black;
+$deny: darken(red, 10%);
 $round-border: 0.25rem;
 $border: darken(white, 75%) solid 1px;
 
@@ -61,7 +62,7 @@ body {
 button {
     color: white;
     border: $border;
-    font-weight: 600;
+    font-weight: 400;
 
     &.primary{
         background-color: $primary;
@@ -73,7 +74,7 @@ button {
     &.dark{
         background-color: $dark;
         &:hover{
-            background-color: lighten($dark, 15%);
+            background-color: lighten($dark, 20%);
         }
     }
 
@@ -84,6 +85,12 @@ button {
         }
     }
 
+    &.deny{
+        background-color: $deny;
+        &:hover{
+            background-color: lighten($deny, 15%);
+        }
+    }
     &.simple {
         color: #007185;
         background-color: transparent;
@@ -94,11 +101,24 @@ button {
         }
     }
 
+    &.sold-out{
+        background-color: gray;
+        &:hover{
+            cursor: context-menu;
+        }
+    }
+
     &:hover{
         cursor: pointer;
     }
 }
 
+p {
+    &.error{
+        color: $deny;
+        font-size: 0.7rem;
+    }
+}
 .App {
     background-color: black;
     -webkit-background-size: cover;
