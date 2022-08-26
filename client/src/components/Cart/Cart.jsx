@@ -1,5 +1,5 @@
 import React from "react";
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../store/CartContext";
 import NotFound from "../NotFound";
 import CartItem from "./CartItem";
 

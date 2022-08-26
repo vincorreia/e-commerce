@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useUpdateCart } from "../../context/CartContext";
+import { useUpdateCart } from "../../store/CartContext";
 import { useNavigate } from "react-router-dom";
 import formatPrice from "../../function/formatPrice";
-import { useUserContext } from "../../context/AuthContext";
+import { useUserContext } from "../../store/AuthContext";
 import useRefreshToken from "../../hooks/useRefreshToken";
 import productService from "../../services/product.service";
 

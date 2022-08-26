@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import { Link } from "react-router-dom";
-import { useUserContext } from "../../context/AuthContext";
-import { useCart } from "../../context/CartContext";
+import { NavLink } from "react-router-dom";
+import { useUserContext } from "../../store/AuthContext";
+import { useCart } from "../../store/CartContext";
 
 export default function Nav(){
 
@@ -18,19 +18,19 @@ export default function Nav(){
     return (
     <nav className="flex-row space-around nav">
             <div className="flex-row center">
-                <Link className="brand" to="/">Watches</Link>
+                <NavLink className="brand" to="/">Watches</NavLink>
             </div>
             <div className="profile-section flex-row">
-                <Link to="/products">STORE</Link>
+                <NavLink className="nav-link" to="/products">STORE</NavLink>
                 {isAuthenticated ? 
-                <Link to="/profile">PROFILE</Link> 
+                <NavLink className="nav-link" to="/profile">PROFILE</NavLink> 
                 :
                 <>
-                    <Link to="/login">LOGIN</Link>
-                    <Link to="/signup">SIGN UP</Link>
+                    <NavLink className="nav-link" to="/login">LOGIN</NavLink>
+                    <NavLink className="nav-link" to="/signup">SIGN UP</NavLink>
                 </>
                 }
-                <Link to="/cart">CART <span className={amount > 0 ? "amount" : "amount hidden"}>{amount}</span></Link>
+                <NavLink className="nav-link" to="/cart">CART <span className={amount > 0 ? "amount" : "amount hidden"}>{amount}</span></NavLink>
             </div>
     </nav>)
 }

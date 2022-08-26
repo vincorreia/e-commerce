@@ -2,10 +2,10 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 export default function SearchBar(props){
 
-    const setQuery = props.setQuery;
-    const query = props.query;
+    const {query, setQuery} = props;
     const select = useRef(null);
     const [searchText, setSearchText] = useState("")
+
     function handleChange(event) {
         const targetId = event.target.id;
         const newValue = event.target.value;
@@ -14,6 +14,7 @@ export default function SearchBar(props){
         }
         setQuery({...query, [targetId]: newValue})
     }
+    
     return (
         <div className="searchbar flex-row space-around">
             <div className="flex-row">

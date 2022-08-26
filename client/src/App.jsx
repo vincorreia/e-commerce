@@ -3,10 +3,10 @@ import Nav from "./components/Nav/Nav"
 import Home from './components/Home/Home';
 import Store from "./components/Store (Products)/Store"
 import Cart from "./components/Cart/Cart"
-import CartProvider from './context/CartContext';
+import CartProvider from './store/CartContext';
 import Layout from './components/Layout';
 import { useEffect } from 'react';
-import {useSetUserContext} from './context/AuthContext';
+import {useSetUserContext} from './store/AuthContext';
 import authService from './services/auth.service';
 import {Routes, Route, useLocation} from "react-router-dom"
 import Form from './components/Form';

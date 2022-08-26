@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import productService from "../../services/product.service";
-import { useUserContext } from "../../context/AuthContext";
+import { useUserContext } from "../../store/AuthContext";
 import ProductCard from "./ProductCard";
 import NotFound from "../NotFound";
 import CreateProduct from "../Admin/CreateProduct";

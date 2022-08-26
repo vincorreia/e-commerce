@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import authService from "../services/auth.service"
-import { useUserContext } from "../context/AuthContext";
+import { useUserContext } from "../store/AuthContext";
 
 function Form() {
     const isAuthenticated = useUserContext()
     let location = useLocation()
-    const from = location.state?.from?.pathname || "/";
     const sentErr = location.state?.err || "";
     let type = location.pathname.slice(1);
     const [error, setError] = useState(sentErr)
@@ -49,24 +48,18 @@ function Form() {
         try {
             await pageVars.func(email, password).then(
                 (user) => {
-                    console.log(user)
-                    console.log(localStorage)
-                    navigate(from, { replace: true });
-                    window.location.reload();
-                },
-                (error) => {
-                    setError(error.response.data.errors[0].msg)
+                    navigate(-1);
                 }
             )
         }
         catch (err) {
-            setError(error.response.data.errors[0].msg)
+            setError(err.response.data.errors[0].msg)
         }
     }
     
     useEffect(() => {
         setError(sentErr)
-    }, [location]);
+    }, [sentErr]);
 
     if(isAuthenticated){
         return navigate("/profile")

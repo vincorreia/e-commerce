@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import formatPrice from "../../function/formatPrice";
 import Rating from "../Reviews and Rating/Rating";
-import { useUpdateCart } from "../../context/CartContext";
-import { useUserContext } from "../../context/AuthContext";
+import { useUpdateCart } from "../../store/CartContext";
+import { useUserContext } from "../../store/AuthContext";
 import CreateReview from "../Reviews and Rating/CreateReview";
 import Reviews from "../Reviews and Rating/Reviews";
 

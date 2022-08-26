@@ -19,7 +19,7 @@ function CreateProduct({product = {
     const [name, setName] = useState(product.name)
     const [description, setDescription] = useState(product.description)
     const [price, setPrice] = useState(product.price)
-    const [img, setImg] = useState(product.image)
+    const [image, setImage] = useState(product.image)
     const [tags, setTags] = useState(product.tags)
     const [stock, setStock] = useState(product.stock)
     const [hidden, setHidden] = useState("")
@@ -30,15 +30,15 @@ function CreateProduct({product = {
         e.preventDefault();
 
         const newProduct = {
-                name: name,
-                price: price,
-                image: img,
+                name,
+                price,
+                image,
+                stock,
                 tags: product.isCreated ? tags : tags.split(","),
                 description: product.isCreated ? description : "",
-                id: product.isCreated ? product.id : undefined,
-                stock: stock
+                id: product.isCreated ? product.id : undefined
         }
-    
+
         refreshToken()
         .then(
             () => {
@@ -71,14 +71,14 @@ function CreateProduct({product = {
     <form className="flex-row center product-creator" onSubmit={handleSubmit}>
         <div className="flex-col center card">
             <figure className="flex-row center">
-                <img ref={imageRef} src={img} alt="Placeholder" className="product-image"/>
+                <img ref={imageRef} src={image} alt="Placeholder" className="product-image"/>
             </figure>
             <input ref={imageInputRef} type="text" 
             className={hidden} 
             placeholder="insert image link" 
-            value={img} 
+            value={image} 
             onChange={(e) => {
-                setImg(e.target.value)
+                setImage(e.target.value)
             }}/>
 
             <div className="card-details flex-col center">

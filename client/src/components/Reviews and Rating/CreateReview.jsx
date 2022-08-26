@@ -25,8 +25,8 @@ function CreateReview({productId}) {
         refreshToken()
         .then(() => {
             const newReview = {
-                rating: rating,
-                content: content
+                rating,
+                content
             }
     
             productService.createReview(newReview, productId);

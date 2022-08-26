@@ -1,4 +1,4 @@
-import { useUpdateCart } from "../../context/CartContext"
+import { useUpdateCart } from "../../store/CartContext"
 
 
 

@@ -217,10 +217,17 @@ p.error {
   font-size: 45px;
   font-weight: 600;
 }
+.nav div .nav-link.active {
+  color: #1aabff;
+}
+.nav div .nav-link.active:hover {
+  color: #b3e3ff;
+}
 .nav .profile-section {
   gap: 0.5rem;
 }
 .nav .profile-section .amount {
+  color: white;
   font-size: 0.8rem;
   text-align: center;
   align-items: center;
@@ -671,6 +678,10 @@ input.searchbar:focus {
   border: 1px solid #bababa;
   border-radius: 4px;
   gap: 1.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .product-page .purchase-box span {
   font-size: 0.8rem;
