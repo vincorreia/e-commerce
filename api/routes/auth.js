@@ -18,7 +18,6 @@ async (req, res) => {
 
     let user = await findOrCreate(email);
 
-
     let match = await bcrypt.compare(password, user.password);
 
     if(!user){
@@ -194,7 +193,7 @@ async function findOrCreate(email){
     }
 
     else{
-        return user
+        return user.dataValues
     }
 
 }

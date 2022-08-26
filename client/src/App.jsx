@@ -9,10 +9,11 @@ import { useEffect } from 'react';
 import {useSetUserContext} from './store/AuthContext';
 import authService from './services/auth.service';
 import {Routes, Route, useLocation} from "react-router-dom"
-import Form from './components/Form';
 import Profile from './components/Profile/Profile';
 import ProductPage from './components/ProductPage/ProductPage';
 import UpdateProduct from "./components/Admin/UpdateProduct";
+import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
 
 function App() {
   let location = useLocation().pathname;
@@ -28,7 +29,7 @@ function App() {
     if (user) {
         setCurrentUser(user);
     }
-    }, []);
+    }, [setCurrentUser]);
   
   return (
       <CartProvider>
@@ -42,8 +43,8 @@ function App() {
                     <Route path="products/:id" element={<ProductPage />} />
                     <Route path="products/:id/update" element={<UpdateProduct />} />
                     <Route path="cart" element={<Cart />} />
-                    <Route path='login' element={<Form />}/>
-                    <Route path='signup' element={<Form />}/>
+                    <Route path='login' element={<Login />}/>
+                    <Route path='signup' element={<Signup />}/>
                     <Route path='profile' element={<Profile/>} />
                 </Route>
               </Routes>

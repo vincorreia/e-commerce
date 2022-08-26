@@ -1,17 +1,17 @@
-import FormCard from "../Misc/FormCard/FormCard";
 import { Link, useLocation } from "react-router-dom";
 import authService from "../../services/auth.service";
+import FormCard from "../Misc/FormCard/FormCard";
 
-function Login() {
+function Signup() {
   const location = useLocation();
 
-  const header = "Log in to your account";
+  const header = "Sign up for free";
 
-  const buttonTxt = "Log in";
+  const buttonTxt = "Sign up";
 
   const footer = {
-    text: "New to Watches? ",
-    link: <Link to="/signup">Sign up</Link>,
+    text: "Already have an account? ",
+    link: <Link to="/login">Login</Link>,
   };
 
   const fields = [
@@ -25,6 +25,11 @@ function Login() {
       title: "password",
       placeholder: "Password",
     },
+    {
+      type: "password",
+      title: "rePassword",
+      placeholder: "Repeat Password",
+    },
   ];
 
   return (
@@ -32,11 +37,11 @@ function Login() {
       fields={fields}
       footer={footer}
       header={header}
-      func={authService.login}
+      func={authService.signup}
       location={location}
       buttonTxt={buttonTxt}
     />
   );
 }
 
-export default Login;
+export default Signup;
