@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import productService from "../../services/product.service";
-import { useUserContext } from "../../store/AuthContext";
 import ProductCard from "./ProductCard";
 import NotFound from "../NotFound";
 import CreateProduct from "../Admin/CreateProduct";
+import { useSelector } from "react-redux";
 
 export default function ProductCards(props){
     const [products, setProducts] = useState(null)
     const [filteredResults, setFilteredResults] = useState(products);
     const [loading, setIsLoading] = useState(true)
+    const auth = useSelector(state => state.auth)
     const query = props.query
-    const admin = useUserContext()?.isStaff || false
+    const admin = auth.isStaff
 
     useEffect(() =>{
         if(products){

@@ -1,16 +1,12 @@
 import { useEffect, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  useUserContext,
-  useSetUserContext,
-} from "../../../../store/AuthContext";
 import PasswordIcon from "../../Icons/PasswordIcon";
 import UserIcon from "../../Icons/UserIcon";
-
-function Form({ fields, buttonTxt, func, location }) {
+import { useSelector } from "react-redux";
+function AuthForm({ fields, buttonTxt, func, location }) {
   const navigate = useNavigate();
-  const isAuthenticated = useUserContext();
-  const setCurrentUser = useSetUserContext();
+  const auth = useSelector(state => state.auth)
+  const isAuthenticated = auth.isAuthenticated
   const sentErr = location.state?.err || "";
 
   const formReducer = (state, action) => {
@@ -48,8 +44,7 @@ function Form({ fields, buttonTxt, func, location }) {
       }
     }
     try {
-      await func(state.email, state.password).then((user) => {
-        setCurrentUser(user);
+      await func(state.email, state.password).then(() => {
         navigate(-1);
       });
     } catch (err) {
@@ -91,4 +86,4 @@ function Form({ fields, buttonTxt, func, location }) {
   );
 }
 
-export default Form;
+export default AuthForm;

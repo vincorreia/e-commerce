@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import { useUpdateCart } from "../../store/CartContext";
 import { useNavigate } from "react-router-dom";
 import formatPrice from "../../function/formatPrice";
-import { useUserContext } from "../../store/AuthContext";
 import useRefreshToken from "../../hooks/useRefreshToken";
 import productService from "../../services/product.service";
+import { useSelector } from "react-redux";
 
 export default function ProductCard(props){
     const product = props.product;
     const refreshToken = useRefreshToken();
     const updateCart = useUpdateCart();
     const navigate = useNavigate();
-    const admin = useUserContext()?.isStaff || false
+    const auth = useSelector(state => state.auth);
+    const admin = auth.isStaff;
     const [err, setErr] = useState(null)
     return(
         <div className="flex-col center card">

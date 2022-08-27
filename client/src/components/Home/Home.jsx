@@ -1,10 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"
-import { useUserContext, useLogout } from "../../store/AuthContext";
+import { useSelector, useDispatch } from "react-redux";
+import { authActions } from "../../store/slices/authSlice";
+
 export default function Home(){
     let navigate = useNavigate()
-    const userToken = useUserContext() 
-    const logout = useLogout()
+    const dispatch = useDispatch()
+    const auth = useSelector(state => state.auth)
+    const isAuthenticated = auth.isAuthenticated
+
     return (
         <div className="sectionContainer flex-row center">
             <div className="mainText flex-col center">
@@ -12,7 +16,7 @@ export default function Home(){
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                 Maecenas aliquam condimentum malesuada. </p>
                 <div className="flex-row center">
-                {!userToken ? <>
+                {!isAuthenticated ? <>
                     <button className="primary" onClick={() => {navigate('/signup')}}>Sign Up!</button>
                     <button className="dark" onClick={() => {navigate('/login')}}>Login</button>
                 </> 
@@ -20,8 +24,7 @@ export default function Home(){
                 <>
                     <button className="primary" onClick={() => {navigate('/profile')}}>Profile</button>
                     <button className="dark" onClick={() => {
-                        logout();
-                        window.location.reload();
+                        dispatch(authActions.logout())
                         }}>Logout</button>
                 </>
                 }

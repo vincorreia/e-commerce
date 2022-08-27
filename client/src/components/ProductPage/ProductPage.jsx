@@ -4,12 +4,13 @@ import { useParams } from "react-router-dom";
 import formatPrice from "../../function/formatPrice";
 import Rating from "../Reviews and Rating/Rating";
 import { useUpdateCart } from "../../store/CartContext";
-import { useUserContext } from "../../store/AuthContext";
 import CreateReview from "../Reviews and Rating/CreateReview";
 import Reviews from "../Reviews and Rating/Reviews";
+import { useSelector } from "react-redux";
+
 
 function ProductPage() {
-    const user = useUserContext() || null
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
     const params = Number(useParams().id) || false
     const [product, setProduct] = useState(null)
     const [reviews, setReviews]= useState({
@@ -63,7 +64,7 @@ function ProductPage() {
                             <Reviews reviews={reviews.reviews}/>
                         </>
                         }
-                        {user &&
+                        {isAuthenticated &&
                         <>
                             <hr  className="separator"/>
                             <CreateReview productId={params}/>

@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
-import { useUserContext } from "../../store/AuthContext";
 import { useCart } from "../../store/CartContext";
+import { useSelector } from "react-redux";
 
 export default function Nav(){
 
     const cart = useCart()
     const [amount, setAmount] = useState(0)
-    const isAuthenticated = useUserContext()
+    const auth = useSelector(state => state.auth)
+    const isAuthenticated = auth.isAuthenticated
 
     useEffect(() => {
         let mutateAmount = 0;

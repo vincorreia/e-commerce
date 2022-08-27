@@ -6,7 +6,6 @@ import Cart from "./components/Cart/Cart"
 import CartProvider from './store/CartContext';
 import Layout from './components/Layout';
 import { useEffect } from 'react';
-import {useSetUserContext} from './store/AuthContext';
 import authService from './services/auth.service';
 import {Routes, Route, useLocation} from "react-router-dom"
 import Profile from './components/Profile/Profile';
@@ -14,10 +13,13 @@ import ProductPage from './components/ProductPage/ProductPage';
 import UpdateProduct from "./components/Admin/UpdateProduct";
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
+import { useDispatch } from 'react-redux';
+import { authActions } from './store/slices/authSlice';
+
 
 function App() {
   let location = useLocation().pathname;
-  const setCurrentUser = useSetUserContext();
+  const dispatch = useDispatch()
   if(location === "/"){
     location = "home";
   } else{
@@ -25,11 +27,11 @@ function App() {
   }
   
   useEffect(() => {
-    const user = authService.getCurrentUser();
-    if (user) {
-        setCurrentUser(user);
+    const user = authService.getStorageUser();
+    if (user.accessToken.length) {
+        dispatch(authActions.login(user));
     }
-    }, [setCurrentUser]);
+    }, []);
   
   return (
       <CartProvider>

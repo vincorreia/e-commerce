@@ -1,5 +1,5 @@
 import Footer from "./Footer/Footer";
-import Form from "./Form/Form";
+import AuthForm from "./AuthForm/AuthForm";
 import Title from "./Title/Title";
 
 function FormCard({ fields, footer, header, func, location, buttonTxt }) {
@@ -7,7 +7,7 @@ function FormCard({ fields, footer, header, func, location, buttonTxt }) {
     <div className="sectionContainer flex-col center form">
       <div className="form-card flex-col">
         <Title data={header} />
-        <Form
+        <AuthForm
           fields={fields}
           func={func}
           location={location}

@@ -1,18 +1,20 @@
 import axios from "axios"
-import { useSetUserContext, useLogout } from "../store/AuthContext"
 import { useNavigate, useLocation } from "react-router-dom"
+import { useDispatch, useStore } from "react-redux";
+import { authActions } from "../store/slices/authSlice";
+
 function useRefreshToken(){
-    const setUserContext = useSetUserContext();
-    const logout = useLogout();
     const navigate = useNavigate();
     const location = useLocation();
+    const dispatch = useDispatch();
+    const store = useStore().getState();
 
     return async function refreshToken(){
-        let user = JSON.parse(localStorage.getItem("user"))
-        const header = {
-            "x-auth-token": user.refreshToken
-        }
-        if(user){
+        let user = store.auth
+        if(user.accessToken.length){
+            const header = {
+                "x-auth-token": user.refreshToken
+            }
             return await axios.post("/auth/token", {}, { headers: header})
             .then(response => {
                 user = {
@@ -21,10 +23,10 @@ function useRefreshToken(){
                     isStaff: user.isStaff
                 }
                 localStorage.setItem("user", JSON.stringify(user))
-                setUserContext(user)
+                dispatch(authActions.login(user))
             })
             .catch(err => {
-                logout();
+                dispatch(authActions.logout());
                 navigate("/login", {state: {from: location, err: "Session expired, please log in again"}, replace: true});
             })
         }

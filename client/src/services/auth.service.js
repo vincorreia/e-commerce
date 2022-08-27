@@ -1,4 +1,6 @@
 import axios from "axios"
+import store from "../store/store"
+import { authActions } from "../store/slices/authSlice"
 
 const API_URL = "/auth"
 
@@ -33,6 +35,7 @@ function login(email, password){
 function authenticate(response){
     if(response.data.accessToken) {
         localStorage.setItem("user", JSON.stringify(response.data))
+        store.dispatch(authActions.login(response.data))
     }
     else {
         throw new Error("User could not be authenticated")
@@ -41,17 +44,23 @@ function authenticate(response){
 
 function logout() {
     localStorage.removeItem("user");
+    store.dispatch(authActions.logout())
 }
 
 function getCurrentUser(){
-    return JSON.parse(localStorage.getItem("user"));
+    return store.getState().auth;
+}
+
+function getStorageUser(){
+    return JSON.parse(localStorage.getItem("user"))
 }
 
 const authService = {
     signup,
     login,
     logout,
-    getCurrentUser
+    getCurrentUser,
+    getStorageUser
 };
 
 export default authService;
