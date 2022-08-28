@@ -1,8 +1,7 @@
 import { cartServices } from "../../services/cart.service";
+import usdFormat from "../../function/formatPrice"
 
 export default function CartItem({item}) {
-
-    const usdFormat = Intl.NumberFormat('en-IN').format /* this will format a number to the USD standards */
 
     return (
     <div className="cart-item flex-row space-between">
