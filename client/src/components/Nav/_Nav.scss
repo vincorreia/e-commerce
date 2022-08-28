@@ -29,7 +29,7 @@ $main-color: white;
             &.active{
                 color: lighten($primary, 20%);
                 &:hover{
-                    color: lighten($primary, 50%);
+                    color: lighten($primary, 25%);
                 }
             }
         }

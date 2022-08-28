@@ -1,6 +1,5 @@
-
-function formatPrice(price){
-    return Intl.NumberFormat('en-IN').format(price)
+function formatPrice(price) {
+  return Intl.NumberFormat("en-IN").format(price);
 }
 
-export default formatPrice
+export default formatPrice;

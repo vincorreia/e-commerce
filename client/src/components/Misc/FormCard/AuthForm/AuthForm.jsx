@@ -5,8 +5,8 @@ import UserIcon from "../../Icons/UserIcon";
 import { useSelector } from "react-redux";
 function AuthForm({ fields, buttonTxt, func, location }) {
   const navigate = useNavigate();
-  const auth = useSelector(state => state.auth)
-  const isAuthenticated = auth.isAuthenticated
+  const auth = useSelector((state) => state.auth);
+  const isAuthenticated = auth.isAuthenticated;
   const sentErr = location.state?.err || "";
 
   const formReducer = (state, action) => {

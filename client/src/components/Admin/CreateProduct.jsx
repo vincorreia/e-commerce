@@ -21,7 +21,7 @@ function CreateProduct({
   const formReducer = (state, action) => {
     return { ...state, [action.payload.name]: action.payload.content };
   };
-  
+
   const [form, dispatch] = useReducer(formReducer, product);
   const { name, price, image, stock, tags, description } = form;
   const [hidden, setHidden] = useState("");

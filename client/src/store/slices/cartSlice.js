@@ -63,8 +63,8 @@ const cart = createSlice({
       }
     },
     setCart(state, action) {
-      return action.payload
-    }
+      return action.payload;
+    },
   },
 });
 
