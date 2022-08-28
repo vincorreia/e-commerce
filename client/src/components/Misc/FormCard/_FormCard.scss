@@ -11,6 +11,7 @@
         border-radius: 3px;
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
+
         h1{
             color: black;
             font-size: 1.25rem;
@@ -18,9 +19,6 @@
             text-align: center;
         }
         .form-control{
-            &.password{
-                padding-bottom: 1.5rem;
-            }
             label{
                 font-size: 0.75rem;
                 font-weight: 500;
@@ -40,6 +38,7 @@
         }
     
         button{
+            margin-top: 1.5rem;
             width: 100%;
             line-height: 1.5;
             font-size: 1rem;

@@ -16,15 +16,7 @@ async (req, res) => {
     
     const {email, password} = req.body;
 
-    let user = await User.sync({ alter: true })
-    .then(()=> {
-        return User.findOne(
-            {
-                where: { email: email}
-            }
-        )
-    })
-
+    let user = await findOrCreate(email);
 
     let match = await bcrypt.compare(password, user.password);
 
@@ -48,21 +40,9 @@ async (req, res) => {
         })
     }
     else {
-    const accessToken = await JWT.sign(
-        {email: email, id: user.id, isStaff: user.isStaff, name: user.name},
-        ACCESS_TOKEN,
-        {
-            expiresIn: 60
-        }
-    )
+    const accessToken = await generateToken(user);
 
-    const refreshToken = await JWT.sign(
-        {email: email, id: user.id, isStaff: user.isStaff, name: user.name},
-        REFRESH_SECRET,
-        {
-            expiresIn: 10800
-        }
-    )
+    const refreshToken = await generateToken(user, 10800, REFRESH_SECRET);
 
     refreshTokens.push(refreshToken);
 
@@ -93,17 +73,10 @@ async (req, res) => {
     }
 
     else {
-        let user = await User.sync({ alter: true })
-        .then(()=> {
-            return User.findOne(
-                {
-                    where: { email: email}
-                }
-                )
-            })
+        let user = await findOrCreate(email);
             
             if(user) {
-                return res.status(200).json({
+                return res.status(406).json({
                     errors: [
                         {
                             email: user.email,
@@ -123,16 +96,16 @@ async (req, res) => {
                 password: hash
             })
         
-            const accessToken = await JWT.sign(
-                {email: email, id: newUser.id, isStaff: newUser.isStaff, name: user.name},
-                ACCESS_TOKEN,
-                {
-                    expiresIn: 60,
-                }
-            );
-        
+            const accessToken = await generateToken(newUser);
+            
+            const refreshToken = await generateToken(newUser, 10800, REFRESH_SECRET);
+            
+            refreshTokens.push(refreshToken);
+
             res.json({
-                accessToken
+                accessToken,
+                refreshToken,
+                isStaff: newUser.isStaff
             });
         }
     }
@@ -195,6 +168,7 @@ router.post("/token",
         }
     }
 )
+
 router.delete("/logout", (req, res) => {
     const refreshToken = req.header("x-auth-token");
   
@@ -203,4 +177,36 @@ router.delete("/logout", (req, res) => {
   });
 
 
+
+async function findOrCreate(email){
+    const user = await User.sync({ alter: true })
+    .then(()=> {
+        return User.findOne(
+            {
+                where: { email: email}
+            }
+        )
+    })
+
+    if(!user){
+        return false;
+    }
+
+    else{
+        return user.dataValues
+    }
+
+}
+
+async function generateToken(user, expiration = 60, secret = ACCESS_TOKEN){
+    const token = await JWT.sign(
+        {email: user.email, id: user.id, isStaff: user.isStaff, name: user.name},
+        secret,
+        {
+            expiresIn: expiration,
+        }
+    );
+
+    return token;
+}
 module.exports = router;

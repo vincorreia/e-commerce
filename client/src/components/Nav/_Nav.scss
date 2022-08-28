@@ -24,11 +24,21 @@ $main-color: white;
             font-size: 45px;
             font-weight: 600;
         }
+
+        .nav-link{
+            &.active{
+                color: lighten($primary, 20%);
+                &:hover{
+                    color: lighten($primary, 25%);
+                }
+            }
+        }
     }
 
     .profile-section{
         gap: 0.5rem;
         .amount {
+            color: white;
             font-size: 0.8rem;
             text-align: center;
             align-items: center;
