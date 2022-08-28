@@ -352,11 +352,61 @@ p.error {
   border-radius: 0.25rem;
 }
 
-.cards-wrapper {
-  margin-top: 2rem;
+.card {
+  background-color: white;
+  width: 25rem;
+}
+.card .card-details {
+  margin: 1rem 1rem 1rem 1rem;
+  text-align: center;
+}
+.card .card-details.flex-col {
+  gap: 2rem;
+}
+.card .card-details h2 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+.card .card-details .tag-wrapper {
   gap: 1rem;
+  color: white;
+}
+.card .card-details .tag-wrapper .tag {
+  padding: 5px 15px;
+  color: black;
+  border: 1px solid black;
+  width: 5.5rem;
+  border-radius: 2px;
+  font-weight: 300;
+  font-size: 1rem;
+}
+.card .card-details .tag-wrapper .tag:hover {
+  cursor: context-menu;
+}
+.card .card-details .price {
+  font-size: 1.5rem;
+}
+.card .card-details .buttons-wrapper.flex-row {
+  gap: 0.5rem;
+}
+.card .card-details .buttons-wrapper button {
+  width: 48%;
+  height: 2rem;
+  border: none;
+  border-radius: 4px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 15px;
+}
+.card .product-image {
+  width: 20rem;
+  height: 25rem;
 }
 
+@media screen and (max-width: 375px) {
+  .card .card-details .buttons-wrapper button {
+    width: 35%;
+  }
+}
 div.searchbar {
   background-color: #bfbfbf;
   height: 3rem;
@@ -427,61 +477,11 @@ input.searchbar:focus {
   cursor: pointer;
 }
 
-.card {
-  background-color: white;
-  width: 25rem;
-}
-.card .card-details {
-  margin: 1rem 1rem 1rem 1rem;
-  text-align: center;
-}
-.card .card-details.flex-col {
-  gap: 2rem;
-}
-.card .card-details h2 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-.card .card-details .tag-wrapper {
+.cards-wrapper {
+  margin-top: 2rem;
   gap: 1rem;
-  color: white;
-}
-.card .card-details .tag-wrapper .tag {
-  padding: 5px 15px;
-  color: black;
-  border: 1px solid black;
-  width: 5.5rem;
-  border-radius: 2px;
-  font-weight: 300;
-  font-size: 1rem;
-}
-.card .card-details .tag-wrapper .tag:hover {
-  cursor: context-menu;
-}
-.card .card-details .price {
-  font-size: 1.5rem;
-}
-.card .card-details .buttons-wrapper.flex-row {
-  gap: 0.5rem;
-}
-.card .card-details .buttons-wrapper button {
-  width: 48%;
-  height: 2rem;
-  border: none;
-  border-radius: 4px;
-  font-family: "Work Sans", sans-serif;
-  font-size: 15px;
-}
-.card .product-image {
-  width: 20rem;
-  height: 25rem;
 }
 
-@media screen and (max-width: 375px) {
-  .card .card-details .buttons-wrapper button {
-    width: 35%;
-  }
-}
 .not-found {
   text-align: center;
 }

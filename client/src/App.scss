@@ -306,12 +306,12 @@ p {
   }
 }
 
-@import "./components//Nav/Nav";
+@import "./components/Nav/Nav";
 @import "./components/Home/Home";
-@import "./components/Store\ \(Products\)/ProductCards";
-@import "./components/SearchBar";
-@import "./components/Store\ \(Products\)/ProductCard";
-@import "./components/NotFound";
+@import "./components/Store\ \(Products\)/ProductCard/ProductCard";
+@import "./components/Store\ \(Products\)/SearchBar/SearchBar";
+@import "./components/Store\ \(Products\)/ProductContainer/ProductContainer";
+@import "./components/Misc/NotFound/NotFound";
 @import "./components/Cart/Cart";
 @import "./components/Cart/CartItem";
 @import "./components/Misc/FormCard/FormCard";

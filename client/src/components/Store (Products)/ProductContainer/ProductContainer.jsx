@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import productService from "../../services/product.service";
-import ProductCard from "./ProductCard";
-import NotFound from "../NotFound";
-import CreateProduct from "../Admin/CreateProduct";
+import productService from "../../../services/product.service";
+import ProductCard from "../ProductCard/ProductCard";
+import NotFound from "../../Misc/NotFound/NotFound";
+import CreateProduct from "../../Admin/CreateProduct";
 import { useSelector } from "react-redux";
 
-export default function ProductCards({ query }) {
+export default function ProductContainer({ query }) {
   const [products, setProducts] = useState(null);
   const [filteredResults, setFilteredResults] = useState(products);
   const [loading, setIsLoading] = useState(true);

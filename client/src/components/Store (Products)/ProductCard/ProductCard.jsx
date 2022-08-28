@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import formatPrice from "../../function/formatPrice";
-import useRefreshToken from "../../hooks/useRefreshToken";
-import productService from "../../services/product.service";
+import formatPrice from "../../../function/formatPrice";
+import useRefreshToken from "../../../hooks/useRefreshToken";
+import productService from "../../../services/product.service";
 import { useSelector } from "react-redux";
-import { cartServices } from "../../services/cart.service";
+import { cartServices } from "../../../services/cart.service";
 
 export default function ProductCard({ product }) {
   const refreshToken = useRefreshToken();

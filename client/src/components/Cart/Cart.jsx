@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import NotFound from "../NotFound";
+import NotFound from "../Misc/NotFound/NotFound";
 import CartItem from "./CartItem";
 
 export default function Cart() {

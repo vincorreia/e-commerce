@@ -12,7 +12,7 @@ function Profile() {
     refreshToken().then(() => {
       setRefreshed(true);
     });
-  }, []);
+  }, [refreshToken]);
 
   useEffect(() => {
     if (refreshed) {
