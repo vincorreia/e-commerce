@@ -1,16 +1,84 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -20,8 +88,17 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
@@ -29,16 +106,20 @@ body {
   line-height: 1;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: "";
   content: none;
 }
@@ -217,10 +298,17 @@ p.error {
   font-size: 45px;
   font-weight: 600;
 }
+.nav div .nav-link.active {
+  color: #1aabff;
+}
+.nav div .nav-link.active:hover {
+  color: #33b5ff;
+}
 .nav .profile-section {
   gap: 0.5rem;
 }
 .nav .profile-section .amount {
+  color: white;
   font-size: 0.8rem;
   text-align: center;
   align-items: center;
@@ -264,11 +352,61 @@ p.error {
   border-radius: 0.25rem;
 }
 
-.cards-wrapper {
-  margin-top: 2rem;
+.card {
+  background-color: white;
+  width: 25rem;
+}
+.card .card-details {
+  margin: 1rem 1rem 1rem 1rem;
+  text-align: center;
+}
+.card .card-details.flex-col {
+  gap: 2rem;
+}
+.card .card-details h2 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+.card .card-details .tag-wrapper {
   gap: 1rem;
+  color: white;
+}
+.card .card-details .tag-wrapper .tag {
+  padding: 5px 15px;
+  color: black;
+  border: 1px solid black;
+  width: 5.5rem;
+  border-radius: 2px;
+  font-weight: 300;
+  font-size: 1rem;
+}
+.card .card-details .tag-wrapper .tag:hover {
+  cursor: context-menu;
+}
+.card .card-details .price {
+  font-size: 1.5rem;
+}
+.card .card-details .buttons-wrapper.flex-row {
+  gap: 0.5rem;
+}
+.card .card-details .buttons-wrapper button {
+  width: 48%;
+  height: 2rem;
+  border: none;
+  border-radius: 4px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 15px;
+}
+.card .product-image {
+  width: 20rem;
+  height: 25rem;
 }
 
+@media screen and (max-width: 375px) {
+  .card .card-details .buttons-wrapper button {
+    width: 35%;
+  }
+}
 div.searchbar {
   background-color: #bfbfbf;
   height: 3rem;
@@ -339,61 +477,11 @@ input.searchbar:focus {
   cursor: pointer;
 }
 
-.card {
-  background-color: white;
-  width: 25rem;
-}
-.card .card-details {
-  margin: 1rem 1rem 1rem 1rem;
-  text-align: center;
-}
-.card .card-details.flex-col {
-  gap: 2rem;
-}
-.card .card-details h2 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-.card .card-details .tag-wrapper {
+.cards-wrapper {
+  margin-top: 2rem;
   gap: 1rem;
-  color: white;
-}
-.card .card-details .tag-wrapper .tag {
-  padding: 5px 15px;
-  color: black;
-  border: 1px solid black;
-  width: 5.5rem;
-  border-radius: 2px;
-  font-weight: 300;
-  font-size: 1rem;
-}
-.card .card-details .tag-wrapper .tag:hover {
-  cursor: context-menu;
-}
-.card .card-details .price {
-  font-size: 1.5rem;
-}
-.card .card-details .buttons-wrapper.flex-row {
-  gap: 0.5rem;
-}
-.card .card-details .buttons-wrapper button {
-  width: 48%;
-  height: 2rem;
-  border: none;
-  border-radius: 4px;
-  font-family: "Work Sans", sans-serif;
-  font-size: 15px;
-}
-.card .product-image {
-  width: 20rem;
-  height: 25rem;
 }
 
-@media screen and (max-width: 375px) {
-  .card .card-details .buttons-wrapper button {
-    width: 35%;
-  }
-}
 .not-found {
   text-align: center;
 }
@@ -496,9 +584,6 @@ input.searchbar:focus {
   text-transform: capitalize;
   text-align: center;
 }
-.form .form-card .form-control.password {
-  padding-bottom: 1.5rem;
-}
 .form .form-card .form-control label {
   font-size: 0.75rem;
   font-weight: 500;
@@ -516,6 +601,7 @@ input.searchbar:focus {
   border-color: #0071b3;
 }
 .form .form-card button {
+  margin-top: 1.5rem;
   width: 100%;
   line-height: 1.5;
   font-size: 1rem;
@@ -671,6 +757,10 @@ input.searchbar:focus {
   border: 1px solid #bababa;
   border-radius: 4px;
   gap: 1.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .product-page .purchase-box span {
   font-size: 0.8rem;
@@ -799,4 +889,49 @@ input.searchbar:focus {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.spinner div {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 15px solid transparent;
+  border-top-color: #0071b3;
+  border-radius: 50%;
+  -webkit-animation: spin 1.2s linear infinite;
+          animation: spin 1.2s linear infinite;
+}
+.spinner div:nth-child(2) {
+  border: 15px solid transparent;
+  border-bottom-color: #0071b3;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }/*# sourceMappingURL=App.css.map */
