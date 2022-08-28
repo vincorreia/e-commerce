@@ -4,6 +4,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import NotFound from "../../Misc/NotFound/NotFound";
 import CreateProduct from "../../Admin/CreateProduct";
 import { useSelector } from "react-redux";
+import Spinner from "../../Misc/Spinner/Spinner";
 
 export default function ProductContainer({ query }) {
   const [products, setProducts] = useState(null);
@@ -70,7 +71,7 @@ export default function ProductContainer({ query }) {
             {isStaff && <CreateProduct />}
           </>
         ) : loading ? (
-          <h1 style={{ color: "white" }}>Loading...</h1>
+          <Spinner />
         ) : (
           <NotFound />
         )}

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PurchaseBox from "./Purchase Box/PurchaseBox";
 import ProductDetails from "./Product Details/ProductDetails";
+import Spinner from "../Misc/Spinner/Spinner";
 
 function ProductPage() {
   const params = Number(useParams().id) || false;
@@ -58,7 +59,7 @@ function ProductPage() {
             <PurchaseBox product={product} />
           </>
         ) : (
-          <h1>Loading...</h1>
+          <Spinner />
         )}
       </div>
     </div>

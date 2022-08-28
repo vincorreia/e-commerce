@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import userService from "../../services/user.service";
 import useRefreshToken from "../../hooks/useRefreshToken";
+import Spinner from "../Misc/Spinner/Spinner";
 
 function Profile() {
   const [loading, setLoading] = useState(true);
@@ -38,7 +39,7 @@ function Profile() {
     <div className="sectionContainer flex-row center">
       <div className="profile flex-row wrap space-around">
         {loading ? (
-          <h1>"Loading..."</h1>
+          <Spinner />
         ) : (
           <>
             <div className="profile-details">
