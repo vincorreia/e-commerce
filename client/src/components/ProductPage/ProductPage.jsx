@@ -3,11 +3,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import formatPrice from "../../function/formatPrice";
 import Rating from "../Reviews and Rating/Rating";
-import { useUpdateCart } from "../../store/CartContext";
 import CreateReview from "../Reviews and Rating/CreateReview";
 import Reviews from "../Reviews and Rating/Reviews";
 import { useSelector } from "react-redux";
-
+import { cartServices } from "../../services/cart.service";
 
 function ProductPage() {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
@@ -17,7 +16,6 @@ function ProductPage() {
         rating: 5,
         reviews: []
     })
-    const updateCart = useUpdateCart()
 
     useEffect(() => {
         if(params){
@@ -86,7 +84,7 @@ function ProductPage() {
                         { product.stock > 0 ? 
                         <>
                             <button className="primary" onClick={() => {
-                        updateCart("inc", product)
+                        cartServices.addToCart(product)
                     }}>Add to Cart</button>
                             <button className="allow">Buy now</button>
                         </>

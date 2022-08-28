@@ -5,13 +5,11 @@ import NotFound from "../NotFound";
 import CreateProduct from "../Admin/CreateProduct";
 import { useSelector } from "react-redux";
 
-export default function ProductCards(props){
+export default function ProductCards({ query }){
     const [products, setProducts] = useState(null)
     const [filteredResults, setFilteredResults] = useState(products);
     const [loading, setIsLoading] = useState(true)
-    const auth = useSelector(state => state.auth)
-    const query = props.query
-    const admin = auth.isStaff
+    const { isStaff } = useSelector(state => state.auth)
 
     useEffect(() =>{
         if(products){
@@ -69,7 +67,7 @@ export default function ProductCards(props){
                 {filteredResults.map((product, i) => {
                     return <ProductCard product={product} key={i}/>
                     })}
-                {admin && <CreateProduct />}
+                {isStaff && <CreateProduct />}
             </>
                 : loading ? <h1 style={{color: "white"}}>Loading...</h1> : <NotFound />
             }

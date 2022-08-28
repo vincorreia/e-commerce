@@ -1,5 +1,7 @@
+import store from "../store/store";
+
 export default function authHeader(payload) {
-    const user = JSON.parse(localStorage.getItem("user"))
+    const user = store.getState().auth
     
     const header = {
         "x-auth-token": user.accessToken,

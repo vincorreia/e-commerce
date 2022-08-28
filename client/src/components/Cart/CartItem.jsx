@@ -1,12 +1,8 @@
-import { useUpdateCart } from "../../store/CartContext"
-
-
-
+import { cartServices } from "../../services/cart.service";
 
 export default function CartItem({item}) {
 
     const usdFormat = Intl.NumberFormat('en-IN').format /* this will format a number to the USD standards */
-    const updateCart = useUpdateCart();
 
     return (
     <div className="cart-item flex-row space-between">
@@ -17,10 +13,10 @@ export default function CartItem({item}) {
                 <p>Amount: {item.amount}</p>
                 <div className="buttons-wrapper flex-row center">
                     <button className="allow" onClick={() => {
-                        updateCart("inc", item);
+                        cartServices.addToCart(item);
                     }}>Add</button>
                     <button className="simple" onClick={() => {
-                        updateCart("dec", item);
+                        cartServices.removeFromCart(item);
                     }}>Remove one</button>
                 </div>
             </div>

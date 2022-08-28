@@ -1,20 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import { useCart } from "../../store/CartContext";
 import { useSelector } from "react-redux";
 
 export default function Nav(){
 
-    const cart = useCart()
-    const [amount, setAmount] = useState(0)
+    const cart = useSelector(state => state.cart)
     const auth = useSelector(state => state.auth)
     const isAuthenticated = auth.isAuthenticated
-
-    useEffect(() => {
-        let mutateAmount = 0;
-        Object.entries(cart).forEach(entry => {mutateAmount += entry[1].amount});
-        setAmount(mutateAmount);
-    }, [cart])
 
     return (
     <nav className="flex-row space-around nav">
@@ -31,7 +23,7 @@ export default function Nav(){
                     <NavLink className="nav-link" to="/signup">SIGN UP</NavLink>
                 </>
                 }
-                <NavLink className="nav-link" to="/cart">CART <span className={amount > 0 ? "amount" : "amount hidden"}>{amount}</span></NavLink>
+                <NavLink className="nav-link" to="/cart">CART <span className={cart.length > 0 ? "amount" : "amount hidden"}>{cart.length}</span></NavLink>
             </div>
     </nav>)
 }

@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import { useUpdateCart } from "../../store/CartContext";
 import { useNavigate } from "react-router-dom";
 import formatPrice from "../../function/formatPrice";
 import useRefreshToken from "../../hooks/useRefreshToken";
 import productService from "../../services/product.service";
 import { useSelector } from "react-redux";
+import { cartServices } from "../../services/cart.service";
 
-export default function ProductCard(props){
-    const product = props.product;
+export default function ProductCard({ product }){
     const refreshToken = useRefreshToken();
-    const updateCart = useUpdateCart();
     const navigate = useNavigate();
-    const auth = useSelector(state => state.auth);
-    const admin = auth.isStaff;
+    const { isStaff } = useSelector(state => state.auth);
     const [err, setErr] = useState(null)
     return(
         <div className="flex-col center card">
@@ -34,13 +31,13 @@ export default function ProductCard(props){
                     }}>More Details</button>
                     {product.stock > 0 ? 
                     <button className="allow" onClick={() => {
-                        updateCart("inc", product)
+                        cartServices.addToCart(product)
                     }}>Add to Cart</button>
                     :
                     <button className="sold-out">Sold Out</button>
                     }
 
-                    {admin &&
+                    {isStaff &&
                     <>                  
                         <button className="primary" onClick={() => {
                             navigate("/products/" + product.id + "/update")

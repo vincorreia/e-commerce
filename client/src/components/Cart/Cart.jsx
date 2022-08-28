@@ -1,13 +1,17 @@
 import React from "react";
-import { useCart } from "../../store/CartContext";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import NotFound from "../NotFound";
 import CartItem from "./CartItem";
 
+
 export default function Cart(){
 
-    const cart = useCart()
-    const cartItems = Object.entries(cart)
+    const cart = useSelector(state => state.cart)
+    const cartItems = Object.entries(cart.items)
     const totalPrice = cartItems.map(item => item[1].price * item[1].amount).reduce((sum, num) => sum + num, 0);
+
+    useEffect(() => {console.log(cartItems)}, [])
     return (
     <div className="sectionContainer flex-row center">
         <div className="flex-col cart-wrapper">

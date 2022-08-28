@@ -3,10 +3,10 @@ import Nav from "./components/Nav/Nav"
 import Home from './components/Home/Home';
 import Store from "./components/Store (Products)/Store"
 import Cart from "./components/Cart/Cart"
-import CartProvider from './store/CartContext';
 import Layout from './components/Layout';
 import { useEffect } from 'react';
 import authService from './services/auth.service';
+import { cartServices } from './services/cart.service';
 import {Routes, Route, useLocation} from "react-router-dom"
 import Profile from './components/Profile/Profile';
 import ProductPage from './components/ProductPage/ProductPage';
@@ -15,7 +15,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import { useDispatch } from 'react-redux';
 import { authActions } from './store/slices/authSlice';
-
+import { cartActions } from './store/slices/cartSlice';
 
 function App() {
   let location = useLocation().pathname;
@@ -28,13 +28,22 @@ function App() {
   
   useEffect(() => {
     const user = authService.getStorageUser();
-    if (user.accessToken.length) {
-        dispatch(authActions.login(user));
+    const cart = cartServices.getStorageCart();
+    try {
+        if (user.accessToken.length) {
+          dispatch(authActions.login(user));
+      }
     }
-    }, []);
+    catch {}
+    try {
+      if (cart.length){
+        dispatch(cartActions.setCart(cart))
+      }
+    }
+    catch {}
+    }, [dispatch]);
   
   return (
-      <CartProvider>
         <div className={"App " + location}>
           <main className='main'>
             <Nav />
@@ -52,7 +61,6 @@ function App() {
               </Routes>
           </main>
         </div>
-      </CartProvider>
   );
 }
 
