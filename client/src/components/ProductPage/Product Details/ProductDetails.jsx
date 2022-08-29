@@ -1,8 +1,9 @@
 import Rating from "../../Reviews&Rating/Rating";
 import Reviews from "../../Reviews&Rating/Reviews";
-import formatPrice from "../../../function/formatPrice";
 import CreateReview from "../../Reviews&Rating/CreateReview";
 import { useSelector } from "react-redux";
+import PriceTag from "../Misc/PriceTag/PriceTag";
+
 function ProductDetails({ product, reviews, params }) {
   const { isAuthenticated } = useSelector((state) => state.auth);
   return (
@@ -16,11 +17,7 @@ function ProductDetails({ product, reviews, params }) {
         ))}
       </div>
       <hr className="separator" />
-      <h2 className="price">
-        <span className="sign">US$</span>
-        {formatPrice(product.price)}
-        <span className="cents">00</span>
-      </h2>
+      <PriceTag price={product.price} />
       <div className="flex-row align-end">
         <Rating preset={reviews.rating} />
         <p className="rating-p">{reviews.rating}/5</p>

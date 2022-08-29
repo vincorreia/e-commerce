@@ -18,7 +18,7 @@ router.get("/", authToken, async(req, res) => {
     }
 })
 
-router.post("/", authToken, async(req, res) => {
+router.post("/create", authToken, async(req, res) => {
     const userId = req.user.id;
 
     const newPurchase = {
@@ -26,6 +26,8 @@ router.post("/", authToken, async(req, res) => {
         items: req.body.items,
         price: req.body.price
     }
+
+    res.json(newPurchase);
 })
 
 

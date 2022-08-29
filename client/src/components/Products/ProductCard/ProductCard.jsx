@@ -4,7 +4,8 @@ import formatPrice from "../../../function/formatPrice";
 import useRefreshToken from "../../../hooks/useRefreshToken";
 import productService from "../../../services/product.service";
 import { useSelector } from "react-redux";
-import { cartServices } from "../../../services/cart.service";
+import ButtonAddToCart from "../../Misc/Buttons/ButtonAddToCart";
+import ButtonSoldOut from "../../Misc/Buttons/ButtonSoldOut";
 
 export default function ProductCard({ product }) {
   const refreshToken = useRefreshToken();
@@ -29,7 +30,7 @@ export default function ProductCard({ product }) {
           })}
         </div>
         <span className="price">${formatPrice(product.price)}.00</span>
-        <div className="buttons-wrapper flex-row center wrap">
+        <div className="button-wrapper flex-row center wrap">
           <button
             className="dark"
             onClick={() => {
@@ -39,16 +40,9 @@ export default function ProductCard({ product }) {
             More Details
           </button>
           {product.stock > 0 ? (
-            <button
-              className="allow"
-              onClick={() => {
-                cartServices.addToCart(product);
-              }}
-            >
-              Add to Cart
-            </button>
+            <ButtonAddToCart product={product} color="allow" />
           ) : (
-            <button className="sold-out">Sold Out</button>
+            <ButtonSoldOut />
           )}
 
           {isStaff && (

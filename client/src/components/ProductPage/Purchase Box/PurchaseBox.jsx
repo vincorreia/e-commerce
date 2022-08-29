@@ -1,39 +1,31 @@
-import formatPrice from "../../../function/formatPrice";
-import { cartServices } from "../../../services/cart.service";
+import ButtonAddToCart from "../../Misc/Buttons/ButtonAddToCart";
+import ButtonBuyNow from "../../Misc/Buttons/ButtonBuyNow";
+import ButtonSoldOut from "../../Misc/Buttons/ButtonSoldOut";
+import PriceTag from "../Misc/PriceTag/PriceTag";
 
 function PurchaseBox({ product }) {
+  const stockMessage =
+    product.stock > 10
+      ? "In stock"
+      : product.stock === 0
+      ? "Sold out!"
+      : "Hurry up! Only " + product.stock + " left!";
+
   return (
     <section className="purchase-box flex-col wrap">
-      <span className="price">
-        <span className="sign">US$</span>
-        {formatPrice(product.price)}
-        <span className="cents">00</span>
-      </span>
+      <PriceTag price={product.price} />
       <span>
         Purchase now and receive <strong>in the next 24 hours!</strong>
       </span>
-      <span className={product.stock > 10 ? "allow" : "deny"}>
-        {product.stock > 10
-          ? "In stock"
-          : product.stock === 0
-          ? "Sold out!"
-          : "Hurry up! Only " + product.stock + " left!"}
-      </span>
+      <span className={product.stock > 10 ? "allow" : "deny"}>{stockMessage}</span>
       <div className="button-wrapper flex-col">
-        {product.stock > 0 ? (
+        {product.stock ? (
           <>
-            <button
-              className="primary"
-              onClick={() => {
-                cartServices.addToCart(product);
-              }}
-            >
-              Add to Cart
-            </button>
-            <button className="allow">Buy now</button>
+            <ButtonAddToCart product={product} color="primary" />
+            <ButtonBuyNow items={[product]} price={product.price} color="allow" />
           </>
         ) : (
-          <button className="sold-out">Sold Out</button>
+          <ButtonSoldOut />
         )}
       </div>
       <span>
