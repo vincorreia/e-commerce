@@ -1,6 +1,6 @@
-function Spinner() {
+function Spinner({ size = "default" }) {
     return ( 
-        <div className="spinner">
+        <div className={"spinner " + size}>
             <div />
             <div />
         </div>

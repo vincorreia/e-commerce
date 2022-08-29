@@ -1,56 +1,25 @@
-import { useEffect, useState, useRef } from "react";
-import userService from "../../services/user.service";
+import { useEffect, useState } from "react";
 import useRefreshToken from "../../hooks/useRefreshToken";
-import Spinner from "../Misc/Spinner/Spinner";
+import UserReviews from "./User Reviews/UserReviews";
+import UserDetails from "./User Details/UserDetails";
+import UserPurchases from "./User Purchases/UserPurchases";
 
 function Profile() {
-  const [loading, setLoading] = useState(true);
   const [refreshed, setRefreshed] = useState(false);
   const refreshToken = useRefreshToken();
-  const [user, setUser] = useState({});
-  const userRef = useRef({});
+
   useEffect(() => {
     refreshToken().then(() => {
       setRefreshed(true);
     });
-  }, [refreshToken]);
-
-  useEffect(() => {
-    if (refreshed) {
-      userService.getUser().then((data) => {
-        userRef.current = data.data;
-        setUser(data.data);
-      });
-
-      userService.getUserPurchases().then((purchases) => {
-        userRef.current = { ...userRef.current, purchases: purchases.data };
-        setUser({ ...userRef.current, purchases: purchases.data });
-      });
-
-      userService.getUserReviews().then((reviews) => {
-        userRef.current = { ...userRef.current, reviews: reviews.data };
-        setUser({ ...userRef.current, reviews: reviews.data });
-        setLoading(false);
-      });
-    }
-  }, [refreshed]);
+  }, []);
 
   return (
     <div className="sectionContainer flex-row center">
       <div className="profile flex-row wrap space-around">
-        {loading ? (
-          <Spinner />
-        ) : (
-          <>
-            <div className="profile-details">
-              <h1 className="">{user.name}</h1>
-              <h2>{user.email}</h2>
-            </div>
-            <div>
-              <h2>Your recent purchases</h2>
-            </div>
-          </>
-        )}
+          <UserDetails refreshed={refreshed}/>
+          <UserReviews refreshed={refreshed}/>
+          <UserPurchases refreshed={refreshed}/>
       </div>
     </div>
   );
