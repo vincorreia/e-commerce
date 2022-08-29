@@ -132,7 +132,7 @@ $allow: rgb(58, 179, 21);
 $dark: black;
 $deny: darken(red, 10%);
 $round-border: 0.25rem;
-$border: darken(white, 75%) solid 1px;
+$border: solid 1.5px darken(#D3D3D3, 10%);
 
 @mixin grid($col, $row) {
   display: grid;
@@ -247,6 +247,7 @@ p {
     }
 
     .sectionContainer {
+      height: auto;
       min-height: 0;
     }
   }
@@ -342,3 +343,4 @@ p {
 @import "./components/Reviews&Rating/CreateReviews";
 @import "./components/Reviews&Rating/Reviews";
 @import "./components/Misc/Spinner/Spinner";
+@import "./components/Misc/PriceTag/PriceTag";

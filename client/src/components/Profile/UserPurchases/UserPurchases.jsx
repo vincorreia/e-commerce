@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import userService from "../../../services/user.service";
 import Spinner from "../../Misc/Spinner/Spinner";
-import NotFound from "../../Misc/NotFound/NotFound"
+import NotFound from "../../Misc/NotFound/NotFound";
 import PurchaseList from "./PurchaseList/PurchaseList";
 
 function UserPurchases({ refreshed }) {
@@ -10,7 +10,6 @@ function UserPurchases({ refreshed }) {
   useEffect(() => {
     if (refreshed) {
       userService.getUserPurchases().then((response) => {
-        console.log(response.data)
         setPurchases(response.data);
         setLoading(false);
       });
@@ -23,7 +22,11 @@ function UserPurchases({ refreshed }) {
       ) : (
         <>
           <h2 className="profile-section-title">Your Purchases</h2>
-          {purchases.length ? <PurchaseList purchases={purchases} /> : <NotFound page="profile" />}
+          {purchases.length ? (
+            <PurchaseList purchases={purchases} />
+          ) : (
+            <NotFound page="profile" />
+          )}
         </>
       )}
     </section>

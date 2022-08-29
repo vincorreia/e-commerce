@@ -24,7 +24,7 @@ function UserReviews({ refreshed }) {
       ) : (
         <>
         <h2 className="profile-section-title">Your Reviews</h2>
-        {reviews.length ? <Reviews reviews={reviews} /> : <NotFound page="profile"/>}
+        {reviews.length ? <Reviews reviews={reviews} width="50%" height="50%"/> : <NotFound page="profile"/>}
         </>
       )}
     </section>

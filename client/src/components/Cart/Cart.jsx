@@ -24,7 +24,7 @@ export default function Cart() {
           )}
         </div>
         <div className="checkout-details flex-row space-between">
-          <ButtonBuyNow items={cartItems} price={totalPrice} color="allow" />
+          <ButtonBuyNow items={cartItems} price={totalPrice} color="allow" clear={true} />
           <p>Total price: {cartItems ? "$" + totalPrice + ".00" : "0.00"}</p>
         </div>
       </div>

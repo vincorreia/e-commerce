@@ -1,7 +1,7 @@
 import ButtonAddToCart from "../../Misc/Buttons/ButtonAddToCart";
 import ButtonBuyNow from "../../Misc/Buttons/ButtonBuyNow";
 import ButtonSoldOut from "../../Misc/Buttons/ButtonSoldOut";
-import PriceTag from "../Misc/PriceTag/PriceTag";
+import PriceTag from "../../Misc/PriceTag/PriceTag";
 
 function PurchaseBox({ product }) {
   const stockMessage =

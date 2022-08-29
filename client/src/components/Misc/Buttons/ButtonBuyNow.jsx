@@ -1,6 +1,7 @@
 import purchaseService from "../../../services/purchase.service";
+import { cartServices } from "../../../services/cart.service";
 
-function ButtonBuyNow({ items, color, price }) {
+function ButtonBuyNow({ items, color, price, clear = false }) {
   
   const payload = {
     items: items.map(item => {
@@ -18,7 +19,11 @@ function ButtonBuyNow({ items, color, price }) {
   }
 
   const handleClick = () => {
-    purchaseService.createPurchase(payload);
+    purchaseService.createPurchase(payload).then(() => {
+      if(clear){
+        cartServices.clearCart()
+      }
+    });
   };
 
   return (

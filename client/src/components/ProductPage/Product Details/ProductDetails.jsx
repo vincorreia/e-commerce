@@ -2,7 +2,7 @@ import Rating from "../../Reviews&Rating/Rating";
 import Reviews from "../../Reviews&Rating/Reviews";
 import CreateReview from "../../Reviews&Rating/CreateReview";
 import { useSelector } from "react-redux";
-import PriceTag from "../Misc/PriceTag/PriceTag";
+import PriceTag from "../../Misc/PriceTag/PriceTag";
 
 function ProductDetails({ product, reviews, params }) {
   const { isAuthenticated } = useSelector((state) => state.auth);

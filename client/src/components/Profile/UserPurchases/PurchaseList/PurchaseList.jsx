@@ -3,11 +3,11 @@ import PurchaseItem from "./PurchaseItem/PurchaseItem";
 function PurchaseList( { purchases } ) {
 
     return ( 
-        <div>
+        <ul className="purchase-list">
             {purchases.map(purchase => {
                 return <PurchaseItem key={purchase.id} price={purchase.price} items={purchase.items} id={purchase.id} />
             })}
-        </div>
+        </ul>
      );
 }
 

@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import Rating from "./Rating";
 
-function Reviews({ reviews }) {
+function Reviews({ reviews, width = "90%", height = "10rem" }) {
   const [current, setCurrent] = useState(0);
   const length = reviews.length;
   const reviewRef = useRef();
@@ -23,7 +23,7 @@ function Reviews({ reviews }) {
   }
 
   return (
-    <section className="reviews flex-row">
+    <section className="reviews flex-row" style={{width: width, height: height}}>
       <FaArrowAltCircleLeft className="left-arrow" onClick={previousReview} />
       <FaArrowAltCircleRight className="right-arrow" onClick={nextReview} />
       {reviews.map((review, index) => {

@@ -17,6 +17,11 @@ const removeFromCart = (item) => {
   localStorage.setItem("cart", JSON.stringify(newCart));
 };
 
+const clearCart = () => {
+  store.dispatch(cartActions.clearCart())
+  localStorage.removeItem("cart")
+}
+
 const getStorageCart = () => {
   return JSON.parse(localStorage.getItem("cart"));
 };
@@ -24,4 +29,5 @@ export const cartServices = {
   removeFromCart,
   addToCart,
   getStorageCart,
+  clearCart
 };

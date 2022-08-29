@@ -3,7 +3,8 @@
         width: $width;
         height: $height;
         position: relative;
-
+        margin-top: auto;
+        margin-bottom: auto;
         div {
             box-sizing: border-box;
             position: absolute;

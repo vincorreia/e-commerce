@@ -227,6 +227,7 @@ p.error {
   flex-wrap: wrap;
 }
 .App.home .sectionContainer {
+  height: auto;
   min-height: 0;
 }
 
@@ -686,6 +687,8 @@ input.searchbar:focus {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
+  height: calc(100vh - 6.1rem);
+  overflow-y: hidden;
   width: 100%;
   min-width: 27.5rem;
   background-color: white;
@@ -693,25 +696,55 @@ input.searchbar:focus {
   border-radius: 4px;
 }
 .sectionContainer .profile-page section.profile-section {
-  padding: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3rem;
 }
 .sectionContainer .profile-page section.profile-section .profile-section-title {
+  padding-top: 5rem;
   font-size: 2rem;
 }
 
 .profile-details {
   grid-column: span 3;
   grid-row: 1;
-  border-bottom: #404040 solid 1px;
+  border-bottom: solid 1.5px #bababa;
+}
+.profile-details .profile-details-info {
+  padding-bottom: 5rem;
 }
 
 .profile-purchases {
   grid-row: span 3;
-  border-left: #404040 solid 1px;
+  border-left: solid 1.5px #bababa;
+}
+
+.purchase-list {
+  width: 100%;
+  overflow-y: scroll;
+  border-top: solid 1.5px #bababa;
+}
+
+.purchase-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  padding: 2rem 5rem;
+  border-bottom: solid 1.5px #bababa;
+}
+.purchase-item:last-child {
+  border-bottom: 0;
+}
+.purchase-item .price {
+  text-align: end;
+}
+.purchase-item .purchase-item-image-wrapper {
+  grid-column: span 2;
+  gap: 1rem;
+}
+.purchase-item .purchase-item-image {
+  width: 5rem;
 }
 
 .profile-reviews {
@@ -726,19 +759,6 @@ input.searchbar:focus {
   padding-bottom: 2rem;
   background-color: white;
   border-radius: 4px;
-}
-.product-page .price {
-  font-size: 1.75rem;
-}
-.product-page .price .cents {
-  position: relative;
-  top: -0.75em;
-  font-size: 0.75rem;
-}
-.product-page .price .sign {
-  font-size: 0.75rem;
-  position: relative;
-  top: -0.75em;
 }
 .product-page .product-figure {
   width: 40%;
@@ -851,8 +871,6 @@ input.searchbar:focus {
   border: solid 1.5px #bababa;
   position: relative;
   align-self: center;
-  width: 90%;
-  height: 10rem;
   border-radius: 4px;
 }
 .reviews .review {
@@ -915,6 +933,8 @@ input.searchbar:focus {
   width: 100px;
   height: 100px;
   position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .spinner.default div {
   box-sizing: border-box;
@@ -935,6 +955,8 @@ input.searchbar:focus {
   width: 50px;
   height: 50px;
   position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .spinner.small div {
   box-sizing: border-box;
@@ -974,4 +996,17 @@ input.searchbar:focus {
   100% {
     transform: rotate(360deg);
   }
+}
+.price {
+  font-size: 1.75rem;
+}
+.price .cents {
+  position: relative;
+  top: -0.75em;
+  font-size: 0.75rem;
+}
+.price .sign {
+  font-size: 0.75rem;
+  position: relative;
+  top: -0.75em;
 }/*# sourceMappingURL=App.css.map */

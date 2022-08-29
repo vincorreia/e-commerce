@@ -1,0 +1,7 @@
+.purchase-list {
+    width: 100%;
+    overflow-y: scroll;
+    border-top: $border;
+}
+
+@import "./PurchaseItem/PurchaseItem";

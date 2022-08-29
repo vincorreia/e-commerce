@@ -20,7 +20,7 @@ function UserDetails({ refreshed }) {
         <Spinner size="small" />
       ) : (
         <>
-          <div>
+          <div className="profile-details-info">
             <h2 className="profile-section-title">{details.name}</h2>
             <h3>{details.email}</h3>
           </div>
