@@ -217,9 +217,13 @@ p.error {
   justify-content: center;
   flex-wrap: wrap;
 }
+.App.home .sectionContainer {
+  min-height: 0;
+}
 
 .sectionContainer {
   position: relative;
+  min-height: calc(100vh - 6rem);
 }
 
 .flex-row {
@@ -493,6 +497,10 @@ input.searchbar:focus {
   font-size: 3rem;
   color: #0071b3;
 }
+.not-found.profile h1 {
+  font-size: 1.5rem;
+  color: black;
+}
 
 .cart-wrapper {
   align-items: center;
@@ -680,16 +688,43 @@ input.searchbar:focus {
   display: none;
 }
 
-.sectionContainer .profile {
-  align-items: center;
-  padding: 4rem 3rem;
-  width: 60%;
+.sectionContainer .profile-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  width: 100%;
   min-width: 27.5rem;
   background-color: white;
   border: 1px solid white;
   border-radius: 4px;
-  gap: 1rem;
 }
+.sectionContainer .profile-page section.profile-section {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+.sectionContainer .profile-page section.profile-section .profile-section-title {
+  font-size: 2rem;
+}
+
+.profile-details {
+  grid-column: span 3;
+  grid-row: 1;
+  border-bottom: #404040 solid 1px;
+}
+
+.profile-purchases {
+  grid-row: span 3;
+  border-left: #404040 solid 1px;
+}
+
+.profile-reviews {
+  grid-column: span 2;
+  grid-row: span 3;
+}
+
 .product-page {
   width: 70%;
   min-width: 25rem;
@@ -891,12 +926,32 @@ input.searchbar:focus {
           user-select: none;
 }
 
-.spinner {
+.spinner.default {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.spinner.default div {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 15px solid transparent;
+  border-top-color: #0071b3;
+  border-radius: 50%;
+  -webkit-animation: spin 1.2s linear infinite;
+          animation: spin 1.2s linear infinite;
+}
+.spinner.default div:nth-child(2) {
+  border: 15px solid transparent;
+  border-bottom-color: #0071b3;
+}
+.spinner.small {
   width: 50px;
   height: 50px;
   position: relative;
 }
-.spinner div {
+.spinner.small div {
   box-sizing: border-box;
   position: absolute;
   width: 100%;
@@ -907,7 +962,7 @@ input.searchbar:focus {
   -webkit-animation: spin 1.2s linear infinite;
           animation: spin 1.2s linear infinite;
 }
-.spinner div:nth-child(2) {
+.spinner.small div:nth-child(2) {
   border: 7.5px solid transparent;
   border-bottom-color: #0071b3;
 }

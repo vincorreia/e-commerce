@@ -134,6 +134,13 @@ $deny: darken(red, 10%);
 $round-border: 0.25rem;
 $border: darken(white, 75%) solid 1px;
 
+@mixin grid($col, $row) {
+  display: grid;
+  grid-template-columns: $col;
+  grid-template-rows: $row;
+}
+
+
 body {
   font-family: "Work Sans", sans-serif;
 }
@@ -230,11 +237,16 @@ p {
       justify-content: center;
       flex-wrap: wrap;
     }
+
+    .sectionContainer {
+      min-height: 0;
+    }
   }
 }
 
 .sectionContainer {
   position: relative;
+  min-height: calc(100vh - 6rem);
 }
 
 .flex-row {
@@ -308,9 +320,9 @@ p {
 
 @import "./components/Nav/Nav";
 @import "./components/Home/Home";
-@import "./components/Store\ \(Products\)/ProductCard/ProductCard";
-@import "./components/Store\ \(Products\)/SearchBar/SearchBar";
-@import "./components/Store\ \(Products\)/ProductContainer/ProductContainer";
+@import "./components/Products/ProductCard/ProductCard";
+@import "./components/Products/SearchBar/SearchBar";
+@import "./components/Products/ProductContainer/ProductContainer";
 @import "./components/Misc/NotFound/NotFound";
 @import "./components/Cart/Cart";
 @import "./components/Cart/CartItem";
@@ -318,7 +330,7 @@ p {
 @import "./components/Admin/CreateProduct";
 @import "./components/Profile/Profile";
 @import "./components/ProductPage/ProductPage";
-@import "./components/Reviews\ and\ Rating/Rating";
-@import "./components/Reviews\ and\ Rating/CreateReviews";
-@import "./components/Reviews\ and\ Rating/Reviews";
+@import "./components/Reviews&Rating/Rating";
+@import "./components/Reviews&Rating/CreateReviews";
+@import "./components/Reviews&Rating/Reviews";
 @import "./components/Misc/Spinner/Spinner";

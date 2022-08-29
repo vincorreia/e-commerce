@@ -15,16 +15,18 @@ function UserDetails({ refreshed }) {
     }
   }, [refreshed]);
   return (
-    <div className="profile-details">
+    <section className="profile-details profile-section">
       {loading ? (
         <Spinner size="small" />
       ) : (
         <>
-          <h1 className="">{details.name}</h1>
-          <h2>{details.email}</h2>
+          <div>
+            <h2 className="profile-section-title">{details.name}</h2>
+            <h3>{details.email}</h3>
+          </div>
         </>
       )}
-    </div>
+    </section>
   );
 }
 

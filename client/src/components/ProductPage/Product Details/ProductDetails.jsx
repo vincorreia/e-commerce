@@ -1,7 +1,7 @@
-import Rating from "../../Reviews and Rating/Rating";
-import Reviews from "../../Reviews and Rating/Reviews";
+import Rating from "../../Reviews&Rating/Rating";
+import Reviews from "../../Reviews&Rating/Reviews";
 import formatPrice from "../../../function/formatPrice";
-import CreateReview from "../../Reviews and Rating/CreateReview";
+import CreateReview from "../../Reviews&Rating/CreateReview";
 import { useSelector } from "react-redux";
 function ProductDetails({ product, reviews, params }) {
   const { isAuthenticated } = useSelector((state) => state.auth);

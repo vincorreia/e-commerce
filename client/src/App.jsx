@@ -1,7 +1,7 @@
 import "./App.css";
 import Nav from "./components/Nav/Nav";
 import Home from "./components/Home/Home";
-import Store from "./components/Store (Products)/Store";
+import Store from "./components/Products/Store";
 import Cart from "./components/Cart/Cart";
 import Layout from "./components/Layout";
 import { useEffect } from "react";

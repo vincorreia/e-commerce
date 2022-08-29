@@ -1,17 +1,27 @@
 .sectionContainer{
-    .profile{
-        align-items: center;
-        padding: 4rem 3rem;
-        width: 60%;
+    .profile-page{
+        @include grid($col: 1fr 1fr 1fr, $row: auto);
+        width: 100%;
         min-width: 27.5rem;
         background-color: white;
         border: 1px solid white;
         border-radius: 4px;
-        gap: 1rem;
-
-        .profile-details{
+        section {
+            &.profile-section{
+                padding: 5rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 3rem;
+                .profile-section-title{
+                    font-size: 2rem;
+                }
+            }
 
         }
     }
-
 }
+
+@import "./UserDetails/UserDetails";
+@import "./UserPurchases/UserPurchases";
+@import "./UserReviews/UserReviews";

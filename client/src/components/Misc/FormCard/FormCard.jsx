@@ -4,7 +4,7 @@ import Title from "./Title/Title";
 
 function FormCard({ fields, footer, header, func, location, buttonTxt }) {
   return (
-    <div className="sectionContainer flex-col center form">
+    <div className="sectionContainer flex-col flex-start form">
       <div className="form-card flex-col">
         <Title data={header} />
         <AuthForm

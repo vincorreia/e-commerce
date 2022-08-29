@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import useRefreshToken from "../../hooks/useRefreshToken";
-import UserReviews from "./User Reviews/UserReviews";
-import UserDetails from "./User Details/UserDetails";
-import UserPurchases from "./User Purchases/UserPurchases";
+import UserReviews from "./UserReviews/UserReviews";
+import UserDetails from "./UserDetails/UserDetails";
+import UserPurchases from "./UserPurchases/UserPurchases";
 
 function Profile() {
   const [refreshed, setRefreshed] = useState(false);
@@ -16,7 +16,7 @@ function Profile() {
 
   return (
     <div className="sectionContainer flex-row center">
-      <div className="profile flex-row wrap space-around">
+      <div className="profile-page">
           <UserDetails refreshed={refreshed}/>
           <UserReviews refreshed={refreshed}/>
           <UserPurchases refreshed={refreshed}/>
