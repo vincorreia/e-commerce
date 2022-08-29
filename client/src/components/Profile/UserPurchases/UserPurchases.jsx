@@ -10,6 +10,7 @@ function UserPurchases({ refreshed }) {
   useEffect(() => {
     if (refreshed) {
       userService.getUserPurchases().then((response) => {
+        console.log(response.data)
         setPurchases(response.data);
         setLoading(false);
       });

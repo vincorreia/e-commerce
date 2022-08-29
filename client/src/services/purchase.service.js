@@ -9,7 +9,7 @@ const createPurchase = (
     price: 0,
   }
 ) => {
-  axios.post(API_URL + "/create", payload, { headers: authHeader() });
+  return axios.post(API_URL + "/create", payload, { headers: authHeader() });
 };
 
 const purchaseService = {

@@ -1,9 +1,19 @@
 import purchaseService from "../../../services/purchase.service";
 
 function ButtonBuyNow({ items, color, price }) {
-
+  
   const payload = {
-    items,
+    items: items.map(item => {
+      const { id, name, price, image, amount = 1} = item;
+      const newItem = {
+        id,
+        name,
+        price,
+        image,
+        amount
+      }
+      return newItem
+    }),
     price
   }
 
