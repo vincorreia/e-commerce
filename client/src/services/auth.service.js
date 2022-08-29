@@ -56,6 +56,7 @@ const authService = {
   logout,
   getCurrentUser,
   getStorageUser,
+  authenticate
 };
 
 export default authService;

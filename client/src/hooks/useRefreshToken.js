@@ -1,33 +1,32 @@
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useDispatch, useStore } from "react-redux";
-import { authActions } from "../store/slices/authSlice";
+import authService from "../services/auth.service";
 
 function useRefreshToken() {
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
-  const store = useStore().getState();
 
   return async function refreshToken() {
-    let user = store.auth;
-    if (user.accessToken.length) {
+    const auth = JSON.parse(localStorage.getItem("user"))
+
+    if (auth.accessToken.length) {
       const header = {
-        "x-auth-token": user.refreshToken,
+        "x-auth-token": auth.refreshToken,
       };
       return await axios
         .post("/auth/token", {}, { headers: header })
         .then((response) => {
-          user = {
-            accessToken: response.data.accessToken,
-            refreshToken: user.refreshToken,
-            isStaff: user.isStaff,
+          const user = {
+            data: {
+              accessToken: response.data.accessToken,
+              refreshToken: auth.refreshToken,
+              isStaff: auth.isStaff,
+            }
           };
-          localStorage.setItem("user", JSON.stringify(user));
-          dispatch(authActions.login(user));
+          authService.authenticate(user);
         })
         .catch((err) => {
-          dispatch(authActions.logout());
+          authService.logout();
           navigate("/login", {
             state: {
               from: location,
