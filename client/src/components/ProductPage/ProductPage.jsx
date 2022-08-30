@@ -6,7 +6,7 @@ import ProductDetails from "./Product Details/ProductDetails";
 import Spinner from "../Misc/Spinner/Spinner";
 
 function ProductPage() {
-  const params = Number(useParams().id) || false;
+  const params = useParams().id || false;
   const [product, setProduct] = useState(null);
   const [reviews, setReviews] = useState({
     rating: 5,

@@ -14,7 +14,7 @@ function useRefreshToken() {
         "x-auth-token": auth.refreshToken,
       };
       return await axios
-        .post("/auth/token", {}, { headers: header })
+        .post("https://us-central1-e-commerce-api-48aac.cloudfunctions.net/app/api/auth/token", {}, { headers: header })
         .then((response) => {
           const user = {
             data: {
@@ -26,6 +26,7 @@ function useRefreshToken() {
           authService.authenticate(user);
         })
         .catch((err) => {
+          console.log(err)
           authService.logout();
           navigate("/login", {
             state: {

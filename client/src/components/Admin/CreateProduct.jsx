@@ -37,18 +37,18 @@ function CreateProduct({
       image,
       stock,
       tags: product.isCreated ? tags : tags.split(","),
-      description: product.isCreated ? description : "",
+      description: product.isCreated ? description : undefined,
       id: product.isCreated ? product.id : undefined,
     };
 
     refreshToken().then(() => {
       if (product.isCreated) {
-        productService.updateProduct(newProduct);
+        productService.updateProduct(newProduct).then(() => {window.location.reload()});
       } else {
-        productService.createProduct(newProduct);
+        productService.createProduct(newProduct).then(() => {window.location.reload()});
       }
 
-      window.location.reload();
+      
     });
   }
 

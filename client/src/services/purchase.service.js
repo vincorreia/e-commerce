@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "/purchase";
+const API_URL = "https://us-central1-e-commerce-api-48aac.cloudfunctions.net/app/api/purchase";
 
 const createPurchase = (
   payload = {

@@ -26,8 +26,7 @@ function CreateReview({ productId }) {
         content,
       };
 
-      productService.createReview(newReview, productId);
-      window.location.reload();
+      productService.createReview(newReview, productId).then(() => {window.location.reload()})
     });
   }
 

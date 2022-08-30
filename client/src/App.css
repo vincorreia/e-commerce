@@ -688,7 +688,6 @@ input.searchbar:focus {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   height: calc(100vh - 6.1rem);
-  overflow-y: hidden;
   width: 100%;
   min-width: 27.5rem;
   background-color: white;
@@ -718,6 +717,7 @@ input.searchbar:focus {
 .profile-purchases {
   grid-row: span 3;
   border-left: solid 1.5px #bababa;
+  overflow-y: hidden;
 }
 
 .purchase-list {

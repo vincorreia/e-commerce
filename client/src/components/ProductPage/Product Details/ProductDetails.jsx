@@ -23,12 +23,12 @@ function ProductDetails({ product, reviews, params }) {
         <p className="rating-p">{reviews.rating}/5</p>
       </div>
       <p className="description">{product.description}</p>
-      {reviews.reviews.length && (
+      {reviews.reviews.length ? (
         <>
           <hr className="separator" />
           <Reviews reviews={reviews.reviews} />
         </>
-      )}
+      ) : null}
       {isAuthenticated && (
         <>
           <hr className="separator" />

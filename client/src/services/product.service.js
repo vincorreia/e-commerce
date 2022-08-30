@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "/products";
+const API_URL = "https://us-central1-e-commerce-api-48aac.cloudfunctions.net/app/api/products";
 
 function createProduct(product) {
   const productJSON = { product: JSON.stringify(product) };
@@ -17,7 +17,7 @@ function getProducts() {
 }
 
 function getProductById(id) {
-  return axios.get("/products/" + id);
+  return axios.get(API_URL + "/" + id);
 }
 
 function deleteProduct(id) {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "/user";
+const API_URL = "https://us-central1-e-commerce-api-48aac.cloudfunctions.net/app/api/user";
 
 function getUser() {
   return axios.get(API_URL, { headers: authHeader() });

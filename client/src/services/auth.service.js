@@ -2,7 +2,7 @@ import axios from "axios";
 import store from "../store/store";
 import { authActions } from "../store/slices/authSlice";
 
-const API_URL = "/auth";
+const API_URL = "https://us-central1-e-commerce-api-48aac.cloudfunctions.net/app/api/auth";
 
 function signup(email, password) {
   return axios

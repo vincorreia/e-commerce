@@ -1,0 +1,20 @@
+{
+  "functions": {
+    "source": "functions"
+  },
+  "hosting": {
+    "site": "e-commerce-vincorreia",
+    "public": "client/build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

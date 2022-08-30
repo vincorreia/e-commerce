@@ -2,7 +2,6 @@
     .profile-page{
         @include grid($col: 1fr 1fr 1fr, $row: auto);
         height: calc(100vh - 6.1rem);
-        overflow-y: hidden;
         width: 100%;
         min-width: 27.5rem;
         background-color: white;
