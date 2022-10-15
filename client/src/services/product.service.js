@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "https://us-central1-e-commerce-api-48aac.cloudfunctions.net/app/api/products";
+const API_URL = process.env.REACT_APP_URL + "/api/products";
 
 function createProduct(product) {
   const productJSON = { product: JSON.stringify(product) };
@@ -49,7 +49,7 @@ function createReview(review, id) {
   });
 }
 
-const productService = {
+export const productService = {
   createProduct,
   getProducts,
   getProductById,
@@ -57,5 +57,3 @@ const productService = {
   createReview,
   deleteProduct,
 };
-
-export default productService;

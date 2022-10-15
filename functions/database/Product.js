@@ -1,5 +1,3 @@
-const db = require("./database");
+import db from "./database";
 
-const Product = db.collection("products");
-
-module.exports = Product;
+export const Product = db.collection("products");

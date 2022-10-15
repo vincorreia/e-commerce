@@ -1,12 +1,14 @@
-const router = require("express").Router();
-const { Purchase } = require("../database/indexDB");
-const authToken = require("../middleware/authToken");
+import { Router as router } from "express";
+import { Purchase } from "database";
+import { authToken } from "middleware";
 
 router.get("/", authToken, async (req, res) => {
   const isStaff = req.user.isStaff;
 
   if (isStaff) {
-    const purchases = (await Purchase.get()).docs.map(doc => {return {...doc.data(), id: doc.id}});
+    const purchases = (await Purchase.get()).docs.map((doc) => {
+      return { ...doc.data(), id: doc.id };
+    });
 
     res.send(purchases);
   } else {

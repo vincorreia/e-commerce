@@ -1,6 +1,6 @@
-const router = require("express").Router();
-const authToken = require("../middleware/authToken");
-const { User, Purchase, Review } = require("../database/indexDB");
+import { Router as router } from "express";
+import { authToken } from "middleware";
+import { User, Purchase, Review } from "database";
 
 router.get("/", authToken, async (req, res) => {
   const id = req.user.id;
@@ -15,22 +15,22 @@ router.get("/", authToken, async (req, res) => {
 
 router.get("/reviews", authToken, async (req, res) => {
   const userId = req.user.id;
-  const reviews = (await Review.where("userId", "==", userId)
-    .get())
-    .docs.map((doc) => {
+  const reviews = (await Review.where("userId", "==", userId).get()).docs.map(
+    (doc) => {
       return { ...doc.data(), id: doc.id };
-    });
+    }
+  );
 
   res.json(reviews);
 });
 
 router.get("/purchases", authToken, async (req, res) => {
   const userId = req.user.id;
-  const purchases = (await Purchase.where("userId", "==", userId)
-    .get())
-    .docs.map((doc) => {
-      return { ...doc.data(), id: doc.id };
-    });
+  const purchases = (
+    await Purchase.where("userId", "==", userId).get()
+  ).docs.map((doc) => {
+    return { ...doc.data(), id: doc.id };
+  });
 
   res.json(purchases);
 });

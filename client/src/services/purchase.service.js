@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "https://us-central1-e-commerce-api-48aac.cloudfunctions.net/app/api/purchase";
+const API_URL = process.env.REACT_APP_URL + "/api/purchase";
 
 const createPurchase = (
   payload = {
@@ -12,8 +12,6 @@ const createPurchase = (
   return axios.post(API_URL + "/create", payload, { headers: authHeader() });
 };
 
-const purchaseService = {
+export const purchaseService = {
   createPurchase,
 };
-
-export default purchaseService;

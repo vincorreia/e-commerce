@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "https://us-central1-e-commerce-api-48aac.cloudfunctions.net/app/api/user";
+const API_URL = process.env.REACT_APP_URL + "/api/user";
 
 function getUser() {
   return axios.get(API_URL, { headers: authHeader() });
@@ -15,9 +15,8 @@ function getUserReviews() {
   return axios.get(API_URL + "/reviews", { headers: authHeader() });
 }
 
-const userService = {
+export const userService = {
   getUser,
   getUserPurchases,
   getUserReviews,
 };
-export default userService;

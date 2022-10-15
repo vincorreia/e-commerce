@@ -1,21 +1,21 @@
-import "./App.css";
-import Nav from "./components/Nav/Nav";
-import Home from "./components/Home/Home";
-import Store from "./components/Products/Store";
-import Cart from "./components/Cart/Cart";
+import "./App.scss";
+import { Nav } from "components/molecules";
+import {
+  Home,
+  Store,
+  Cart,
+  Profile,
+  ProductPage,
+  UpdateProduct,
+  Login,
+  Signup,
+} from "pages";
 import Layout from "./components/Layout";
 import { useEffect } from "react";
-import authService from "./services/auth.service";
-import { cartServices } from "./services/cart.service";
+import {authService, cartServices} from "services";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Profile from "./components/Profile/Profile";
-import ProductPage from "./components/ProductPage/ProductPage";
-import UpdateProduct from "./components/Admin/UpdateProduct";
-import Login from "./components/Login/Login";
-import Signup from "./components/Signup/Signup";
 import { useDispatch } from "react-redux";
-import { authActions } from "./store/slices/authSlice";
-import { cartActions } from "./store/slices/cartSlice";
+import { authActions, cartActions } from "store";
 
 function App() {
   let location = useLocation().pathname;

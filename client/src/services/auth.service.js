@@ -1,8 +1,7 @@
 import axios from "axios";
-import store from "../store/store";
-import { authActions } from "../store/slices/authSlice";
+import {store, authActions} from "store";
 
-const API_URL = "https://us-central1-e-commerce-api-48aac.cloudfunctions.net/app/api/auth";
+const API_URL = process.env.REACT_APP_URL + "/api/auth";
 
 function signup(email, password) {
   return axios
@@ -40,6 +39,7 @@ function authenticate(response) {
 function logout() {
   localStorage.removeItem("user");
   store.dispatch(authActions.logout());
+  
 }
 
 function getCurrentUser() {
@@ -50,7 +50,7 @@ function getStorageUser() {
   return JSON.parse(localStorage.getItem("user"));
 }
 
-const authService = {
+export const authService = {
   signup,
   login,
   logout,
@@ -59,4 +59,3 @@ const authService = {
   authenticate
 };
 
-export default authService;

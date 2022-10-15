@@ -327,20 +327,7 @@ p {
   }
 }
 
-@import "./components/Nav/Nav";
-@import "./components/Home/Home";
-@import "./components/Products/ProductCard/ProductCard";
-@import "./components/Products/SearchBar/SearchBar";
-@import "./components/Products/ProductContainer/ProductContainer";
-@import "./components/Misc/NotFound/NotFound";
-@import "./components/Cart/Cart";
-@import "./components/Cart/CartItem";
-@import "./components/Misc/FormCard/FormCard";
-@import "./components/Admin/CreateProduct";
-@import "./components/Profile/Profile";
-@import "./components/ProductPage/ProductPage";
-@import "./components/Reviews&Rating/Rating";
-@import "./components/Reviews&Rating/CreateReviews";
-@import "./components/Reviews&Rating/Reviews";
-@import "./components/Misc/Spinner/Spinner";
-@import "./components/Misc/PriceTag/PriceTag";
+@import "components/atoms";
+@import "components/organisms";
+@import "components/molecules";
+@import "pages";

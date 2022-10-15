@@ -1,5 +1,4 @@
-import store from "../store/store";
-import { cartActions } from "../store/slices/cartSlice";
+import { store, cartActions } from "store";
 
 const addToCart = (item) => {
   store.dispatch(cartActions.addToCart(item));
@@ -18,9 +17,9 @@ const removeFromCart = (item) => {
 };
 
 const clearCart = () => {
-  store.dispatch(cartActions.clearCart())
-  localStorage.removeItem("cart")
-}
+  store.dispatch(cartActions.clearCart());
+  localStorage.removeItem("cart");
+};
 
 const getStorageCart = () => {
   return JSON.parse(localStorage.getItem("cart"));
@@ -29,5 +28,5 @@ export const cartServices = {
   removeFromCart,
   addToCart,
   getStorageCart,
-  clearCart
+  clearCart,
 };

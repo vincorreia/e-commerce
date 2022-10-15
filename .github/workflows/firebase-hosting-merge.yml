@@ -15,6 +15,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_E_COMMERCE_API_48AAC }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_E_COMMERCE_VINCORREIA_ACF81 }}'
           channelId: live
-          projectId: e-commerce-api-48aac
+          projectId: e-commerce-vincorreia-acf81
