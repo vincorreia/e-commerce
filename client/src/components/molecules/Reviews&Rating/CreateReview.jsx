@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Rating } from '../../atoms/Rating/Rating'
+import { Rating } from 'components/atoms'
 import { productService } from 'services'
 import { useRefreshToken } from 'hooks'
+import { number } from 'prop-types'
 
 export const CreateReview = ({ productId }) => {
 	const [rating, setRating] = useState(0)
@@ -49,4 +50,8 @@ export const CreateReview = ({ productId }) => {
 			<p>{error}</p>
 		</form>
 	)
+}
+
+CreateReview.propTypes = {
+	productId: number.isRequired
 }

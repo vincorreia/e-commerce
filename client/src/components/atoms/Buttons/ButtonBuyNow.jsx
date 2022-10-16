@@ -1,3 +1,5 @@
+import { ProductI } from 'interfaces'
+import { arrayOf, bool, number, string } from 'prop-types'
 import { purchaseService, cartServices } from 'services'
 
 export const ButtonBuyNow = ({ items, color, price, clear = false }) => {
@@ -29,4 +31,11 @@ export const ButtonBuyNow = ({ items, color, price, clear = false }) => {
 			Buy now!
 		</button>
 	)
+}
+
+ButtonBuyNow.propTypes = {
+	items: arrayOf(ProductI).isRequired,
+	color: string.isRequired,
+	price: number.isRequired,
+	clear: bool
 }

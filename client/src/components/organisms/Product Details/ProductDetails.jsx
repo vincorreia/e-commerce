@@ -1,5 +1,7 @@
 import { Rating, PriceTag } from 'components/atoms'
 import { Reviews, CreateReview } from 'components/molecules'
+import { ProductI, ReviewContainerI } from 'interfaces'
+import { number } from 'prop-types'
 import { useSelector } from 'react-redux'
 
 export const ProductDetails = ({ product, reviews, params }) => {
@@ -35,4 +37,10 @@ export const ProductDetails = ({ product, reviews, params }) => {
 			)}
 		</section>
 	)
+}
+
+ProductDetails.propTypes = {
+	product: ProductI,
+	reviews: ReviewContainerI,
+	params: number
 }

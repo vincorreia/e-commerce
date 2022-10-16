@@ -1,3 +1,5 @@
+import { string } from 'prop-types'
+
 export const Spinner = ({ size = 'default' }) => {
 	return (
 		<div className={'spinner ' + size}>
@@ -5,4 +7,8 @@ export const Spinner = ({ size = 'default' }) => {
 			<div />
 		</div>
 	)
+}
+
+Spinner.propTypes = {
+	size: string
 }

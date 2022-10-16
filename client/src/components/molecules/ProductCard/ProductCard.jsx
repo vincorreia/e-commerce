@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { formatPrice } from 'utils'
 import { useRefreshToken } from 'hooks'
 import { productService } from 'services'
 import { useSelector } from 'react-redux'
 import { ButtonAddToCart, ButtonSoldOut } from 'components/atoms'
+import { ProductI } from 'interfaces'
 
 export const ProductCard = ({ product }) => {
 	const refreshToken = useRefreshToken()
@@ -78,4 +79,8 @@ export const ProductCard = ({ product }) => {
 			</div>
 		</div>
 	)
+}
+
+ProductCard.propTypes = {
+	product: ProductI
 }

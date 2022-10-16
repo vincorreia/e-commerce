@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { productService } from 'services'
 import { ProductCard } from 'components/molecules'
 import { NotFound, Spinner } from 'components/atoms'
 import { CreateProduct } from 'pages'
 import { useSelector } from 'react-redux'
+import { string } from 'prop-types'
 
 export const ProductContainer = ({ query }) => {
 	const [products, setProducts] = useState(null)
@@ -77,4 +78,8 @@ export const ProductContainer = ({ query }) => {
 			</div>
 		</div>
 	)
+}
+
+ProductContainer.propTypes = {
+	query: string.isRequired
 }

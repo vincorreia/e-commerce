@@ -1,3 +1,4 @@
+import { func, number } from 'prop-types'
 import { useState } from 'react'
 import { FaStar } from 'react-icons/fa'
 
@@ -45,4 +46,11 @@ export const Rating = ({ preset, size = 20, rating, setRating }) => {
 			})}
 		</div>
 	)
+}
+
+Rating.propTypes = {
+	preset: number,
+	size: number,
+	rating: number,
+	setRating: func
 }

@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa'
 import { Rating } from 'components/atoms'
+import { arrayOf, string } from 'prop-types'
+import { ReviewI } from 'interfaces'
 
 export const Reviews = ({ reviews, width = '90%', height = '10rem' }) => {
 	const [current, setCurrent] = useState(0)
@@ -47,6 +49,7 @@ export const Reviews = ({ reviews, width = '90%', height = '10rem' }) => {
 							ref={reviewRef}
 							className='flex-col review'
 							style={position === 'left' ? { left: '50%' } : { left: '-50%' }}
+							key={index}
 						>
 							<div className='flex-col rating-info'>
 								<p>{review.userName}</p>
@@ -61,4 +64,10 @@ export const Reviews = ({ reviews, width = '90%', height = '10rem' }) => {
 			})}
 		</section>
 	)
+}
+
+Reviews.propTypes = {
+	reviews: arrayOf(ReviewI),
+	width: string,
+	height: string
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { userService } from 'services'
 import { Spinner } from 'components/atoms'
+import { bool } from 'prop-types'
 
 export const UserDetails = ({ refreshed }) => {
 	const [loading, setLoading] = useState(true)
@@ -28,4 +29,8 @@ export const UserDetails = ({ refreshed }) => {
 			)}
 		</section>
 	)
+}
+
+UserDetails.propTypes = {
+	refreshed: bool
 }

@@ -1,4 +1,6 @@
 import { PurchaseItem } from 'components/atoms'
+import { ProductI } from 'interfaces'
+import { arrayOf, number, string } from 'prop-types'
 
 export const PurchaseList = ({ purchases }) => {
 	return (
@@ -15,4 +17,12 @@ export const PurchaseList = ({ purchases }) => {
 			})}
 		</ul>
 	)
+}
+
+PurchaseList.propTypes = {
+	purchases: {
+		id: string.isRequired,
+		price: number.isRequired,
+		items: arrayOf(ProductI).isRequired
+	}
 }

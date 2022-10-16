@@ -4,6 +4,7 @@ import {
 	ButtonSoldOut,
 	PriceTag
 } from 'components/atoms'
+import { ProductI } from 'interfaces'
 
 export const PurchaseBox = ({ product }) => {
 	const stockMessage =
@@ -48,4 +49,6 @@ export const PurchaseBox = ({ product }) => {
 	)
 }
 
-export default PurchaseBox
+PurchaseBox.propTypes = {
+	product: ProductI
+}

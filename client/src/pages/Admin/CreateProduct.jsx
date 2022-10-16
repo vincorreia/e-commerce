@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useReducer } from 'react'
 import { useRefreshToken } from 'hooks'
 import { productService } from 'services'
+import { bool, number, string } from 'prop-types'
 
 const plusSign = 'https://i.imgur.com/pJYS4Df.png'
 
@@ -176,4 +177,17 @@ export const CreateProduct = ({
 			)}
 		</form>
 	)
+}
+
+CreateProduct.propTypes = {
+	product: {
+		name: string,
+		price: string,
+		image: string,
+		tags: string,
+		id: number,
+		isCreated: bool,
+		description: string,
+		stock: number
+	}
 }

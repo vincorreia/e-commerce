@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { userService } from 'services'
 import { Spinner, NotFound } from 'components/atoms'
 import { PurchaseList } from 'components/molecules'
+import { bool } from 'prop-types'
 
 export const UserPurchases = ({ refreshed }) => {
 	const [loading, setLoading] = useState(true)
@@ -30,4 +31,8 @@ export const UserPurchases = ({ refreshed }) => {
 			)}
 		</section>
 	)
+}
+
+UserPurchases.propTypes = {
+	refreshed: bool
 }

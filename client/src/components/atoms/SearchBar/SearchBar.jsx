@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+import { func, string } from 'prop-types'
+import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 export const SearchBar = props => {
 	const { query, setQuery } = props
@@ -49,4 +50,9 @@ export const SearchBar = props => {
 			</div>
 		</div>
 	)
+}
+
+SearchBar.propTypes = {
+	query: string.isRequired,
+	setQuery: func.isRequired
 }

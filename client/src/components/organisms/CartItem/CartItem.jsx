@@ -1,6 +1,7 @@
 import { cartServices } from 'services'
 import { formatPrice } from 'utils'
 import { ButtonAddToCart } from 'components/atoms'
+import { number, string } from 'prop-types'
 
 export const CartItem = ({ item }) => {
 	return (
@@ -33,4 +34,13 @@ export const CartItem = ({ item }) => {
 			</div>
 		</div>
 	)
+}
+
+CartItem.propTypes = {
+	item: {
+		image: string.isRequired,
+		name: string.isRequired,
+		amount: number.isRequired,
+		price: number.isRequired
+	}
 }
