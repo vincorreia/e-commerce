@@ -1,12 +1,12 @@
-import { cartServices } from "services";
+import { cartServices } from 'services'
 
-export const ButtonAddToCart = ({ product, color = "allow" }) => {
-  const handleClick = () => {
-    cartServices.addToCart(product);
-  };
-  return (
-    <button className={color} onClick={handleClick}>
-      Add to Cart
-    </button>
-  );
-};
+export const ButtonAddToCart = ({ product, color = 'allow' }) => {
+	const handleClick = () => {
+		cartServices.addToCart(product)
+	}
+	return (
+		<button className={color} onClick={handleClick}>
+			Add to Cart
+		</button>
+	)
+}

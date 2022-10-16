@@ -4,55 +4,55 @@ $main-color: white;
 ///////////////////////////////////
 
 .nav {
-    height: 5rem;
-    width: 100%;
-    position: relative;
-    margin-bottom: 1rem;
-    div{
-        align-self: center;
+	height: 5rem;
+	width: 100%;
+	position: relative;
+	margin-bottom: 1rem;
+	div {
+		align-self: center;
 
-        a{
-            color: $main-color;
-            text-decoration: none;
-            border: 0;
-            &:hover{
-                color: darken($main-color, 15%);
-            }
-        }
-        
-        .brand{
-            font-size: 45px;
-            font-weight: 600;
-        }
+		a {
+			color: $main-color;
+			text-decoration: none;
+			border: 0;
+			&:hover {
+				color: darken($main-color, 15%);
+			}
+		}
 
-        .nav-link{
-            &.active{
-                color: lighten($primary, 20%);
-                &:hover{
-                    color: lighten($primary, 25%);
-                }
-            }
-        }
-    }
+		.brand {
+			font-size: 45px;
+			font-weight: 600;
+		}
 
-    .profile-section{
-        gap: 0.5rem;
-        .amount {
-            color: white;
-            font-size: 0.8rem;
-            text-align: center;
-            align-items: center;
-            line-height: 1.25;
-            height: 16px;
-            width: 16px;
-            background-color: $allow;
-            border-radius: 50%;
-            display: inline-block;
-            transform: translate(-5px, -12px);
-            &.hidden{
-                background-color: transparent;
-                color: transparent;
-            }
-        }
-    }
+		.nav-link {
+			&.active {
+				color: lighten($primary, 20%);
+				&:hover {
+					color: lighten($primary, 25%);
+				}
+			}
+		}
+	}
+
+	.profile-section {
+		gap: 0.5rem;
+		.amount {
+			color: white;
+			font-size: 0.8rem;
+			text-align: center;
+			align-items: center;
+			line-height: 1.25;
+			height: 16px;
+			width: 16px;
+			background-color: $allow;
+			border-radius: 50%;
+			display: inline-block;
+			transform: translate(-5px, -12px);
+			&.hidden {
+				background-color: transparent;
+				color: transparent;
+			}
+		}
+	}
 }

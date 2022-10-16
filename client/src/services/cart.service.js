@@ -1,32 +1,32 @@
-import { store, cartActions } from "store";
+import { store, cartActions } from 'store'
 
-const addToCart = (item) => {
-  store.dispatch(cartActions.addToCart(item));
+const addToCart = item => {
+	store.dispatch(cartActions.addToCart(item))
 
-  const newCart = store.getState().cart;
+	const newCart = store.getState().cart
 
-  localStorage.setItem("cart", JSON.stringify(newCart));
-};
+	localStorage.setItem('cart', JSON.stringify(newCart))
+}
 
-const removeFromCart = (item) => {
-  store.dispatch(cartActions.removeFromCart(item));
+const removeFromCart = item => {
+	store.dispatch(cartActions.removeFromCart(item))
 
-  const newCart = store.getState().cart;
+	const newCart = store.getState().cart
 
-  localStorage.setItem("cart", JSON.stringify(newCart));
-};
+	localStorage.setItem('cart', JSON.stringify(newCart))
+}
 
 const clearCart = () => {
-  store.dispatch(cartActions.clearCart());
-  localStorage.removeItem("cart");
-};
+	store.dispatch(cartActions.clearCart())
+	localStorage.removeItem('cart')
+}
 
 const getStorageCart = () => {
-  return JSON.parse(localStorage.getItem("cart"));
-};
+	return JSON.parse(localStorage.getItem('cart'))
+}
 export const cartServices = {
-  removeFromCart,
-  addToCart,
-  getStorageCart,
-  clearCart,
-};
+	removeFromCart,
+	addToCart,
+	getStorageCart,
+	clearCart
+}

@@ -1,1 +1,1 @@
-export * from "./PurchaseList";
+export * from './PurchaseList'
