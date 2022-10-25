@@ -13,33 +13,32 @@ export const useRefreshToken = () => {
 			const header = {
 				'x-auth-token': auth.refreshToken
 			}
-			return await axios
-				.post(
+			try {
+				const response = await axios.post(
 					process.env.REACT_APP_URL + '/api/auth/token',
 					{},
 					{ headers: header }
 				)
-				.then(response => {
-					const user = {
-						data: {
-							accessToken: response.data.accessToken,
-							refreshToken: auth.refreshToken,
-							isStaff: auth.isStaff
-						}
+
+				const user = {
+					data: {
+						accessToken: response.data.accessToken,
+						refreshToken: auth.refreshToken,
+						isStaff: auth.isStaff
 					}
-					authService.authenticate(user)
+				}
+				authService.authenticate(user)
+			} catch (err) {
+				console.log(err)
+				authService.logout()
+				navigate('/login', {
+					state: {
+						from: location,
+						err: 'Session expired, please log in again'
+					},
+					replace: true
 				})
-				.catch(err => {
-					console.log(err)
-					authService.logout()
-					navigate('/login', {
-						state: {
-							from: location,
-							err: 'Session expired, please log in again'
-						},
-						replace: true
-					})
-				})
+			}
 		}
 	}
 }

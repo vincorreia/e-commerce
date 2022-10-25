@@ -1,4 +1,5 @@
 export * from './Nav'
+export * from './CartItem'
 export * from './ProductCard'
 export * from './Footer'
 export * from './AuthForm'

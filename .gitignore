@@ -39,5 +39,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .vercel
-
+.firebase/
+.firebaserc
 docker-compose.yaml

@@ -1,4 +1,4 @@
-import { func, string } from 'prop-types'
+import { func, object } from 'prop-types'
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 export const SearchBar = props => {
@@ -53,6 +53,6 @@ export const SearchBar = props => {
 }
 
 SearchBar.propTypes = {
-	query: string.isRequired,
+	query: object.isRequired,
 	setQuery: func.isRequired
 }

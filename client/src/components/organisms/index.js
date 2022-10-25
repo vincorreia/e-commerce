@@ -1,4 +1,4 @@
-export * from './CartItem'
+export * from './Cart'
 export * from './Product Details'
 export * from './ProductContainer'
 export * from './Purchase Box'

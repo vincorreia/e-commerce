@@ -7,11 +7,16 @@ $main-color: white;
 	height: 5rem;
 	width: 100%;
 	position: relative;
-	margin-bottom: 1rem;
+
+	&.black {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
 	div {
 		align-self: center;
 
-		a {
+		a,
+		button {
 			color: $main-color;
 			text-decoration: none;
 			border: 0;
@@ -33,6 +38,16 @@ $main-color: white;
 				}
 			}
 		}
+		button {
+			font-size: 1rem;
+			line-height: 1;
+			&.nav-link {
+				background-color: transparent;
+				padding: 0;
+				display: flex;
+				position: relative;
+			}
+		}
 	}
 
 	.profile-section {
@@ -47,8 +62,8 @@ $main-color: white;
 			width: 16px;
 			background-color: $allow;
 			border-radius: 50%;
-			display: inline-block;
-			transform: translate(-5px, -12px);
+			position: absolute;
+			transform: translate(40px, -10px);
 			&.hidden {
 				background-color: transparent;
 				color: transparent;

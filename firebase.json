@@ -1,9 +1,19 @@
 {
   "functions": {
-    "source": "functions"
+    "source": "functions",
+    "ignore": [
+      "node_modules",
+      ".git",
+      "firebase-debug.log",
+      "firebase-debug.*.log"
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "site": "e-commerce-vincorreia",
+    "site":"vincorreia-e-commerce",
     "public": "client/build",
     "ignore": [
       "firebase.json",

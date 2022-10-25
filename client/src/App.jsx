@@ -3,7 +3,6 @@ import { Nav } from 'components/molecules'
 import {
 	Home,
 	Store,
-	Cart,
 	Profile,
 	ProductPage,
 	UpdateProduct,
@@ -51,7 +50,6 @@ function App() {
 						<Route path='products' element={<Store />} />
 						<Route path='products/:id' element={<ProductPage />} />
 						<Route path='products/:id/update' element={<UpdateProduct />} />
-						<Route path='cart' element={<Cart />} />
 						<Route path='login' element={<Login />} />
 						<Route path='signup' element={<Signup />} />
 						<Route path='profile' element={<Profile />} />
