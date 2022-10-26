@@ -153,6 +153,9 @@ button {
 	border-radius: 4px;
 	font-family: 'Work Sans', sans-serif;
 	font-size: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	&.primary {
 		background-color: $primary;

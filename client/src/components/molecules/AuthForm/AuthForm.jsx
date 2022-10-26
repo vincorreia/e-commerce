@@ -66,20 +66,22 @@ export const AuthForm = ({ fields, buttonTxt, func, location }) => {
 			{fields.map(field => {
 				return (
 					<div className='form-control flex-col' key={field.title}>
-						{field.type === 'email' ? (
-							<Icon name='user' />
-						) : (
-							<Icon name='password' />
-						)}
 						<label htmlFor={field.title}>{field.placeholder}</label>
-						<input
-							type={field.type}
-							name={field.title}
-							id={field.title}
-							placeholder={field.placeholder}
-							value={state[field.title]}
-							onChange={handleChange}
-						/>
+						<div className='input-wrapper'>
+							{field.type === 'email' ? (
+								<Icon name='user' className='form-icon' />
+							) : (
+								<Icon name='password' className='form-icon' />
+							)}
+							<input
+								type={field.type}
+								name={field.title}
+								id={field.title}
+								placeholder={field.placeholder}
+								value={state[field.title]}
+								onChange={handleChange}
+							/>
+						</div>
 					</div>
 				)
 			})}

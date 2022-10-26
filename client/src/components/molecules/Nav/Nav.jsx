@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { Cart } from 'components/organisms'
-import { Transition } from '@headlessui/react'
 
 export const Nav = () => {
 	const cart = useSelector(state => state.cart)
