@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { Cart } from 'components/organisms'
+import { Transition } from '@headlessui/react'
 
 export const Nav = () => {
 	const cart = useSelector(state => state.cart)
@@ -15,7 +16,7 @@ export const Nav = () => {
 	}
 	return (
 		<>
-			<nav className={`flex-row space-around nav${cartOpen ? ' black' : ''}`}>
+			<nav className={`flex-row space-around nav`}>
 				<div className='flex-row center'>
 					<NavLink className='brand' to='/'>
 						Watches
@@ -39,10 +40,7 @@ export const Nav = () => {
 							</NavLink>
 						</>
 					)}
-					<button
-						className={`nav-link ${cartOpen ? 'active' : ''}`}
-						onClick={handleOpenCart}
-					>
+					<button className={`nav-link`} onClick={handleOpenCart}>
 						<span>CART</span>
 						<span className={cart.length > 0 ? 'amount' : 'amount hidden'}>
 							{cart.length}

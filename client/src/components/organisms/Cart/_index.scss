@@ -4,14 +4,14 @@
 	background-color: white;
 	width: 35rem;
 	border: 1px solid white;
-	border-radius: 4px;
 	gap: 1rem;
+	z-index: 10000;
 	.cart-products {
 		width: 100%;
 	}
 	.checkout-details {
 		flex-grow: 1;
-		
+
 		padding: 0.75rem 2.5rem;
 		width: 100%;
 		align-items: flex-end;
@@ -27,16 +27,18 @@
 
 .cart {
 	width: 100%;
-	height: calc(100% - 5rem);
+	height: 100%;
 	flex-direction: row-reverse;
 	position: fixed;
-	top: 5rem;
+	top: 0;
 	left: 0;
-	z-index: 10000;
 }
 
 .blackout {
-	flex-grow: 1;
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 100%;
 	background-color: black;
-	opacity: 50%;
+	z-index: 9999;
 }

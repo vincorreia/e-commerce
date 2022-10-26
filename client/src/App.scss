@@ -327,6 +327,37 @@ p {
 	}
 }
 
+.transition-opacity {
+	transition-property: opacity;
+	transition-timing-function: linear;
+	transition-duration: 150ms;
+}
+.transition-x {
+	transition-property: transform;
+	transition-timing-function: ease-in;
+	transition-duration: 150ms;
+}
+
+.left-0 {
+	transform: translateX(0);
+}
+
+.left-100 {
+	transform: translateX(100%);
+}
+
+.opacity-0 {
+	opacity: 0;
+}
+
+.opacity-50 {
+	opacity: 0.5;
+}
+
+.opacity-100 {
+	opacity: 100%;
+}
+
 @import 'components/atoms';
 @import 'components/organisms';
 @import 'components/molecules';
