@@ -79,12 +79,12 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -98,29 +98,29 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+	display: block;
 }
 body {
-  line-height: 1;
+	line-height: 1;
 }
 ol,
 ul {
-  list-style: none;
+	list-style: none;
 }
 blockquote,
 q {
-  quotes: none;
+	quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
-  content: none;
+	content: '';
+	content: none;
 }
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 /*/////////////////////////////// CSS RESET END ///////////////////////////////*/
@@ -132,193 +132,236 @@ $allow: rgb(58, 179, 21);
 $dark: black;
 $deny: darken(red, 10%);
 $round-border: 0.25rem;
-$border: darken(white, 75%) solid 1px;
+$border: solid 1.5px darken(#d3d3d3, 10%);
+
+@mixin grid($col, $row) {
+	display: grid;
+	grid-template-columns: $col;
+	grid-template-rows: $row;
+}
 
 body {
-  font-family: "Work Sans", sans-serif;
+	font-family: 'Work Sans', sans-serif;
 }
 
 button {
-  color: white;
-  border: $border;
-  font-weight: 400;
+	color: white;
+	border: 0;
+	font-weight: 400;
+	height: 2rem;
+	border: none;
+	border-radius: 4px;
+	font-family: 'Work Sans', sans-serif;
+	font-size: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-  &.primary {
-    background-color: $primary;
-    &:hover {
-      background-color: lighten($primary, 15%);
-    }
-  }
+	&.primary {
+		background-color: $primary;
+		&:hover {
+			background-color: lighten($primary, 15%);
+		}
+	}
 
-  &.dark {
-    background-color: $dark;
-    &:hover {
-      background-color: lighten($dark, 20%);
-    }
-  }
+	&.dark {
+		background-color: $dark;
+		&:hover {
+			background-color: lighten($dark, 20%);
+		}
+	}
 
-  &.allow {
-    background-color: $allow;
-    &:hover {
-      background-color: lighten($allow, 15%);
-    }
-  }
+	&.allow {
+		background-color: $allow;
+		&:hover {
+			background-color: lighten($allow, 15%);
+		}
+	}
 
-  &.deny {
-    background-color: $deny;
-    &:hover {
-      background-color: lighten($deny, 15%);
-    }
-  }
-  &.simple {
-    color: #007185;
-    background-color: transparent;
-    font-weight: 300;
-    font-size: 0.75rem;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+	&.deny {
+		background-color: $deny;
+		&:hover {
+			background-color: lighten($deny, 15%);
+		}
+	}
+	&.simple {
+		color: #007185;
+		background-color: transparent;
+		font-weight: 300;
+		font-size: 0.75rem;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 
-  &.sold-out {
-    background-color: gray;
-    &:hover {
-      cursor: context-menu;
-    }
-  }
+	&.sold-out {
+		background-color: gray;
+		&:hover {
+			cursor: context-menu;
+		}
+	}
 
-  &:hover {
-    cursor: pointer;
-  }
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 p {
-  &.error {
-    color: $deny;
-    font-size: 0.7rem;
-  }
+	&.error {
+		color: $deny;
+		font-size: 0.7rem;
+	}
+}
+.button-wrapper {
+	gap: 0.5rem;
 }
 .App {
-  background-color: black;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  overflow: hidden;
-  min-height: 100vh;
-  &.home {
-    position: relative;
-    background: $from;
-    background: radial-gradient(circle, darken($from, 90%) 0%, $to 100%);
-    &::before {
-      content: "";
-      background-size: cover;
-      background-image: url("https://i.imgur.com/sDeA7yG.jpg");
-      background-repeat: no-repeat;
-      background-position: center;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      opacity: 0.35;
-    }
+	background-color: black;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	overflow: hidden;
+	min-height: 100vh;
+	&.home {
+		position: relative;
+		background: $from;
+		background: radial-gradient(circle, darken($from, 90%) 0%, $to 100%);
+		&::before {
+			content: '';
+			background-size: cover;
+			background-image: url('https://i.imgur.com/sDeA7yG.jpg');
+			background-repeat: no-repeat;
+			background-position: center;
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			bottom: 0px;
+			left: 0px;
+			opacity: 0.35;
+		}
 
-    .main {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-  }
+		.main {
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+
+		.sectionContainer {
+			height: auto;
+			min-height: 0;
+		}
+	}
 }
 
 .sectionContainer {
-  position: relative;
+	position: relative;
+	height: calc(100vh - 5rem);
+	overflow-y: auto;
 }
 
 .flex-row {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 
-  &.center {
-    justify-content: center;
-  }
+	&.center {
+		justify-content: center;
+	}
 
-  &.align-center {
-    align-items: center;
-  }
+	&.align-center {
+		align-items: center;
+	}
 
-  &.align-end {
-    align-items: flex-end;
-  }
+	&.align-end {
+		align-items: flex-end;
+	}
 
-  &.space-even {
-    justify-content: space-evenly;
-  }
+	&.space-even {
+		justify-content: space-evenly;
+	}
 
-  &.space-between {
-    justify-content: space-between;
-  }
+	&.space-between {
+		justify-content: space-between;
+	}
 
-  &.space-around {
-    justify-content: space-around;
-  }
+	&.space-around {
+		justify-content: space-around;
+	}
 
-  &.wrap {
-    flex-wrap: wrap;
-  }
+	&.wrap {
+		flex-wrap: wrap;
+	}
 
-  &.no-wrap {
-    flex-wrap: nowrap;
-  }
+	&.no-wrap {
+		flex-wrap: nowrap;
+	}
 }
 
 .flex-col {
-  display: flex;
-  flex-direction: column;
-  &.center {
-    justify-content: center;
-  }
+	display: flex;
+	flex-direction: column;
+	&.center {
+		justify-content: center;
+	}
 
-  &.align-center {
-    align-items: center;
-  }
+	&.align-center {
+		align-items: center;
+	}
 
-  &.space-between {
-    justify-content: space-between;
-  }
+	&.space-between {
+		justify-content: space-between;
+	}
 
-  &.space-around {
-    justify-content: space-around;
-  }
+	&.space-around {
+		justify-content: space-around;
+	}
 
-  &.space-even {
-    justify-content: space-evenly;
-  }
+	&.space-even {
+		justify-content: space-evenly;
+	}
 
-  &.wrap {
-    flex-wrap: wrap;
-  }
+	&.wrap {
+		flex-wrap: wrap;
+	}
 
-  &.no-wrap {
-    flex-wrap: nowrap;
-  }
+	&.no-wrap {
+		flex-wrap: nowrap;
+	}
 }
 
-@import "./components/Nav/Nav";
-@import "./components/Home/Home";
-@import "./components/Store\ \(Products\)/ProductCard/ProductCard";
-@import "./components/Store\ \(Products\)/SearchBar/SearchBar";
-@import "./components/Store\ \(Products\)/ProductContainer/ProductContainer";
-@import "./components/Misc/NotFound/NotFound";
-@import "./components/Cart/Cart";
-@import "./components/Cart/CartItem";
-@import "./components/Misc/FormCard/FormCard";
-@import "./components/Admin/CreateProduct";
-@import "./components/Profile/Profile";
-@import "./components/ProductPage/ProductPage";
-@import "./components/Reviews\ and\ Rating/Rating";
-@import "./components/Reviews\ and\ Rating/CreateReviews";
-@import "./components/Reviews\ and\ Rating/Reviews";
-@import "./components/Misc/Spinner/Spinner";
+.transition-opacity {
+	transition-property: opacity;
+	transition-timing-function: linear;
+	transition-duration: 150ms;
+}
+.transition-x {
+	transition-property: transform;
+	transition-timing-function: ease-in;
+	transition-duration: 150ms;
+}
+
+.left-0 {
+	transform: translateX(0);
+}
+
+.left-100 {
+	transform: translateX(100%);
+}
+
+.opacity-0 {
+	opacity: 0;
+}
+
+.opacity-50 {
+	opacity: 0.5;
+}
+
+.opacity-100 {
+	opacity: 100%;
+}
+
+@import 'components/atoms';
+@import 'components/organisms';
+@import 'components/molecules';
+@import 'pages';

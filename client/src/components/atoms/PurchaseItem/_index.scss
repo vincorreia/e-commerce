@@ -1,0 +1,19 @@
+.purchase-item {
+	@include grid($col: 1fr 1fr, $row: auto);
+	padding: 2rem 5rem;
+	border-bottom: $border;
+	&:last-child {
+		border-bottom: 0;
+	}
+	.price {
+		text-align: end;
+	}
+
+	.purchase-item-image-wrapper {
+		grid-column: span 2;
+		gap: 1rem;
+	}
+	.purchase-item-image {
+		width: 5rem;
+	}
+}

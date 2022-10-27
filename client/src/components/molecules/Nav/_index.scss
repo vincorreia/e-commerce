@@ -1,0 +1,74 @@
+// Variables //
+$main-color: white;
+
+///////////////////////////////////
+
+.nav {
+	height: 5rem;
+	width: 100%;
+	position: relative;
+
+	&.black {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	div {
+		align-self: center;
+
+		a,
+		button {
+			color: $main-color;
+			text-decoration: none;
+			border: 0;
+			&:hover {
+				color: darken($main-color, 15%);
+			}
+		}
+
+		.brand {
+			font-size: 45px;
+			font-weight: 600;
+		}
+
+		.nav-link {
+			&.active {
+				color: lighten($primary, 20%);
+				&:hover {
+					color: lighten($primary, 25%);
+				}
+			}
+		}
+		button {
+			font-size: 1rem;
+			line-height: 1;
+			&.nav-link {
+				background-color: transparent;
+				padding: 0;
+				display: flex;
+				align-items: flex-start;
+				position: relative;
+			}
+		}
+	}
+
+	.profile-section {
+		gap: 0.5rem;
+		.amount {
+			color: white;
+			font-size: 0.8rem;
+			text-align: center;
+			align-items: center;
+			line-height: 1.25;
+			height: 16px;
+			width: 16px;
+			background-color: $allow;
+			border-radius: 50%;
+			position: absolute;
+			transform: translate(28px, -10px);
+			&.hidden {
+				background-color: transparent;
+				color: transparent;
+			}
+		}
+	}
+}

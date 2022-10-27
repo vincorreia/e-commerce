@@ -12,7 +12,7 @@ const Purchase = db.define("purchase", {
         type: Sequelize.STRING,
         allowNull: false,
         get() {
-            return this.getDataValue("items").split(";")
+            return this.getDataValue("items").split(";").map(item => JSON.parse(item))
         },
         set(val) {
             this.setDataValue("items", val.join(";"));

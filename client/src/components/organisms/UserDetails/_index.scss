@@ -1,0 +1,8 @@
+.profile-details {
+	grid-column: span 3;
+	grid-row: 1;
+	border-bottom: $border;
+	.profile-details-info {
+		padding-bottom: 5rem;
+	}
+}

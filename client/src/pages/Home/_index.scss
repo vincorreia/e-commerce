@@ -1,0 +1,28 @@
+.mainText {
+	color: white;
+	align-self: flex-start;
+	align-items: center;
+	gap: 0.5rem;
+	h1 {
+		text-align: center;
+		font-weight: 500;
+		font-size: 50px;
+		margin: 0;
+	}
+	p {
+		width: 28rem;
+		text-align: center;
+		font-weight: 200;
+		font-size: 17px;
+	}
+	.flex-row {
+		&.center {
+			gap: 2%;
+			button {
+				padding: 0.6rem 4rem 0.6rem 4rem;
+				width: 14rem;
+				border-radius: $round-border;
+			}
+		}
+	}
+}

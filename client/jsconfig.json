@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"baseUrl": "src",
+		"paths": {
+			"@constants": ["./src/constants"]
+		},
+		"module": "ES6",
+		"target": "ES6"
+	},
+	"exclude": ["node_modules", "build"]
+}

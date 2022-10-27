@@ -1,32 +1,33 @@
 const router = require("express").Router();
-const { Purchase } = require("../database/indexDB")
-const authToken = require("../middleware/authToken")
+const { Purchase } = require("../database/indexDB");
+const authToken = require("../middleware/authToken");
 
-router.get("/", authToken, async(req, res) => {
-    const isStaff = req.user.isStaff
+router.get("/", authToken, async (req, res) => {
+  const isStaff = req.user.isStaff;
 
-    if(isStaff){
-        const purchases = await Purchase.sync()
-        .then(() => {
-            return Purchase.findAll()
-        })
+  if (isStaff) {
+    const purchases = await Purchase.sync().then(() => {
+      return Purchase.findAll();
+    });
 
-        res.send(purchases);
-    }
-    else{
-        res.send("Something went wrong!")
-    }
-})
+    res.send(purchases);
+  } else {
+    res.send("Something went wrong!");
+  }
+});
 
-router.post("/", authToken, async(req, res) => {
-    const userId = req.user.id;
+router.post("/create", authToken, async (req, res) => {
+  const userId = req.user.id;
+  const { price, items } = req.body;
 
-    const newPurchase = {
-        userId: userId,
-        items: req.body.items,
-        price: req.body.price
-    }
-})
+  const newPurchase = {
+    userId,
+    price,
+    items: items.map((item) => JSON.stringify(item)),
+  };
+  await Purchase.create(newPurchase);
 
+  res.json("Purchase completed successfully!");
+});
 
 module.exports = router;

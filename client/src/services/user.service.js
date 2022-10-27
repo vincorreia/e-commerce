@@ -1,23 +1,22 @@
-import axios from "axios";
-import authHeader from "./auth-header";
+import axios from 'axios'
+import authHeader from './auth-header'
 
-const API_URL = "/user";
+const API_URL = process.env.REACT_APP_URL + '/api/user'
 
 function getUser() {
-  return axios.get(API_URL, { headers: authHeader() });
+	return axios.get(API_URL, { headers: authHeader() })
 }
 
 function getUserPurchases() {
-  return axios.get(API_URL + "/purchases", { headers: authHeader() });
+	return axios.get(API_URL + '/purchases', { headers: authHeader() })
 }
 
 function getUserReviews() {
-  return axios.get(API_URL + "/reviews", { headers: authHeader() });
+	return axios.get(API_URL + '/reviews', { headers: authHeader() })
 }
 
-const userService = {
-  getUser,
-  getUserPurchases,
-  getUserReviews,
-};
-export default userService;
+export const userService = {
+	getUser,
+	getUserPurchases,
+	getUserReviews
+}

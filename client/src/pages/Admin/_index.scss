@@ -1,0 +1,53 @@
+.product-creator {
+	.internal-update {
+		margin-left: 0.2rem;
+		gap: 0.2rem;
+		textArea {
+			border: 0;
+			outline: none;
+			border-left: 1px solid gray;
+			resize: none;
+		}
+		label {
+			span {
+				background-color: white;
+				border: 1px solid gray;
+				border-right: 0;
+				font-size: 1rem;
+				padding: 0.1rem;
+				font-weight: 400;
+			}
+			input {
+				padding: 0.125rem;
+				width: 2rem;
+				font-size: 1rem;
+				border: 1px solid gray;
+				border-left: 0;
+				outline: none;
+			}
+		}
+	}
+
+	.new-product-name {
+		font-size: 2rem;
+		text-align: center;
+	}
+	.new-tags {
+		font-size: 1rem;
+		text-align: center;
+	}
+
+	.new-price {
+		font-size: 1.5rem;
+		text-align: center;
+	}
+	.product-image {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.hidden {
+		display: none;
+	}
+}

@@ -2,8 +2,8 @@
 
 # dependencies
 /node_modules
-/client/node_modules
-/api/node_modules
+client/node_modules
+api/node_modules
 /.pnp
 .pnp.js
 
@@ -12,6 +12,7 @@
 
 # production
 /build
+client/build/
 
 # misc
 .DS_Store
@@ -26,6 +27,7 @@ client/.env.test.local
 client/.env.production.local
 client/.env
 
+
 api/.env
 api/.env.local
 api/.env.development.local
@@ -35,3 +37,8 @@ api/.env.production.local
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.vercel
+.firebase/
+.firebaserc
+docker-compose.yaml

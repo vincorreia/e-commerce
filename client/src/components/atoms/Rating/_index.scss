@@ -1,0 +1,11 @@
+.rating {
+	input[type='radio'] {
+		display: none;
+	}
+
+	.star {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
