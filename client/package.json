@@ -43,7 +43,7 @@
 	},
 	"proxy": "http://localhost:4000",
 	"devDependencies": {
-		"babel-plugin-module-resolver": "^4.1.0",
+		"babel-plugin-module-resolver": "^5.0.0",
 		"eslint": "^8.0.1",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-config-standard": "^17.0.0",
